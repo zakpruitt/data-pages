@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta name="description" content="Hotel price matrix near Rosemont for Collect-A-Con Chicago 2 (Oct 10-11, 2026): Sat only, Fri+Sat, Sat+Sun, and Fri-Sun stays.">
+<meta name="created" content="2026-10-03">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{color-scheme:light}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:#fbfbfa}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Chicago 2 Hotel Matrix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: stay-option switcher -> three picks for that option -> full price matrix (all four options side by side) */
+:root{--bg:#F4F5F9;--surface:#FFFFFF;--ink:#171B2E;--muted:#5D6380;--line:#DDE0EA;--accent:#2F45C9;--hi:#FFE36E;--hi-ink:#171B2E;--good:#1E7A4C;--warn:#A2531A;
+--f-d:"Bricolage Grotesque",system-ui,sans-serif;--f-b:"IBM Plex Sans",system-ui,sans-serif;--f-m:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#10131F;--surface:#181C2C;--ink:#E8EAF4;--muted:#9AA0BD;--line:#2A3047;--accent:#8C9BFF;--hi:#E8C94A;--hi-ink:#10131F;--good:#5FD39A;--warn:#F0A46A}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#10131F;--surface:#181C2C;--ink:#E8EAF4;--muted:#9AA0BD;--line:#2A3047;--accent:#8C9BFF;--hi:#E8C94A;--hi-ink:#10131F;--good:#5FD39A;--warn:#F0A46A}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-b);padding-inline:16px}
+.wrap{max-width:1100px;margin:0 auto;padding-block:28px 60px;display:flex;flex-direction:column;gap:28px}
+.eyebrow{font:500 12px var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font:800 clamp(28px,5vw,44px)/1.05 var(--f-d);letter-spacing:-.02em;margin:0 0 10px;text-wrap:balance}
+header p{color:var(--muted);margin:0;max-width:68ch}
+h2{font:800 22px/1.15 var(--f-d);margin:0 0 4px;text-wrap:balance}
+.sub{color:var(--muted);margin:0 0 14px;font-size:14px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.opt{text-align:left;font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.opt b{font:600 15px var(--f-b)}
+.opt span{font:12px var(--f-m);color:var(--muted)}
+.opt em{font:normal 500 13px var(--f-m);color:var(--accent);margin-top:4px}
+.opt[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.opt:focus-visible,select:focus-visible,input:focus-visible,th button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.pick{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.pick .tag{font:500 11px var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pick .nm{font:600 16px/1.3 var(--f-b)}
+.pick .price{font:800 30px/1 var(--f-d);font-variant-numeric:tabular-nums}
+.pick .price small{font:500 13px var(--f-m);color:var(--muted);margin-left:6px}
+.pick .meta{font:12px var(--f-m);color:var(--muted)}
+.pick p{margin:0;font-size:14px;color:var(--muted)}
+.note{border-left:3px solid var(--warn);padding:10px 14px;background:var(--surface);border-radius:0 8px 8px 0;font-size:14px;max-width:80ch}
+.note b{color:var(--warn)}
+.filters{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:14px;margin-bottom:10px}
+.filters label{display:flex;gap:6px;align-items:center}
+select{font:inherit;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface)}
+th button{all:unset;cursor:pointer}
+th button::after{content:" \2195";opacity:.4}
+th.num,td.num,td.na{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-m);white-space:nowrap}
+td.num small{display:block;color:var(--muted);font-size:11px}
+.col-on{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+td.na{color:var(--muted);font-size:12px}
+.best{background:var(--hi);color:var(--hi-ink);padding:1px 5px;border-radius:4px}
+.hn{font-weight:600}
+.chips{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px}
+.chip{font:11px var(--f-m);border:1px solid var(--line);border-radius:999px;padding:0 7px;color:var(--muted)}
+.chip.ok{color:var(--good);border-color:currentColor}
+.r-lo{color:var(--warn)}
+.empty{color:var(--muted);text-align:left}
+footer{font-size:13px;color:var(--muted);max-width:80ch;display:flex;flex-direction:column;gap:6px}
+footer p{margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Collect-A-Con Chicago 2 · Sat Oct 10 – Sun Oct 11, 2026 · Donald E. Stephens Convention Center, Rosemont</div>
+  <h1>Where to sleep for Chicago 2</h1>
+  <p>Hotel prices for all four ways to do the weekend, pulled from Google Hotels on Oct 3, 2026. Every price is the full-stay total for one room, 2 adults, including taxes and fees. Show hours are Sat 10–6 and Sun 10–5.</p>
+</header>
+
+<section>
+  <h2>Pick the stay</h2>
+  <p class="sub">The picks and the highlighted column follow this choice.</p>
+  <div class="opts" id="opts"></div>
+</section>
+
+<section>
+  <h2 id="pickTitle">Best options</h2>
+  <p class="sub">Limited to hotels about 10–25 minutes away with a guest rating of 3.0 or better.</p>
+  <div class="picks" id="picks"></div>
+</section>
+
+<div class="note"><b>Rosemont itself is sold out or surging.</b> Embassy Suites, Renaissance, Hyatt Centric, Courtyard, SpringHill and the Holiday Inn Express by the venue showed no rooms for Saturday. What's left within a mile runs $330–$500 for one night (Crowne Plaza, Hyatt Regency, Loews). Suburbs 7–11 miles out along I-90 are about a third of that.</div>
+
+<section>
+  <h2>Full matrix</h2>
+  <p class="sub">Click a column header to sort. A dash means no rooms were listed for that stay when checked, which usually means one of the nights is sold out.</p>
+  <div class="filters">
+    <label for="fDrive">Drive <select id="fDrive"><option value="99">Any</option><option value="25" selected>≤ 25 min</option><option value="20">≤ 20 min</option><option value="15">≤ 15 min</option></select></label>
+    <label for="fRate">Rating <select id="fRate"><option value="0">Any</option><option value="3" selected>3.0+</option><option value="3.5">3.5+</option><option value="4">4.0+</option></select></label>
+    <label for="fAvail"><input type="checkbox" id="fAvail" checked> Only hotels with rooms for this stay</label>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr>
+      <th><button data-s="n">Hotel</button></th>
+      <th class="num"><button data-s="mi">Distance</button></th>
+      <th class="num"><button data-s="r">Rating</button></th>
+      <th class="num" data-k="sat"><button data-s="sat">Sat only</button></th>
+      <th class="num" data-k="frisat"><button data-s="frisat">Fri + Sat</button></th>
+      <th class="num" data-k="satsun"><button data-s="satsun">Sat + Sun</button></th>
+      <th class="num" data-k="frisatsun"><button data-s="frisatsun">Fri + Sat + Sun</button></th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</section>
+
+<footer>
+  <p>Distance is straight-line miles from the convention center. Drive times are estimates for light weekend traffic (about 4 minutes plus 1.6 per mile); Saturday morning around O'Hare can add 5–10.</p>
+  <p>Prices are the lowest rate Google showed across booking sites on Oct 3 and will move as the con gets closer. Book a refundable rate now and recheck the week of. Parking at the venue is paid.</p>
+  <p>"Free parking" and "free breakfast" come from Google's amenity list for each hotel.</p>
+</footer>
+</div>
+
+<script>
+const H=[{"n":"DoubleTree by Hilton Hotel Chicago O'Hare Airport - Rosemont","mi":0.1,"r":4.2,"rv":"3.1K","fp":false,"fb":false,"pool":false,"p":{"frisat":952,"satsun":752,"frisatsun":1076}},{"n":"Embassy Suites by Hilton Chicago O'Hare Rosemont","mi":0.1,"r":4.1,"rv":"3.4K","fp":false,"fb":true,"pool":true,"p":{}},{"n":"Hilton Rosemont/Chicago O'Hare","mi":0.1,"r":4.1,"rv":"2.9K","fp":false,"fb":false,"pool":true,"p":{"frisat":914,"satsun":950,"frisatsun":1074}},{"n":"Crowne Plaza Chicago Ohare Hotel & Conf Ctr by IHG","mi":0.2,"r":3.9,"rv":"3.9K","fp":false,"fb":false,"pool":true,"p":{"sat":334,"frisat":815,"satsun":477,"frisatsun":775}},{"n":"Hyatt Regency O'Hare Chicago","mi":0.2,"r":4.3,"rv":"8.1K","fp":false,"fb":false,"pool":false,"p":{"sat":442,"frisat":955,"satsun":630,"frisatsun":1071}},{"n":"Aloft by Marriott Chicago O'Hare","mi":0.3,"r":4.1,"rv":"2.3K","fp":false,"fb":false,"pool":false,"p":{"satsun":554}},{"n":"Loews Chicago O'Hare Hotel","mi":0.4,"r":4.5,"rv":"5.2K","fp":false,"fb":false,"pool":false,"p":{"sat":502,"frisat":999,"satsun":750,"frisatsun":1237}},{"n":"Chicago Marriott Suites O'Hare","mi":0.7,"r":4.3,"rv":"1.9K","fp":false,"fb":false,"pool":false,"p":{"frisatsun":1353}},{"n":"The Westin O'Hare","mi":0.7,"r":4.3,"rv":"3.7K","fp":false,"fb":false,"pool":false,"p":{"frisat":1036,"satsun":808,"frisatsun":1254}},{"n":"Hampton Inn & Suites Rosemont Chicago O'Hare","mi":0.9,"r":4.5,"rv":"1.5K","fp":false,"fb":true,"pool":true,"p":{"satsun":610}},{"n":"Motel 6 Schiller Park, IL - Chicago O'Hare","mi":0.9,"r":3.9,"rv":"4.8K","fp":true,"fb":false,"pool":false,"p":{"sat":182,"frisat":405,"satsun":290,"frisatsun":501}},{"n":"Renaissance Chicago O'Hare Suites Hotel","mi":1.1,"r":4.2,"rv":"2.6K","fp":false,"fb":false,"pool":true,"p":{}},{"n":"Hyatt Centric Chicago O’Hare","mi":1.1,"r":4.2,"rv":"1.5K","fp":false,"fb":false,"pool":false,"p":{}},{"n":"Marriott Chicago O’Hare","mi":1.2,"r":4.2,"rv":"3.0K","fp":false,"fb":false,"pool":true,"p":{"frisatsun":1344}},{"n":"Courtyard by Marriott Chicago O'Hare","mi":1.4,"r":4.0,"rv":"1.2K","fp":false,"fb":false,"pool":true,"p":{}},{"n":"Hilton Garden Inn Chicago OHare Airport","mi":1.5,"r":4.3,"rv":"2.3K","fp":false,"fb":false,"pool":true,"p":{"frisatsun":876}},{"n":"SpringHill Suites by Marriott Chicago O'Hare","mi":1.7,"r":4.1,"rv":"2.4K","fp":false,"fb":true,"pool":true,"p":{}},{"n":"Sheraton Suites Chicago O'Hare","mi":1.7,"r":4.3,"rv":"2.4K","fp":false,"fb":false,"pool":false,"p":{"satsun":604,"frisatsun":1042}},{"n":"Holiday Inn Express & Suites Chicago O'Hare Airport by IHG","mi":1.8,"r":4.1,"rv":"503","fp":false,"fb":true,"pool":true,"p":{}},{"n":"Best Western at O'Hare","mi":1.9,"r":3.7,"rv":"1.9K","fp":false,"fb":true,"pool":false,"p":{"frisat":566,"satsun":435,"frisatsun":770}},{"n":"Four Points by Sheraton Chicago O'Hare Airport","mi":2.0,"r":3.6,"rv":"3.2K","fp":false,"fb":false,"pool":true,"p":{"frisatsun":956}},{"n":"Sonesta Simply Suites Chicago O'Hare Airport","mi":2.2,"r":3.9,"rv":"1.1K","fp":false,"fb":false,"pool":false,"p":{"satsun":251,"frisatsun":646}},{"n":"Hampton Inn Chicago-O'Hare International Airport","mi":2.4,"r":4.4,"rv":"2.3K","fp":true,"fb":true,"pool":true,"p":{"sat":428,"frisat":781,"satsun":560,"frisatsun":967}},{"n":"Quality Inn O'Hare Airport","mi":2.5,"r":3.4,"rv":"1.7K","fp":true,"fb":false,"pool":false,"p":{"sat":177,"frisat":354,"frisatsun":531}},{"n":"Fairfield by Marriott Inn & Suites Chicago O'Hare","mi":2.5,"r":4.2,"rv":"374","fp":false,"fb":true,"pool":true,"p":{"satsun":469}},{"n":"Extended Stay America Suites- Chicago - O'Hare - Allstate Arena","mi":2.6,"r":3.9,"rv":"1.1K","fp":true,"fb":true,"pool":false,"p":{"sat":262,"frisat":590,"satsun":383,"frisatsun":701}},{"n":"Extended Stay America Select Suites- Chicago - O'Hare","mi":2.6,"r":3.6,"rv":"789","fp":true,"fb":true,"pool":false,"p":{"frisat":346,"satsun":235,"frisatsun":439}},{"n":"Ambiance","mi":3.5,"r":4.4,"rv":"799","fp":true,"fb":false,"pool":false,"p":{}},{"n":"MOTEL EDGEBROOK CHICAGO NORTH SHORE BY OYO","mi":4.4,"r":3.6,"rv":"397","fp":true,"fb":false,"pool":false,"p":{"sat":118,"frisat":231,"satsun":191,"frisatsun":301}},{"n":"Super 8 by Wyndham Chicago Northlake O'Hare South","mi":4.6,"r":3.2,"rv":"1.0K","fp":true,"fb":true,"pool":false,"p":{"satsun":225,"frisatsun":370}},{"n":"Wyndham Garden Elk Grove Village/O'Hare","mi":4.7,"r":3.9,"rv":"639","fp":true,"fb":false,"pool":false,"p":{"sat":180,"frisat":404,"satsun":299,"frisatsun":534}},{"n":"Des Plaines Motel By OYO O'Hare Airport Chicago","mi":5.2,"r":2.8,"rv":"103","fp":true,"fb":false,"pool":false,"p":{"sat":99,"frisat":191,"satsun":159,"frisatsun":254}},{"n":"Howard Johnson by Wyndham Elk Grove Village/Chicago O'Hare","mi":5.7,"r":3.5,"rv":"620","fp":true,"fb":true,"pool":false,"p":{"sat":168}},{"n":"Red Lion Inn & Suites Elk Grove Village","mi":5.7,"r":3.8,"rv":"184","fp":true,"fb":true,"pool":false,"p":{"sat":130,"frisat":266,"satsun":212,"frisatsun":369}},{"n":"Extended Stay America Suites- Chicago - Elmhurst - O'Hare","mi":6.1,"r":3.5,"rv":"562","fp":true,"fb":true,"pool":false,"p":{"sat":144,"frisat":298,"satsun":254,"frisatsun":399}},{"n":"DoubleTree by Hilton Hotel Chicago Wood Dale - Elk Grove","mi":6.5,"r":3.8,"rv":"1.3K","fp":true,"fb":false,"pool":true,"p":{"satsun":403}},{"n":"Baymont by Wyndham Addison","mi":6.7,"r":2.7,"rv":"538","fp":true,"fb":true,"pool":false,"p":{"sat":118,"frisat":227,"satsun":209,"frisatsun":261}},{"n":"Howard Johnson by Wyndham Addison","mi":6.7,"r":2.4,"rv":"454","fp":true,"fb":false,"pool":false,"p":{"sat":131,"frisat":251,"satsun":240,"frisatsun":288}},{"n":"Motel 6 Glenview, IL - Chicago North","mi":7.3,"r":3.6,"rv":"1.1K","fp":true,"fb":false,"pool":false,"p":{"sat":94,"frisat":172,"satsun":152,"frisatsun":258}},{"n":"Holiday Inn Express Chicago NW - Arlington Heights by IHG","mi":7.7,"r":4.1,"rv":"616","fp":true,"fb":true,"pool":false,"p":{"satsun":335}},{"n":"Red Roof Inn Chicago - O'Hare Airport/Arlington Heights","mi":7.8,"r":3.0,"rv":"1.4K","fp":true,"fb":true,"pool":false,"p":{"sat":64,"frisat":134,"satsun":124,"frisatsun":197}},{"n":"Extended Stay America Suites- Chicago - Skokie","mi":7.8,"r":3.7,"rv":"885","fp":true,"fb":true,"pool":false,"p":{"sat":289,"frisat":760,"satsun":367,"frisatsun":894}},{"n":"Courtyard by Marriott Chicago Arlington Heights/South","mi":7.8,"r":4.0,"rv":"791","fp":true,"fb":false,"pool":true,"p":{"sat":184,"frisat":382,"satsun":262,"frisatsun":402}},{"n":"DoubleTree by Hilton Hotel Chicago - Arlington Heights","mi":7.8,"r":3.9,"rv":"1.4K","fp":true,"fb":false,"pool":false,"p":{"satsun":373}},{"n":"Comfort Inn & Suites Arlington Heights - Schaumburg","mi":7.8,"r":3.4,"rv":"132","fp":true,"fb":true,"pool":false,"p":{"frisatsun":460}},{"n":"Rodeway Inn Chicago North Shore - Lincolnwood","mi":8.0,"r":3.4,"rv":"696","fp":true,"fb":false,"pool":false,"p":{"sat":92,"frisat":198,"satsun":178,"frisatsun":306}},{"n":"Motel 6 Arlington Heights, IL - Chicago North Central","mi":8.0,"r":3.7,"rv":"954","fp":true,"fb":false,"pool":false,"p":{"frisat":156,"satsun":144,"frisatsun":211}},{"n":"Extended Stay America Suites- Chicago - Itasca","mi":8.6,"r":3.8,"rv":"503","fp":true,"fb":true,"pool":false,"p":{"sat":123,"satsun":217,"frisatsun":338}},{"n":"Hampton Inn & Suites Addison","mi":8.9,"r":4.2,"rv":"688","fp":true,"fb":true,"pool":true,"p":{"frisat":434,"satsun":348,"frisatsun":561}},{"n":"Extended Stay America Select Suites- Chicago - Rolling Meadows","mi":9.1,"r":4.3,"rv":"404","fp":true,"fb":false,"pool":false,"p":{"sat":93,"frisat":220,"satsun":183,"frisatsun":309}},{"n":"Eaglewood Resort & Spa","mi":9.2,"r":4.2,"rv":"2.6K","fp":true,"fb":false,"pool":true,"p":{"frisat":471,"frisatsun":571}},{"n":"MainStay Suites Northbrook Wheeling","mi":9.4,"r":3.0,"rv":"214","fp":true,"fb":false,"pool":false,"p":{"sat":88,"frisat":181,"satsun":164,"frisatsun":272}},{"n":"Days Inn & Suites by Wyndham Schaumburg","mi":9.9,"r":3.3,"rv":"828","fp":true,"fb":true,"pool":false,"p":{"sat":151,"frisat":284}},{"n":"Best Western Schaumburg – O’Hare NW","mi":9.9,"r":3.6,"rv":"242","fp":true,"fb":true,"pool":false,"p":{"sat":137}},{"n":"Comfort Suites Oakbrook Terrace - Chicago West","mi":9.9,"r":3.7,"rv":"1.2K","fp":true,"fb":true,"pool":true,"p":{"sat":173,"frisat":331,"satsun":260,"frisatsun":428}},{"n":"Holiday Inn Express Rolling Mdws-Schaumburg Area","mi":10.0,"r":3.6,"rv":"1.4K","fp":true,"fb":true,"pool":true,"p":{"satsun":226,"frisatsun":452}},{"n":"Comfort Suites Lombard - Addison","mi":10.1,"r":3.9,"rv":"848","fp":true,"fb":true,"pool":true,"p":{"sat":127,"frisat":282,"satsun":212,"frisatsun":390}},{"n":"Hyatt Regency Schaumburg, Chicago","mi":10.1,"r":4.1,"rv":"3.5K","fp":true,"fb":false,"pool":true,"p":{"frisat":409,"satsun":327}},{"n":"Motel 6 Villa Park, IL - Chicago West","mi":10.2,"r":3.5,"rv":"1.2K","fp":false,"fb":false,"pool":false,"p":{"sat":102,"satsun":165,"frisatsun":281}},{"n":"Baymont By Wyndham Schaumburg Chicago Northwest","mi":10.7,"r":4.1,"rv":"61","fp":true,"fb":false,"pool":true,"p":{"sat":88,"frisat":190,"satsun":164,"frisatsun":274}},{"n":"Extended Stay America Suites- Chicago - Woodfield Mall","mi":10.7,"r":3.6,"rv":"453","fp":true,"fb":true,"pool":false,"p":{"sat":99,"frisat":212,"satsun":177,"frisatsun":283}},{"n":"Wyndham Garden Schaumburg Chicago Northwest","mi":10.7,"r":3.7,"rv":"1.9K","fp":true,"fb":false,"pool":true,"p":{"sat":129,"frisat":228,"satsun":207,"frisatsun":290}},{"n":"Hyatt House Chicago/Schaumburg","mi":10.7,"r":4.0,"rv":"1.1K","fp":true,"fb":true,"pool":true,"p":{"sat":159,"frisat":314,"satsun":288,"frisatsun":453}},{"n":"Embassy Suites by Hilton Chicago Schaumburg Woodfield","mi":11.1,"r":4.0,"rv":"1.7K","fp":true,"fb":true,"pool":true,"p":{"frisat":382,"satsun":316}},{"n":"Motel 6 Rolling Meadows, IL - Chicago Northwest","mi":11.6,"r":3.3,"rv":"1.4K","fp":true,"fb":false,"pool":false,"p":{"sat":69,"frisat":133,"satsun":124,"frisatsun":205}},{"n":"Extended Stay America Select Suites- Chicago - Lombard - Oak Brook","mi":11.9,"r":3.2,"rv":"809","fp":true,"fb":false,"pool":false,"p":{"sat":67,"frisat":160,"satsun":164,"frisatsun":252}},{"n":"Extended Stay America Suites- Chicago - Lombard - Yorktown Center","mi":11.9,"r":4.0,"rv":"436","fp":true,"fb":true,"pool":false,"p":{"sat":103,"frisat":214,"satsun":200,"frisatsun":313}},{"n":"Extended Stay America Select Suites- Chicago - Westmont - Oak Brook","mi":12.2,"r":3.1,"rv":"594","fp":true,"fb":true,"pool":false,"p":{"sat":158,"frisat":302,"satsun":256,"frisatsun":431}},{"n":"Extended Stay America Suites- Chicago - Schaumburg - Convention Center","mi":12.3,"r":2.9,"rv":"696","fp":true,"fb":false,"pool":false,"p":{"sat":79,"frisat":161,"satsun":146,"frisatsun":219}},{"n":"Extended Stay America Suites- Chicago - Schaumburg - I-90","mi":12.7,"r":3.0,"rv":"608","fp":true,"fb":true,"pool":false,"p":{"sat":85,"frisat":159,"satsun":150,"frisatsun":235}}];
+const OPTS=[
+ {k:"sat",t:"Saturday night only",d:"In Sat Oct 10 · out Sun Oct 11",n:1},
+ {k:"frisat",t:"Friday + Saturday",d:"In Fri Oct 9 · out Sun Oct 11",n:2},
+ {k:"satsun",t:"Saturday + Sunday",d:"In Sat Oct 10 · out Mon Oct 12",n:2},
+ {k:"frisatsun",t:"Friday through Sunday",d:"In Fri Oct 9 · out Mon Oct 12",n:3}];
+const fDrive=document.getElementById("fDrive"),fRate=document.getElementById("fRate"),fAvail=document.getElementById("fAvail");
+const drive=mi=>Math.round(4+1.6*mi);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const money=v=>"$"+v.toLocaleString();
+let cur="sat",sortKey=null,sortDir=1;
+try{const s=localStorage.getItem("c2stay");if(OPTS.some(o=>o.k===s))cur=s}catch(e){}
+const low=(k,list)=>Math.min(...list.filter(h=>h.p[k]).map(h=>h.p[k]));
+const eligible=h=>h.mi>=3&&drive(h.mi)<=25&&(h.r||0)>=3;
+function renderOpts(){
+  document.getElementById("opts").innerHTML=OPTS.map(o=>
+    '<button class="opt" aria-pressed="'+(o.k===cur)+'" data-k="'+o.k+'"><b>'+o.t+'</b><span>'+o.d+' · '+o.n+' night'+(o.n>1?'s':'')+'</span><em>from '+money(low(o.k,H.filter(eligible)))+' total</em></button>').join("");
+}
+function card(tag,h,o,why){
+  const tot=h.p[o.k];
+  return '<div class="pick"><div class="tag">'+tag+'</div><div class="nm">'+esc(h.n)+'</div>'+
+   '<div class="price">'+money(tot)+'<small>'+(o.n>1?money(Math.round(tot/o.n))+'/night':'total')+'</small></div>'+
+   '<div class="meta">'+h.mi+' mi · ~'+drive(h.mi)+' min · ★ '+h.r+(h.rv?' ('+h.rv+')':'')+(h.fp?' · free parking':'')+(h.fb?' · free breakfast':'')+'</div><p>'+why+'</p></div>';
+}
+function renderPicks(){
+  const o=OPTS.find(x=>x.k===cur);
+  document.getElementById("pickTitle").textContent="Best options · "+o.t;
+  const pool=H.filter(h=>eligible(h)&&h.p[cur]).sort((a,b)=>a.p[cur]-b.p[cur]);
+  const cheapest=pool[0];
+  const value=pool.find(h=>h.r>=4&&h!==cheapest);
+  const close=pool.find(h=>drive(h.mi)<=17&&h!==cheapest&&h!==value);
+  const out=[];
+  if(cheapest)out.push(card("Cheapest",cheapest,o,"Lowest total in the drive window. Basic rooms with mixed reviews."));
+  if(value)out.push(card("Best rated for the money",value,o,"Cheapest hotel rated 4.0 or higher. Worth the small bump if comfort matters."));
+  if(close)out.push(card("Shortest drive",close,o,"Cheapest option about 15 minutes or less from the venue."));
+  document.getElementById("picks").innerHTML=out.join("");
+}
+function renderRows(){
+  const md=+fDrive.value,mr=+fRate.value,av=fAvail.checked;
+  const list=H.filter(h=>drive(h.mi)<=md&&(h.r||0)>=mr&&(!av||h.p[cur]));
+  const k=sortKey||cur;
+  list.sort((a,b)=>{
+    if(k==="n")return a.n.localeCompare(b.n)*sortDir;
+    if(k==="r")return ((b.r||0)-(a.r||0))*sortDir;
+    if(k==="mi")return (a.mi-b.mi)*sortDir;
+    return ((a.p[k]??1e9)-(b.p[k]??1e9))*sortDir});
+  const lows={};OPTS.forEach(o=>lows[o.k]=low(o.k,list));
+  document.querySelectorAll("th[data-k]").forEach(th=>th.classList.toggle("col-on",th.dataset.k===cur));
+  document.getElementById("rows").innerHTML=list.map(h=>{
+    const chips=(h.fp?'<span class="chip ok">free parking</span>':'')+(h.fb?'<span class="chip ok">free breakfast</span>':'')+(h.pool?'<span class="chip">pool</span>':'');
+    return '<tr><td><div class="hn">'+esc(h.n)+'</div><div class="chips">'+chips+'</div></td>'+
+     '<td class="num">'+h.mi+' mi<small>~'+drive(h.mi)+' min</small></td>'+
+     '<td class="num'+((h.r||0)<3.3?' r-lo':'')+'">'+(h.r??"–")+'<small>'+(h.rv||"")+'</small></td>'+
+     OPTS.map(o=>{const v=h.p[o.k],on=o.k===cur?' col-on':'';
+       if(!v)return '<td class="na'+on+'">–</td>';
+       const s=o.n>1?'<small>'+money(Math.round(v/o.n))+'/nt</small>':'';
+       return '<td class="num'+on+'">'+(v===lows[o.k]?'<span class="best">'+money(v)+'</span>':money(v))+s+'</td>'}).join("")+'</tr>'}).join("")
+   ||'<tr><td colspan="7" class="empty">No hotels match these filters. Widen the drive time or rating.</td></tr>';
+}
+function all(){renderOpts();renderPicks();renderRows()}
+document.getElementById("opts").addEventListener("click",e=>{const b=e.target.closest(".opt");if(!b)return;cur=b.dataset.k;sortKey=null;sortDir=1;try{localStorage.setItem("c2stay",cur)}catch(e){}all()});
+document.querySelector("thead").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const s=b.dataset.s;sortDir=sortKey===s?-sortDir:1;sortKey=s;renderRows()});
+[fDrive,fRate,fAvail].forEach(el=>el.addEventListener("change",renderRows));
+all();
+</script>
+</body>
+</html>
