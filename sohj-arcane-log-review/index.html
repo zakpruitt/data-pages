@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta name="description" content="Warcraft Logs comparison of Sohj&#x27;s +17 and Azunazx&#x27;s +22 Den of Nalorakk Arcane Mage runs, with what Sohj can change.">
+<meta name="created" content="2026-10-03">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{color-scheme:light}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:#fbfbfa}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Sohj Arcane Log Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one 940px reading column of report sections. Charts and tables span the column; wide tables scroll inside their own box. */
+:root {
+  --bg: #f4f4f7;
+  --surface: #fdfdfe;
+  --ink: #17161f;
+  --ink-2: #474656;
+  --muted: #666575;
+  --line: #e2e1ea;
+  --axis: #c4c3cf;
+  --band: #ebeaf3;
+  --band-boss: #dedcef;
+  --sohj: #4a3aa7;
+  --azu: #eb6834;
+  --accent: #4a3aa7;
+  --accent-soft: #eeedfb;
+  --bad: #b42f2f;
+  --bad-mark: #d03b3b;
+  --good: #0f6b0f;
+  --shadow: rgba(23, 22, 31, 0.12);
+  --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101015; --surface: #17171e; --ink: #f0f0f5; --ink-2: #c3c3cf; --muted: #9a9aaa;
+    --line: #2a2a34; --axis: #3d3d48; --band: #22222c; --band-boss: #2d2b40;
+    --sohj: #9085e9; --azu: #d95926; --accent: #a69df1; --accent-soft: #1f1d33;
+    --bad: #f08080; --bad-mark: #e66767; --good: #3fcf3f; --shadow: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101015; --surface: #17171e; --ink: #f0f0f5; --ink-2: #c3c3cf; --muted: #9a9aaa;
+  --line: #2a2a34; --axis: #3d3d48; --band: #22222c; --band-boss: #2d2b40;
+  --sohj: #9085e9; --azu: #d95926; --accent: #a69df1; --accent-soft: #1f1d33;
+  --bad: #f08080; --bad-mark: #e66767; --good: #3fcf3f; --shadow: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--font-body); padding-inline: 16px; margin: 0; }
+.wrap { max-width: 940px; margin: 0 auto; padding-block: 40px 72px; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+p { margin: 0; max-width: 68ch; }
+strong { font-weight: 600; }
+
+.eyebrow { font: 500 12px/1.4 var(--font-data); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1, h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.01em; text-wrap: balance; margin: 0; line-height: 1.02; }
+h1 { font-size: clamp(40px, 7vw, 60px); text-transform: uppercase; }
+h2 { font-size: clamp(28px, 4.4vw, 36px); text-transform: uppercase; }
+h3 { font-size: 18px; line-height: 1.35; margin: 0; font-weight: 600; text-wrap: balance; }
+
+header.top { display: grid; gap: 14px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+header.top .lede { font-size: 18px; color: var(--ink-2); }
+.links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14.5px; }
+.who { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.who::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
+.who.sohj { --c: var(--sohj); }
+.who.azu { --c: var(--azu); }
+
+section { padding-top: 48px; display: grid; gap: 18px; }
+section > * { min-width: 0; }
+.section-head { display: grid; gap: 6px; }
+
+.verdict { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 12px; padding: 22px 22px 24px; display: grid; gap: 16px; margin-top: 28px; }
+.verdict h2 { font-size: 30px; }
+.verdict .big { font-size: 19px; line-height: 1.5; max-width: 62ch; }
+.fixlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.fixlist li { display: grid; grid-template-columns: 34px 1fr auto; gap: 4px 12px; align-items: baseline; }
+.fixlist .n { font: 700 26px/1 var(--font-display); color: var(--accent); }
+.fixlist .gain { font: 500 13px/1.4 var(--font-data); color: var(--ink-2); white-space: nowrap; }
+.fixlist .extra .n { color: var(--muted); }
+
+.kpi { width: 100%; border-collapse: collapse; font-size: 15px; }
+.kpi th, .kpi td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: baseline; }
+.kpi thead th { font-weight: 600; font-size: 14px; border-bottom-color: var(--axis); }
+.kpi td.num, .kpi th.num { text-align: right; font-family: var(--font-data); font-variant-numeric: tabular-nums; font-size: 14px; white-space: nowrap; }
+.kpi tbody th { font-weight: 400; color: var(--ink-2); }
+.kpi tr.hl td, .kpi tr.hl th { background: var(--accent-soft); }
+.kpi .sub { display: block; font-size: 12.5px; color: var(--muted); font-family: var(--font-body); }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.factors { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); overflow: hidden; }
+.factor { padding: 16px 14px 18px; display: grid; gap: 6px; align-content: start; border-right: 1px solid var(--line); }
+.factor:last-child { border-right: 0; }
+.factor .v { font-size: 28px; font-weight: 600; line-height: 1.1; }
+.factor .l { font-size: 13.5px; font-weight: 600; line-height: 1.3; }
+.factor .d { font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+.factor.end { background: var(--accent-soft); }
+.factor .v .x { font-size: 18px; color: var(--muted); margin-right: 1px; }
+@media (max-width: 860px) {
+  .factors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .factor { border-bottom: 1px solid var(--line); }
+  .factor:nth-child(2n) { border-right: 0; }
+  .factor:nth-last-child(-n+2) { border-bottom: 0; }
+}
+
+.chart { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 16px 10px; display: grid; gap: 10px; }
+.chart-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 18px; }
+.chart-title { font-weight: 600; font-size: 15px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 10px; border-radius: 2px; background: var(--c); flex: none; }
+.sw.tickm { width: 3px; height: 14px; border-radius: 1px; }
+.sw.dotm { width: 10px; height: 10px; border-radius: 50%; }
+.sw.band { width: 14px; height: 12px; border-radius: 2px; background: var(--band); border: 1px solid var(--axis); }
+.sw.gapm { width: 16px; height: 4px; border-radius: 1px; background: var(--bad-mark); }
+.plot { width: 100%; min-height: 60px; }
+.chart-note { font-size: 13px; color: var(--muted); }
+details.tv { font-size: 13.5px; }
+details.tv summary { cursor: pointer; color: var(--ink-2); padding: 4px 0; width: max-content; }
+details.tv table { margin-top: 6px; }
+
+.viz { display: block; overflow: visible; }
+.viz text { font-family: var(--font-body); fill: var(--ink-2); font-size: 12.5px; }
+.viz .tick { fill: var(--muted); font-family: var(--font-data); font-size: 11px; }
+.viz .grid { stroke: var(--line); stroke-width: 1; }
+.viz .base { stroke: var(--axis); stroke-width: 1; }
+.viz .rlabel { fill: var(--ink); font-size: 13px; }
+.viz .rlabel.em { font-weight: 600; }
+.viz .rnote { fill: var(--ink-2); font-family: var(--font-data); font-size: 12px; }
+.viz .sohj { fill: var(--sohj); }
+.viz .azu { fill: var(--azu); }
+.viz .hit { fill: transparent; }
+.viz .row { cursor: default; outline: none; }
+.viz .row:hover .bar, .viz .row:focus .bar { opacity: 0.8; }
+.viz .row:focus-visible .hit { stroke: var(--accent); stroke-width: 1.5; }
+.viz .pull { fill: var(--band); }
+.viz .pull.boss { fill: var(--band-boss); }
+.viz .pullhit { fill: transparent; outline: none; }
+.viz .pullhit:hover, .viz .pullhit:focus-visible { fill: var(--accent); fill-opacity: 0.08; }
+.viz .gap { fill: var(--bad-mark); }
+.viz .dot { stroke: var(--surface); stroke-width: 2; }
+.viz .conn { stroke: var(--axis); stroke-width: 2; }
+
+.tip { position: fixed; z-index: 20; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 28px var(--shadow); padding: 9px 11px; font-size: 13px; line-height: 1.45; max-width: 280px; display: grid; gap: 3px; }
+.tip-title { font-weight: 600; margin-bottom: 2px; }
+.tip-row { display: flex; align-items: center; gap: 8px; }
+.tip-row strong { font-family: var(--font-data); font-weight: 500; }
+.tip-label { color: var(--ink-2); }
+.tip-key { width: 12px; height: 3px; border-radius: 2px; flex: none; }
+.tip-key.k-sohj { background: var(--sohj); }
+.tip-key.k-azu { background: var(--azu); }
+.tip-key.k-bad { background: var(--bad-mark); }
+
+.fix { display: grid; gap: 18px; padding-top: 52px; }
+.fix-head { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; align-items: start; }
+.fix-num { font: 700 64px/0.82 var(--font-display); color: var(--accent); padding-top: 4px; }
+.fix-head .meta { font: 500 13px/1.4 var(--font-data); color: var(--muted); }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat { padding: 14px 14px 14px 0; display: grid; gap: 4px; align-content: start; }
+.stat + .stat { padding-left: 14px; border-left: 1px solid var(--line); }
+.stat .v { font-size: 30px; font-weight: 600; line-height: 1.05; }
+.stat .l { font-size: 13.5px; color: var(--ink-2); line-height: 1.4; }
+.stat .cmp { font-size: 12.5px; color: var(--muted); font-family: var(--font-data); }
+@media (max-width: 760px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+.todo { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 16px 18px; display: grid; gap: 8px; }
+.todo h3 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; font-family: var(--font-data); font-weight: 500; color: var(--accent); }
+.todo ul, .plain { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.todo li, .plain li { max-width: 72ch; }
+.prose { display: grid; gap: 12px; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: 14.5px; }
+.flow .step { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+.flow .arr { color: var(--muted); font-family: var(--font-data); }
+.audit td:nth-child(2), .audit td:nth-child(3) { white-space: normal; min-width: 140px; }
+.audit .rule { color: var(--ink); }
+.audit .flag { color: var(--bad); font-weight: 600; }
+.cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+@media (max-width: 760px) { .cols2 { grid-template-columns: 1fr; } }
+.down { color: var(--bad); }
+.up { color: var(--good); }
+footer.notes { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: 14px; color: var(--ink-2); }
+footer.notes h2 { font-size: 24px; color: var(--ink); }
+@media (max-width: 560px) {
+  .fix-num { font-size: 48px; }
+  .verdict { padding: 18px 16px 20px; }
+  .fixlist li { grid-template-columns: 26px 1fr; }
+  .fixlist .gain { grid-column: 2; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">Warcraft Logs review · Arcane Mage, Sunfury · Midnight Season 2, patch 12.1</div>
+    <h1>Sohj Arcane Log Review</h1>
+    <p class="lede">Sohj's +17 Den of Nalorakk next to Azunazx's +22 Den of Nalorakk, checked cast by cast against the Wowhead Arcane rotation guide. Same dungeon, near-identical talents, the same trinkets, almost the same clear time, and 56% more DPS on Azunazx's side. This page splits that gap into the part the key level explains and the part Sohj can fix.</p>
+    <div class="links">
+      <a href="https://www.warcraftlogs.com/reports/b6XRh7YqMANw3Za1?fight=16&amp;type=damage-done&amp;source=1" target="_blank" rel="noopener"><span class="who sohj">Sohj's log</span></a>
+      <a href="https://www.warcraftlogs.com/reports/HN96qZmPxDpW1fB4?fight=9&amp;type=damage-done&amp;source=7" target="_blank" rel="noopener"><span class="who azu">Azunazx's log</span></a>
+      <a href="https://www.wowhead.com/guide/classes/mage/arcane/rotation-cooldowns-pve-dps" target="_blank" rel="noopener">Wowhead rotation guide</a>
+    </div>
+  </header>
+
+  <div class="verdict" role="region" aria-labelledby="short">
+    <h2 id="short">The short version</h2>
+    <p class="big">Most of the gap is the key level. Azunazx's group had to deal 1.62 times as much damage to clear the same dungeon in the same half hour, and each mage did 28% of their group's damage. Against other Arcane Mages in +17s, Sohj parsed 44. That parse is the real room to grow, and it comes from a handful of habits.</p>
+    <ol class="fixlist">
+      <li><span class="n">1</span><span><strong>Bank Arcane Salvo before Barraging,</strong> especially going into Arcane Surge. Early Barrages cost Prismatic Bolts, and that is where the extra Arcane Blasts come from.</span><span class="gain">≈ 2–3% DPS</span></li>
+      <li><span class="n">2</span><span><strong>Press Touch of the Magi every 45 seconds</strong> instead of saving it for Surge. 27 casts where about 38 were possible.</span><span class="gain">≈ 1.5% DPS</span></li>
+      <li><span class="n">3</span><span><strong>Get the first spell out sooner</strong> on each pull. About 30 seconds lost across the run.</span><span class="gain">≈ 1–2% DPS</span></li>
+      <li><span class="n">4</span><span><strong>Small leaks:</strong> Blasts with a proc up, Missiles at 25 Salvo, Arcane Explosions that hit nothing.</span><span class="gain">≈ 1% DPS</span></li>
+      <li class="extra"><span class="n">+</span><span><strong>Gear:</strong> 311 rings and a 318 neck are the cheapest upgrades toward Azunazx's 331.</span><span class="gain">≈ 3–5% DPS</span></li>
+    </ol>
+  </div>
+
+  <section aria-labelledby="runs">
+    <div class="section-head">
+      <div class="eyebrow">Context</div>
+      <h2 id="runs">The two runs</h2>
+    </div>
+    <div class="scroll">
+      <table class="kpi">
+        <thead><tr><th scope="col"><span class="sr">Metric</span></th><th scope="col" class="num"><span class="who sohj">Sohj</span></th><th scope="col" class="num"><span class="who azu">Azunazx</span></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Key level</th><td class="num">+17</td><td class="num">+22</td></tr>
+          <tr><th scope="row">Clear time</th><td class="num">30:43</td><td class="num">31:02</td></tr>
+          <tr><th scope="row">Damage done</th><td class="num">475.9M</td><td class="num">762.0M</td></tr>
+          <tr class="hl"><th scope="row">DPS over the run</th><td class="num">265.6K</td><td class="num">413.9K</td></tr>
+          <tr><th scope="row">WCL parse <span class="sub">percentile vs. Arcane Mages at the same key level</span></th><td class="num">44</td><td class="num">100 <span class="sub">WCL estimate</span></td></tr>
+          <tr class="hl"><th scope="row">Share of group damage</th><td class="num">28.5%</td><td class="num">28.2%</td></tr>
+          <tr><th scope="row">Group damage, all 5 players</th><td class="num">1.67B</td><td class="num">2.71B</td></tr>
+          <tr><th scope="row">Time in combat</th><td class="num">25:44 (86%)</td><td class="num">28:07 (92%)</td></tr>
+          <tr><th scope="row">DPS while in combat</th><td class="num">308K</td><td class="num">452K</td></tr>
+          <tr><th scope="row">WCL active time <span class="sub">counts the walking between pulls</span></th><td class="num">81.3%</td><td class="num">88.4%</td></tr>
+          <tr><th scope="row">Item level</th><td class="num">325</td><td class="num">331</td></tr>
+          <tr><th scope="row">Deaths</th><td class="num">0</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="gap">
+    <div class="section-head">
+      <div class="eyebrow">Where 148K DPS goes</div>
+      <h2 id="gap">The gap, factor by factor</h2>
+    </div>
+    <p>DPS is time in combat × casts per minute × hits per cast × damage per hit. Multiply Sohj's run through Azunazx's factors and you land on Azunazx's number. The two mages cast at the same pace; the difference is how many enemies each spell reaches and how hard each hit lands.</p>
+    <div class="factors" role="list">
+      <div class="factor" role="listitem"><div class="v">265.6K</div><div class="l"><span class="who sohj">Sohj DPS</span></div><div class="d">Den of Nalorakk +17</div></div>
+      <div class="factor" role="listitem"><div class="v"><span class="x">×</span>1.06</div><div class="l">More of the run in combat</div><div class="d">86% → 92%. Tougher packs take longer to kill, so less of the run is walking.</div></div>
+      <div class="factor" role="listitem"><div class="v"><span class="x">×</span>0.99</div><div class="l">Casting pace</div><div class="d">39.1 vs 38.7 spells per combat minute. Sohj is not slow on his buttons.</div></div>
+      <div class="factor" role="listitem"><div class="v"><span class="x">×</span>1.27</div><div class="l">Hits per cast</div><div class="d">17.7 → 22.6. More enemies alive for each Missiles, Barrage, Orb and Meteorite. Mostly the key level.</div></div>
+      <div class="factor" role="listitem"><div class="v"><span class="x">×</span>1.16</div><div class="l">Damage per hit</div><div class="d">26.6K → 30.9K. Six more item levels, Mark of the Wild, fuller Barrages, bigger Touch explosions.</div></div>
+      <div class="factor end" role="listitem"><div class="v">413.9K</div><div class="l"><span class="who azu">Azunazx DPS</span></div><div class="d">Den of Nalorakk +22</div></div>
+    </div>
+
+    <figure class="chart" style="margin:0">
+      <div class="chart-head">
+        <div class="chart-title">Mage DPS on each pull</div>
+        <div class="legend"><span><i class="sw" style="--c:var(--sohj)"></i>Sohj</span><span><i class="sw" style="--c:var(--azu)"></i>Azunazx</span><span>Right column: Azunazx's lead</span></div>
+      </div>
+      <div class="plot" id="chart-pulls"></div>
+      <figcaption class="chart-note">Pulls matched by route order. Two tiny 15-second pulls are left out. Sohj's group split Grizzled Warbringer into two pulls; those are combined here.</figcaption>
+      <details class="tv"><summary>Table view</summary><div class="scroll" id="tv-pulls"></div></details>
+    </figure>
+    <p>Azunazx leads every pull. The smallest lead is <strong>Nalorakk, +15%</strong>, the one fight that is pure single target in both runs, where enemy count and health matter least. Read that +15% as roughly gear plus play. The biggest lead, Sentinel of Winter, is a route choice: Azunazx's group pulled two trash packs into the boss.</p>
+  </section>
+
+  <article class="fix" aria-labelledby="fix1">
+    <div class="fix-head">
+      <div class="fix-num" aria-hidden="true">1</div>
+      <div class="section-head">
+        <div class="meta">Biggest fix · ≈ 2–3% DPS</div>
+        <h2 id="fix1">Bank Salvo before you Barrage</h2>
+      </div>
+    </div>
+    <div class="prose">
+      <p>In 12.1 Sunfury, Arcane Barrage spends your Arcane Salvo, and the more it spends, the better its chance to proc Prismatic Bolt. In these two logs that chance was about 8% under 12 Salvo, 35% at 12–24, and 53% at the 25-stack cap. Every Prismatic Bolt cast also hands you a Clearcasting, which feeds Arcane Missiles, which builds Salvo for the next Barrage. Prismatic Bolt alone is 18–21% of both mages' damage.</p>
+      <div class="flow" role="group" aria-label="How an early Barrage turns into Arcane Blasts">
+        <span class="step">Barrage at low Salvo</span><span class="arr">→</span><span class="step">fewer Prismatic Bolts</span><span class="arr">→</span><span class="step">fewer Clearcasts</span><span class="arr">→</span><span class="step">nothing to press but Arcane Blast</span>
+      </div>
+      <p>That chain is the "too much Arcane Blast" in Sohj's log. He cast 5.3 Blasts per combat minute to Azunazx's 2.2, and 46 of them at 0–2 Arcane Charges (Azunazx: 6), almost all mid-pull. Blast is the symptom. The early Barrage upstream is the cause.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">11.5</div><div class="l">average Salvo on the first Barrage after Arcane Surge</div><div class="cmp">Azunazx: 22.8</div></div>
+      <div class="stat"><div class="v">24</div><div class="l">Barrages with Clearcasting up and under 12 Salvo</div><div class="cmp">Azunazx: 4</div></div>
+      <div class="stat"><div class="v">4.0</div><div class="l">Prismatic Bolts per combat minute</div><div class="cmp">Azunazx: 5.2</div></div>
+      <div class="stat"><div class="v">5.3</div><div class="l">Arcane Blasts per combat minute</div><div class="cmp">Azunazx: 2.2</div></div>
+    </div>
+    <div class="prose">
+      <p><strong>The Surge opener is the worst spot.</strong> Sohj usually presses Surge and Barrages right away, with whatever Salvo he has. Of his 16 Surge windows, 9 opened with a Barrage under 12 Salvo, and 11 of his 24 early Barrages came within 4 seconds of Surge. Azunazx builds Salvo before pressing Surge: the first Surge Barrage was at 24–25 Salvo in 15 of 18 windows and under 12 only once, so it hits as hard as possible and usually procs Prismatic Bolt inside the window.</p>
+    </div>
+
+    <figure class="chart" style="margin:0">
+      <div class="chart-head">
+        <div class="chart-title">Spells cast per combat minute</div>
+        <div class="legend"><span><i class="sw" style="--c:var(--sohj)"></i>Sohj</span><span><i class="sw" style="--c:var(--azu)"></i>Azunazx</span><span>Right column: Azunazx vs Sohj</span></div>
+      </div>
+      <div class="plot" id="chart-cpm"></div>
+      <figcaption class="chart-note">Missiles and Barrage are identical. Sohj trades Prismatic Bolts for Arcane Blasts. Arcane Orb counts hard casts only; most Orbs come free from Orb Barrage.</figcaption>
+      <details class="tv"><summary>Table view</summary><div class="scroll" id="tv-cpm"></div></details>
+    </figure>
+
+    <figure class="chart" style="margin:0">
+      <div class="chart-head">
+        <div class="chart-title">Arcane Salvo spent per Barrage (outside Arcane Soul)</div>
+        <div class="legend"><span><i class="sw" style="--c:var(--sohj)"></i>Sohj, 280 Barrages</span><span><i class="sw" style="--c:var(--azu)"></i>Azunazx, 297</span></div>
+      </div>
+      <div class="plot" id="chart-salvo"></div>
+      <figcaption class="chart-note">Share of each mage's Barrages by Salvo stacks spent. The label shows the Prismatic Bolt proc rate seen at that Salvo across both logs.</figcaption>
+      <details class="tv"><summary>Table view</summary><div class="scroll" id="tv-salvo"></div></details>
+    </figure>
+
+    <div class="section-head" style="padding-top:8px">
+      <h3>Rotation audit against the guide</h3>
+    </div>
+    <p>The Wowhead Sunfury priority list, condensed (the Arcane Pulse lines are left out because neither mage talents it), with every time a higher line was skipped for a lower one. A skip only counts if the better spell had been available for at least half a second.</p>
+    <div class="scroll">
+      <table class="kpi audit">
+        <thead><tr><th scope="col">Guide priority</th><th scope="col"><span class="who sohj">Sohj</span></th><th scope="col"><span class="who azu">Azunazx</span></th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="rule">1. Arcane Missiles with Clearcasting and under 12 Salvo</th><td><span class="flag">Barraged instead 24×</span>, Blasted instead 8×</td><td>4×, 0×</td></tr>
+          <tr><th scope="row" class="rule">2. Arcane Barrage while Arcane Soul is up</th><td>Followed every time</td><td>Followed every time</td></tr>
+          <tr><th scope="row" class="rule">3. Prismatic Bolt, ideally at 8 Cumulative Power</th><td>81% at 8 stacks, 10 at 0 stacks. 11 procs overwritten outside Arcane Soul</td><td>87%, 6 at 0 stacks. 7 overwritten</td></tr>
+          <tr><th scope="row" class="rule">4. Arcane Barrage with Clearcasting and 12+ Salvo</th><td>Blasted instead 7×</td><td>2×</td></tr>
+          <tr><th scope="row" class="rule">5. Arcane Barrage at 25 Salvo</th><td>Blasted instead 9×. Missiles at 25 Salvo 15×, wasting that channel's Salvo</td><td>1×. 9×</td></tr>
+          <tr><th scope="row" class="rule">6. Arcane Orb at 0 Arcane Charges</th><td><span class="flag">After a Barrage with no Clearcasting: Blast 18×, Orb 7×</span></td><td>Blast 4×, Orb 11×</td></tr>
+          <tr><th scope="row" class="rule">7. Arcane Blast</th><td>137 casts (5.3 per minute)</td><td>61 casts (2.2 per minute)</td></tr>
+          <tr><th scope="row" class="rule">Barrage at 4 Arcane Charges</th><td>95% (17 under 4)</td><td>99.5% (2 under 4)</td></tr>
+          <tr><th scope="row" class="rule">Opener: Surge, Missiles, Barrage, then Touch while the Barrage flies</th><td><span class="flag">Usually Surge, Barrage, Touch, then Missiles</span></td><td>Builds Salvo first, then Surge, Barrage, Touch</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="todo">
+      <h3>What to do</h3>
+      <ul>
+        <li>Holding Clearcasting with under 12 Salvo: cast Arcane Missiles, not Barrage.</li>
+        <li>Outside Arcane Soul, Barrage only with Clearcasting and 12+ Salvo, or at 25 Salvo. Watch the Salvo count on the buff bar the way you watch Arcane Charges.</li>
+        <li>Going into Surge, have Salvo built. If it isn't, follow the guide's opener: Surge, one Arcane Missiles, Barrage, then Touch of the Magi while the Barrage is in the air.</li>
+        <li>At 0 charges with no procs, Arcane Orb comes before Arcane Blast.</li>
+        <li>Don't Missiles at 25 Salvo. Barrage first, then Missiles.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="fix" aria-labelledby="fix2">
+    <div class="fix-head">
+      <div class="fix-num" aria-hidden="true">2</div>
+      <div class="section-head">
+        <div class="meta">≈ 1.5% DPS</div>
+        <h2 id="fix2">Touch of the Magi every 45 seconds</h2>
+      </div>
+    </div>
+    <div class="prose">
+      <p>Touch of the Magi has a 45-second cooldown and Arcane Surge 90, so every other Touch lines up with Surge on its own. The guide says not to hold Touch more than a few seconds, especially the ones that aren't paired with Surge. Sohj tends to wait for Surge instead, and a skipped Touch costs more than its explosion: each cast also gives 4 Arcane Charges and a Clearcasting.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="v">27</div><div class="l">Touches cast, out of about 38 possible during pulls</div><div class="cmp">Azunazx: 34 of 40</div></div>
+      <div class="stat"><div class="v">7.3s</div><div class="l">median wait after Touch came off cooldown</div><div class="cmp">Azunazx: 2.7s</div></div>
+      <div class="stat"><div class="v">11</div><div class="l">Touches used without Surge, the mini-burns</div><div class="cmp">Azunazx: 16</div></div>
+      <div class="stat"><div class="v">912K</div><div class="l">average Touch explosion</div><div class="cmp">Azunazx: 1.38M</div></div>
+    </div>
+    <figure class="chart" style="margin:0">
+      <div class="chart-head">
+        <div class="chart-title">Cooldown timeline</div>
+        <div class="legend"><span><i class="sw tickm" style="--c:var(--ink-2)"></i>Touch of the Magi</span><span><i class="sw dotm" style="--c:var(--ink-2)"></i>Arcane Surge</span><span><i class="sw band"></i>Pull (darker: boss)</span><span><i class="sw gapm"></i>Touch ready, not pressed</span></div>
+      </div>
+      <div class="plot" id="chart-timeline"></div>
+      <figcaption class="chart-note">Each lane is one run, in its own player's color, from key start. Hover a pull for its numbers.</figcaption>
+      <details class="tv"><summary>Table view</summary><div class="scroll" id="tv-timeline"></div></details>
+    </figure>
+    <div class="prose">
+      <p><strong>The Hoardmonger is the clearest example.</strong> Surge and Touch both came off cooldown about 40 seconds before the boss died, and both were saved for the next pack. Azunazx fit 3 Surges and 6 Touches into that boss; Sohj fit 2 and 4. On Spirit of Hunger and the pack after the first boss, Touch sat ready for 30–45 seconds waiting for Surge.</p>
+    </div>
+    <div class="todo">
+      <h3>What to do</h3>
+      <ul>
+        <li>Press Touch whenever it's ready and the target will live about 12 more seconds. Most of its damage lands when it expires.</li>
+        <li>Surge every 90 seconds. Every second Touch will land in the Surge window without any planning.</li>
+        <li>Holding Surge at the end of a boss for the next pack is a fair call when the boss is nearly dead. 40 seconds is too long.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="fix" aria-labelledby="fix3">
+    <div class="fix-head">
+      <div class="fix-num" aria-hidden="true">3</div>
+      <div class="section-head">
+        <div class="meta">≈ 1–2% DPS</div>
+        <h2 id="fix3">First spell out sooner</h2>
+      </div>
+    </div>
+    <p>Seconds from the pull starting to each mage's first damaging spell. Over the 11 pulls both groups made, Sohj's first cast landed about 30 seconds later in total, or about 2 seconds per pull after the first. Some of that is how each tank pulls, but Azunazx is usually casting within a second or two.</p>
+    <figure class="chart" style="margin:0">
+      <div class="chart-head">
+        <div class="chart-title">Time to first damaging cast</div>
+        <div class="legend"><span><i class="sw dotm" style="--c:var(--sohj)"></i>Sohj</span><span><i class="sw dotm" style="--c:var(--azu)"></i>Azunazx</span><span>Right column: Sohj's extra wait</span></div>
+      </div>
+      <div class="plot" id="chart-starts"></div>
+      <figcaption class="chart-note">0 means the mage was already casting when combat began.</figcaption>
+      <details class="tv"><summary>Table view</summary><div class="scroll" id="tv-starts"></div></details>
+    </figure>
+    <div class="todo">
+      <h3>What to do</h3>
+      <ul>
+        <li>Pre-cast or open with an instant the moment the tank has the pack. Touch of the Magi and Arcane Orb both hand out Arcane Charges, so neither wastes the opening.</li>
+        <li>Azunazx opens big trash pulls with Arcane Explosion while the mobs are stacked on the tank (42 casts, versus Sohj's 9, of which 7 hit nothing). It isn't in the guide's priority list, but it gets charges and damage going while the pack is gathering.</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="fix" aria-labelledby="fix4">
+    <div class="fix-head">
+      <div class="fix-num" aria-hidden="true">4</div>
+      <div class="section-head">
+        <div class="meta">≈ 1% DPS</div>
+        <h2 id="fix4">Small leaks</h2>
+      </div>
+    </div>
+    <ul class="plain">
+      <li><strong>21 Arcane Blasts</strong> cast while a better spell had been up for over half a second: Clearcasting was up for 15 of them and Salvo was capped at 25 for 9 (some had both). Azunazx: 3.</li>
+      <li><strong>15 Arcane Missiles at 25 Salvo.</strong> The Salvo those channels generate is thrown away. Azunazx: 9.</li>
+      <li><strong>7 Arcane Explosions that hit nothing</strong> out of 9 cast. Each is a wasted global cooldown.</li>
+      <li><strong>3 cancelled Arcane Surge casts.</strong> Surge has a cast time now, so start it where you won't need to move. Azunazx: 1.</li>
+      <li><strong>10 Prismatic Bolts at 0 Cumulative Power</strong> instead of 8. The tier set's stacks make the Bolt hit much harder. Azunazx: 6.</li>
+      <li><strong>17 Barrages under 4 Arcane Charges</strong>, 10 of them outside Arcane Soul. Azunazx: 2.</li>
+    </ul>
+  </article>
+
+  <section aria-labelledby="gear">
+    <div class="section-head">
+      <div class="eyebrow">Character</div>
+      <h2 id="gear">Gear and stats</h2>
+    </div>
+    <p>Same two trinkets, same weapon, same enchants on most slots, and both on the 4-piece tier bonus. The gap is item level in a few slots: Azunazx is 13 or more item levels ahead on the neck, shoulders, cloak, chest and one ring.</p>
+    <div class="scroll">
+      <table class="kpi" id="gear-table">
+        <thead><tr><th scope="col">Slot</th><th scope="col"><span class="who sohj">Sohj</span></th><th scope="col" class="num">ilvl</th><th scope="col"><span class="who azu">Azunazx</span></th><th scope="col" class="num">ilvl</th><th scope="col" class="num">Sohj vs Azunazx</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="cols2">
+      <div class="prose">
+        <h3>Upgrade order</h3>
+        <p>Both rings (311) and the neck (318) are Sohj's lowest items and the cheapest to replace. After those, the 321 shoulders, chest, bracers and cloak.</p>
+      </div>
+      <div class="prose">
+        <h3>Stats are fine</h3>
+        <p>The guide's Sunfury priority is Intellect, then Haste, Versatility, Critical Strike, Mastery. Haste matters because more casts means more Prismatic Bolt chances. Sohj carries the most Haste of the two; he just has less of everything else because of item level.</p>
+      </div>
+    </div>
+    <div class="scroll">
+      <table class="kpi">
+        <thead><tr><th scope="col">Stat (rating)</th><th scope="col" class="num"><span class="who sohj">Sohj</span></th><th scope="col" class="num"><span class="who azu">Azunazx</span></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Intellect</th><td class="num">3,512</td><td class="num">3,642</td></tr>
+          <tr><th scope="row">Haste</th><td class="num">1,229</td><td class="num">979</td></tr>
+          <tr><th scope="row">Versatility</th><td class="num">521</td><td class="num">667</td></tr>
+          <tr><th scope="row">Critical Strike</th><td class="num">639</td><td class="num">785</td></tr>
+          <tr><th scope="row">Mastery</th><td class="num">586</td><td class="num">644</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="fine">
+    <div class="section-head">
+      <div class="eyebrow">No change needed</div>
+      <h2 id="fine">Already right</h2>
+    </div>
+    <ul class="plain">
+      <li><strong>Talents.</strong> Sohj's build matches Wowhead's Mythic+ Sunfury build except for one class node: Captured Thoughts where the guide takes Spellsteal. Azunazx is also one node off the guide (Mana Bomb).</li>
+      <li><strong>Casting pace.</strong> 39 spells per combat minute, same as Azunazx.</li>
+      <li><strong>Uptime inside pulls,</strong> about 94% to Azunazx's 96%. WCL's 81% vs 88% "active time" is lower mainly because the +17 group spent more of the run walking between pulls.</li>
+      <li><strong>Surge setup.</strong> Freightrunner's Flask, potions and Time Warp went out with Surge almost every time. Surge usage overall (16 of about 20 possible) is close to Azunazx's (18 of 21).</li>
+      <li><strong>Arcane Soul.</strong> Barrage spam during Soul and no Blasts. The 19 Prismatic Bolt procs overwritten during Soul are expected under the guide's priority, and Azunazx loses exactly the same 19.</li>
+      <li><strong>Survival.</strong> No deaths, Prismatic Barrier kept rolling (the guide calls it a must-cast).</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="abilities">
+    <div class="section-head">
+      <div class="eyebrow">Reference</div>
+      <h2 id="abilities">Damage by ability</h2>
+    </div>
+    <div class="scroll">
+      <table class="kpi" id="ability-table">
+        <thead>
+          <tr><th scope="col" rowspan="2">Ability</th><th scope="colgroup" colspan="3" class="num"><span class="who sohj">Sohj</span></th><th scope="colgroup" colspan="3" class="num"><span class="who azu">Azunazx</span></th></tr>
+          <tr><th scope="col" class="num">Damage</th><th scope="col" class="num">Casts</th><th scope="col" class="num">Per cast</th><th scope="col" class="num">Damage</th><th scope="col" class="num">Casts</th><th scope="col" class="num">Per cast</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="chart-note">Share of the player's total in brackets. Arcane Orb casts are hard casts only; most Orb damage comes from free Orb Barrage orbs, so no per-cast figure. Meteorite, Arcane Phoenix and Omnium Folio have no casts of their own.</p>
+  </section>
+
+  <footer class="notes" aria-labelledby="method">
+    <h2 id="method">How this was measured</h2>
+    <ul class="plain">
+      <li>Every combat event for both players was pulled from Warcraft Logs (52,000 for Sohj, 61,800 for Azunazx) and replayed to rebuild Arcane Charges, Clearcasting, Arcane Salvo, Prismatic Bolt and Cumulative Power at the moment of each cast.</li>
+      <li>"In combat" means inside Warcraft Logs' pull windows. Per-minute rates use combat minutes (25.7 for Sohj, 28.1 for Azunazx).</li>
+      <li>"Possible" Touch and Surge casts assume pressing them the instant they come off cooldown during a pull, so they are an upper bound.</li>
+      <li>DPS gains are rough estimates priced with Sohj's own damage per cast. They overlap a little, so they won't add up exactly.</li>
+      <li>Luck: at 25 Salvo, Azunazx's Barrages procced Prismatic Bolt 59% of the time and Sohj's 47%. At these sample sizes that is most likely luck, and it is worth about 2–3% to Azunazx on its own.</li>
+      <li>Rotation reference: Wowhead's Arcane Mage guide by Porom for Midnight Season 2, patch 12.1.0. Talent comparison from both logs' talent exports.</li>
+    </ul>
+  </footer>
+</div>
+
+<div class="tip" id="tip" role="tooltip" hidden></div>
+
+<script>
+(() => {
+  const D = {
+    pulls: [
+      { label: 'Territorial Matriarch', a: 664.5, b: 790.3, ad: 79, bd: 118 },
+      { label: 'Spirit of Hunger', a: 490.0, b: 712.4, ad: 76, bd: 80 },
+      { label: 'The Hoardmonger', boss: true, a: 151.7, b: 217.4, ad: 227, bd: 250 },
+      { label: 'Pack after Hoardmonger', a: 439.2, b: 656.4, ad: 87, bd: 106, tip: 'Different packs: Territorial Matriarch vs Thornclaw Gatherer' },
+      { label: 'Territorial Matriarch', a: 538.8, b: 734.9, ad: 165, bd: 201 },
+      { label: 'Avatar of Determination', a: 389.9, b: 575.0, ad: 172, bd: 140 },
+      { label: 'Sentinel of Winter', boss: true, a: 151.7, b: 407.7, ad: 201, bd: 219, tip: "Azunazx's group pulled two trash packs into the boss" },
+      { label: 'Grizzled Warbringer', a: 342.5, b: 452.4, ad: 253, bd: 245, tip: "Sohj's group split this into two pulls (combined)" },
+      { label: 'Loa Speaker Nanea', a: 120.8, b: 212.0, ad: 82, bd: 77 },
+      { label: 'Nalorakk', boss: true, a: 158.2, b: 182.5, ad: 185, bd: 237, tip: 'Single target in both runs' }
+    ],
+    cpm: [
+      { label: 'Arcane Missiles', a: 13.95, b: 14.19 },
+      { label: 'Arcane Barrage', a: 13.29, b: 13.16 },
+      { label: 'Arcane Blast', a: 5.33, b: 2.17, em: true },
+      { label: 'Prismatic Bolt', a: 4.00, b: 5.23, em: true },
+      { label: 'Arcane Explosion', a: 0.35, b: 1.49 },
+      { label: 'Touch of the Magi', a: 1.05, b: 1.21, em: true },
+      { label: 'Arcane Surge', a: 0.62, b: 0.64 },
+      { label: 'Arcane Orb', a: 0.51, b: 0.57 }
+    ],
+    salvo: [
+      { label: 'Under 12 Salvo', rate: '8% Bolt procs', a: 13.9, b: 3.4, an: 39, bn: 10, em: true },
+      { label: '12–19 Salvo', rate: '35% Bolt procs', a: 23.9, b: 31.0, an: 67, bn: 92 },
+      { label: '20–24 Salvo', rate: '36% Bolt procs', a: 8.6, b: 7.7, an: 24, bn: 23 },
+      { label: '25 Salvo (cap)', rate: '53% Bolt procs', a: 53.6, b: 57.9, an: 150, bn: 172 }
+    ],
+    starts: [
+      { label: 'Territorial Matriarch (first pull)', a: 25.3, b: 16.8 },
+      { label: 'Spirit of Hunger', a: 6.8, b: 4.9 },
+      { label: 'Territorial Matriarch (small)', a: 10.3, b: 5.9 },
+      { label: 'The Hoardmonger', a: 0, b: 0 },
+      { label: 'Pack after Hoardmonger', a: 6.4, b: 1.7 },
+      { label: 'Territorial Matriarch', a: 8.5, b: 7.6 },
+      { label: 'Avatar of Determination', a: 5.5, b: 3.5 },
+      { label: 'Sentinel of Winter', a: 2.5, b: 0.5 },
+      { label: 'Grizzled Warbringer', a: 5.1, b: 1.1 },
+      { label: 'Loa Speaker Nanea', a: 0.3, b: 0 },
+      { label: 'Nalorakk', a: 1.3, b: 0.3 }
+    ],
+    lanes: [
+      { name: 'Sohj', cls: 'sohj',
+        pulls: [[24.2,103.5,'Territorial Matriarch',0],[115.8,192.3,'Spirit of Hunger',0],[223.9,240.1,'Territorial Matriarch',0],[240.1,467.4,'The Hoardmonger',1],[488.4,575.8,'Territorial Matriarch',0],[586.1,750.7,'Territorial Matriarch',0],[757.4,929.1,'Avatar of Determination',0],[952,1152.8,'Sentinel of Winter',1],[1184.2,1295.2,'Grizzled Warbringer',0],[1300.4,1442.1,'Grizzled Warbringer',0],[1498.5,1580.6,'Loa Speaker Nanea',0],[1606.9,1791.8,'Nalorakk',1]],
+        touch: [53.4,145.6,242.5,288.7,335.5,381.9,496.8,596.7,646.2,715.3,762.9,824.3,880.3,958.5,1009,1055.2,1101.5,1191.2,1243.5,1305.5,1351,1397.5,1504.6,1610.4,1657.9,1711.6,1756.9],
+        surge: [51,145.3,242.2,335.3,496.6,596.4,715.1,824.1,956.3,1049.7,1191.1,1304.5,1397.3,1500.7,1609.6,1711.5] },
+      { name: 'Azunazx', cls: 'azu',
+        pulls: [[21.1,138.6,'Territorial Matriarch',0],[148.7,228.7,'Spirit of Hunger',0],[259.6,273.2,'Territorial Matriarch',0],[273.3,523.6,'The Hoardmonger',1],[538.4,644,'Thornclaw Gatherer',0],[652.2,853.4,'Territorial Matriarch',0],[858,997.7,'Avatar of Determination',0],[997.7,1216.8,'Sentinel of Winter',1],[1251.5,1496.4,'Grizzled Warbringer',0],[1500.8,1578.3,'Loa Speaker Nanea',0],[1603.3,1840.8,'Nalorakk',1]],
+        touch: [59.3,105.1,165.4,210.7,279.8,325.3,370.8,416.2,463.6,510.9,563.3,609,670.1,715.6,765.8,811.6,877.1,923.2,1002.6,1048.3,1096,1141.5,1188.2,1280.2,1330.5,1385.2,1432.9,1504.3,1550,1607.7,1654.7,1703.2,1748.6,1798],
+        surge: [58.9,163.1,275.8,370.6,463.2,562.7,669.7,763.3,875.3,1000.1,1095.7,1188,1279.9,1382.8,1504,1605.6,1701,1797.7] }
+    ],
+    gear: [
+      ['Head', 'Crown of the Primal Leywarden (tier)', 334, "Venomkeeper's Horrific Cowl", 334],
+      ['Neck', 'Yoke of the Charging Bear', 318, "Sentinel's Vitriolic Chain", 334],
+      ['Shoulder', "Primal Leywarden's Manaflux (tier)", 321, "Primal Leywarden's Manaflux (tier)", 334],
+      ['Back', 'Fireproof Drape', 321, 'Silken Voodoo Drape', 344],
+      ['Chest', 'Crest of the Primal Leywarden (tier)', 321, 'Crest of the Primal Leywarden (tier)', 334],
+      ['Wrist', 'Bindings of the Slithering Current', 321, "Martyr's Bindings", 331],
+      ['Hands', "Martyr's Gloves", 331, "Primal Leywarden's Manashapers (tier)", 321],
+      ['Waist', "Martyr's Waistwrap", 331, 'Ouroborial Sash', 334],
+      ['Legs', "Primal Leywarden's Tailored Legwraps (tier)", 334, "Primal Leywarden's Tailored Legwraps (tier)", 334],
+      ['Feet', "Martyr's Slippers", 331, "Nek'zali's Spiritwalkers", 334],
+      ['Ring', 'Sickening Signet of Atroxus', 311, "Apex Brute's Claw Ring", 334],
+      ['Ring', 'Jade Ophidian Band', 311, "Ritual Binder's Ring", 321],
+      ['Trinket', "Gebbo's Bottomless Bag", 334, "Gebbo's Bottomless Bag", 334],
+      ['Trinket', "Freightrunner's Flask", 321, "Freightrunner's Flask", 321],
+      ['Weapon', "Aln'hara Cane", 331, "Aln'hara Cane", 331]
+    ],
+    abilities: [
+      ['Arcane Missiles', 148.21, 359, 233.49, 399],
+      ['Arcane Barrage', 103.98, 342, 150.18, 370],
+      ['Prismatic Bolt', 85.89, 103, 162.83, 147],
+      ['Meteorite', 45.19, null, 71.65, null],
+      ['Arcane Orb', 31.96, 13, 56.18, 16, true],
+      ['Touch of the Magi', 24.62, 27, 46.75, 34],
+      ['Arcane Phoenix (pet)', 18.79, null, 25.62, null],
+      ['Arcane Blast', 9.82, 137, 4.78, 61],
+      ['Arcane Surge', 5.71, 16, 8.05, 18],
+      ['Omnium Folio', 1.68, null, 2.02, null],
+      ['Arcane Explosion', 0.0073, 9, 0.2912, 42],
+      ['Supernova', 0.0607, 1, 0.0741, 2]
+    ],
+    totals: [475.93, 761.96]
+  };
+
+  const NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS(NS, tag);
+    if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function h(tag, attrs, parent, text) {
+    const e = document.createElement(tag);
+    if (attrs) for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  const tip = document.getElementById('tip');
+  function tipShow(x, y, c) {
+    tip.replaceChildren();
+    if (c.title) h('div', { class: 'tip-title' }, tip, c.title);
+    for (const r of c.rows) {
+      const row = h('div', { class: 'tip-row' }, tip);
+      if (r.key) h('span', { class: 'tip-key ' + r.key }, row);
+      if (r.value) h('strong', null, row, r.value);
+      if (r.label) h('span', { class: 'tip-label' }, row, r.label);
+    }
+    tip.hidden = false;
+    const w = tip.offsetWidth, ht = tip.offsetHeight, pad = 14;
+    let left = x + pad, top = y + pad;
+    if (left + w > innerWidth - 8) left = x - w - pad;
+    if (top + ht > innerHeight - 8) top = y - ht - pad;
+    tip.style.left = Math.max(8, left) + 'px';
+    tip.style.top = Math.max(8, top) + 'px';
+  }
+  function tipHide() { tip.hidden = true; }
+  function bindTip(node, content) {
+    node.addEventListener('pointermove', e => tipShow(e.clientX, e.clientY, content()));
+    node.addEventListener('pointerleave', tipHide);
+    node.addEventListener('focus', () => { const r = node.getBoundingClientRect(); tipShow(r.left + Math.min(r.width / 2, 160), r.top, content()); });
+    node.addEventListener('blur', tipHide);
+  }
+
+  function niceTicks(max, count) {
+    const raw = max / count, p = Math.pow(10, Math.floor(Math.log10(raw))), n = raw / p;
+    const step = (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p;
+    const top = Math.ceil(max / step - 1e-9) * step, ticks = [];
+    for (let v = 0; v <= top + 1e-9; v += step) ticks.push(+v.toFixed(6));
+    return { ticks, top };
+  }
+  function barPath(x0, y, w, hgt, r) {
+    if (w <= 0.5) return '';
+    r = Math.min(r, w, hgt / 2);
+    return 'M' + x0 + ',' + y + 'H' + (x0 + w - r) + 'Q' + (x0 + w) + ',' + y + ' ' + (x0 + w) + ',' + (y + r) + 'V' + (y + hgt - r) + 'Q' + (x0 + w) + ',' + (y + hgt) + ' ' + (x0 + w - r) + ',' + (y + hgt) + 'H' + x0 + 'Z';
+  }
+  const pct = (a, b) => (b >= a ? '+' : '−') + Math.abs(Math.round((b / a - 1) * 100)) + '%';
+
+  function groupedBars(host, cfg) {
+    const W = Math.max(280, host.clientWidth), narrow = W < 600;
+    const labelW = narrow ? 0 : cfg.labelW, noteW = cfg.noteW;
+    const barH = 9, inner = 2, labelH = narrow ? 17 : 0, rowGap = 14;
+    const rowH = labelH + barH * 2 + inner + rowGap, top = 2, axisH = 22;
+    const plotX = narrow ? 0 : labelW + 12, plotW = W - plotX - noteW - 6;
+    const { ticks, top: xTop } = niceTicks(cfg.max || Math.max(...cfg.rows.flatMap(r => [r.a, r.b])), narrow ? 3 : 5);
+    const X = v => plotX + (v / xTop) * plotW;
+    const H = top + cfg.rows.length * rowH + axisH;
+    const svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, class: 'viz', role: 'list', 'aria-label': cfg.aria });
+    for (const t of ticks) {
+      const x = X(t);
+      el('line', { x1: x, x2: x, y1: top, y2: H - axisH + 2, class: 'grid' }, svg);
+      el('text', { x, y: H - 5, class: 'tick', 'text-anchor': t === 0 ? 'start' : (t === ticks[ticks.length - 1] ? 'end' : 'middle') }, svg, cfg.tick(t));
+    }
+    el('line', { x1: plotX, x2: plotX, y1: top, y2: H - axisH + 2, class: 'base' }, svg);
+    cfg.rows.forEach((r, i) => {
+      const rowTop = top + i * rowH, y = rowTop + labelH + rowGap / 2, mid = y + barH + inner / 2;
+      const g = el('g', { class: 'row', tabindex: '0', role: 'listitem', 'aria-label': r.label + ': Sohj ' + cfg.fmt(r.a) + ', Azunazx ' + cfg.fmt(r.b) }, svg);
+      el('rect', { x: 0, y: rowTop, width: W, height: rowH, class: 'hit' }, g);
+      if (narrow) el('text', { x: plotX, y: rowTop + 13, class: 'rlabel' + (r.em ? ' em' : '') }, g, r.label + (r.boss ? ' · boss' : '') + (r.rate ? ' · ' + r.rate : ''));
+      else {
+        const t = el('text', { x: labelW, y: mid, class: 'rlabel' + (r.em ? ' em' : ''), 'text-anchor': 'end', 'dominant-baseline': 'middle' }, g, r.label + (r.boss ? ' · boss' : ''));
+        if (r.rate) { t.setAttribute('y', mid - 7); el('text', { x: labelW, y: mid + 8, class: 'tick', 'text-anchor': 'end', 'dominant-baseline': 'middle' }, g, r.rate); }
+      }
+      el('path', { d: barPath(plotX, y, X(r.a) - plotX, barH, 4), class: 'bar sohj' }, g);
+      el('path', { d: barPath(plotX, y + barH + inner, X(r.b) - plotX, barH, 4), class: 'bar azu' }, g);
+      if (cfg.note) el('text', { x: W - 2, y: mid, class: 'rnote', 'text-anchor': 'end', 'dominant-baseline': 'middle' }, g, cfg.note(r));
+      bindTip(g, () => ({ title: r.label + (r.boss ? ' (boss)' : ''), rows: [
+        { key: 'k-sohj', value: cfg.fmt(r.a), label: 'Sohj' + (cfg.extraA ? cfg.extraA(r) : '') },
+        { key: 'k-azu', value: cfg.fmt(r.b), label: 'Azunazx' + (cfg.extraB ? cfg.extraB(r) : '') }
+      ].concat(r.tip ? [{ label: r.tip }] : []) }));
+    });
+    host.replaceChildren(svg);
+  }
+
+  function dumbbell(host, cfg) {
+    const W = Math.max(280, host.clientWidth), narrow = W < 600;
+    const labelW = narrow ? 0 : 230, noteW = 58, labelH = narrow ? 17 : 0, rowH = labelH + 24, top = 2, axisH = 22;
+    const plotX = narrow ? 8 : labelW + 16, plotW = W - plotX - noteW - 6;
+    const { ticks, top: xTop } = niceTicks(Math.max(...cfg.rows.flatMap(r => [r.a, r.b])), narrow ? 3 : 5);
+    const X = v => plotX + (v / xTop) * plotW;
+    const H = top + cfg.rows.length * rowH + axisH;
+    const svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, class: 'viz', role: 'list', 'aria-label': cfg.aria });
+    for (const t of ticks) {
+      const x = X(t);
+      el('line', { x1: x, x2: x, y1: top, y2: H - axisH + 2, class: 'grid' }, svg);
+      el('text', { x, y: H - 5, class: 'tick', 'text-anchor': t === 0 ? 'start' : (t === ticks[ticks.length - 1] ? 'end' : 'middle') }, svg, t + 's');
+    }
+    cfg.rows.forEach((r, i) => {
+      const rowTop = top + i * rowH, cy = rowTop + labelH + 12;
+      const g = el('g', { class: 'row', tabindex: '0', role: 'listitem', 'aria-label': r.label + ': Sohj ' + r.a + ' seconds, Azunazx ' + r.b + ' seconds' }, svg);
+      el('rect', { x: 0, y: rowTop, width: W, height: rowH, class: 'hit' }, g);
+      if (narrow) el('text', { x: plotX - 8, y: rowTop + 13, class: 'rlabel' }, g, r.label);
+      else el('text', { x: labelW, y: cy, class: 'rlabel', 'text-anchor': 'end', 'dominant-baseline': 'middle' }, g, r.label);
+      el('line', { x1: X(Math.min(r.a, r.b)), x2: X(Math.max(r.a, r.b)), y1: cy, y2: cy, class: 'conn' }, g);
+      el('circle', { cx: X(r.b), cy, r: 5, class: 'dot azu' }, g);
+      el('circle', { cx: X(r.a), cy, r: 5, class: 'dot sohj' }, g);
+      const d = r.a - r.b;
+      el('text', { x: W - 2, y: cy, class: 'rnote', 'text-anchor': 'end', 'dominant-baseline': 'middle' }, g, Math.abs(d) < 0.05 ? '0s' : (d > 0 ? '+' : '−') + Math.abs(d).toFixed(1) + 's');
+      bindTip(g, () => ({ title: r.label, rows: [
+        { key: 'k-sohj', value: r.a ? r.a.toFixed(1) + 's' : 'pre-cast', label: 'Sohj' },
+        { key: 'k-azu', value: r.b ? r.b.toFixed(1) + 's' : 'pre-cast', label: 'Azunazx' }
+      ] }));
+    });
+    host.replaceChildren(svg);
+  }
+
+  function readyGaps(casts, pulls, cd) {
+    const gaps = [];
+    let ready = pulls[0][0];
+    const add = (from, to) => { for (const p of pulls) { const s = Math.max(p[0], from), e = Math.min(p[1], to); if (e - s > 0.5) gaps.push([s, e]); } };
+    for (const t of casts) { add(ready, t); ready = t + cd; }
+    add(ready, Infinity);
+    return gaps;
+  }
+  const mmss = s => Math.floor(s / 60) + ':' + String(Math.round(s % 60)).padStart(2, '0');
+  D.lanes.forEach(L => { L.gaps = readyGaps(L.touch, L.pulls, 45); });
+
+  function timeline(host) {
+    const W = Math.max(300, host.clientWidth), narrow = W < 600;
+    const labelW = narrow ? 0 : 74, laneH = 34, labelH = narrow ? 17 : 0, laneGap = 22, top = 8, axisH = 22;
+    const plotX = narrow ? 0 : labelW + 10, plotW = W - plotX - 4;
+    const T = 1845, X = t => plotX + (t / T) * plotW;
+    const H = top + D.lanes.length * (labelH + laneH + laneGap) + axisH;
+    const svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, class: 'viz', role: 'img', 'aria-label': 'Touch of the Magi and Arcane Surge casts over each run, with pulls shaded' });
+    for (let m = 0; m * 60 <= T; m += narrow ? 10 : 5) {
+      const x = X(m * 60);
+      el('line', { x1: x, x2: x, y1: top, y2: H - axisH + 2, class: 'grid' }, svg);
+      el('text', { x, y: H - 5, class: 'tick', 'text-anchor': m === 0 ? 'start' : 'middle' }, svg, m + ' min');
+    }
+    D.lanes.forEach((L, i) => {
+      const y0 = top + i * (labelH + laneH + laneGap), y = y0 + labelH;
+      if (narrow) el('text', { x: plotX, y: y0 + 12, class: 'rlabel' }, svg, L.name);
+      else el('text', { x: labelW, y: y + laneH / 2, class: 'rlabel', 'text-anchor': 'end', 'dominant-baseline': 'middle' }, svg, L.name);
+      for (const p of L.pulls) el('rect', { x: X(p[0]), y, width: Math.max(1, X(p[1]) - X(p[0])), height: laneH, class: 'pull' + (p[3] ? ' boss' : '') }, svg);
+      for (const g of L.gaps) el('rect', { x: X(g[0]), y: y + laneH + 3, width: Math.max(2, X(g[1]) - X(g[0])), height: 4, rx: 1, class: 'gap' }, svg);
+      for (const t of L.touch) el('rect', { x: X(t) - 1.25, y: y + 9, width: 2.5, height: laneH - 13, rx: 1, class: L.cls }, svg);
+      for (const t of L.surge) el('circle', { cx: X(t), cy: y + 6, r: 4.5, class: 'dot ' + L.cls }, svg);
+      for (const p of L.pulls) {
+        const hit = el('rect', { x: X(p[0]), y, width: Math.max(6, X(p[1]) - X(p[0])), height: laneH + 8, class: 'pullhit', tabindex: '0', role: 'button', 'aria-label': L.name + ', ' + p[2] }, svg);
+        const nT = L.touch.filter(t => t >= p[0] - 3 && t <= p[1]).length;
+        const nS = L.surge.filter(t => t >= p[0] - 3 && t <= p[1]).length;
+        const idle = L.gaps.filter(g => g[0] >= p[0] && g[1] <= p[1] + 0.01).reduce((s, g) => s + g[1] - g[0], 0);
+        bindTip(hit, () => ({ title: L.name + ' · ' + p[2] + (p[3] ? ' (boss)' : ''), rows: [
+          { value: mmss(p[1] - p[0]), label: 'pull length, starts at ' + mmss(p[0]) },
+          { key: 'k-' + L.cls, value: String(nT), label: 'Touch of the Magi' },
+          { key: 'k-' + L.cls, value: String(nS), label: 'Arcane Surge' },
+          { key: 'k-bad', value: Math.round(idle) + 's', label: 'Touch ready, not pressed' }
+        ] }));
+      }
+    });
+    host.replaceChildren(svg);
+  }
+
+  function table(hostId, head, rows) {
+    const host = document.getElementById(hostId);
+    const t = h('table', { class: 'kpi' });
+    const tr = h('tr', null, h('thead', null, t));
+    head.forEach((c, i) => h('th', { scope: 'col', class: i ? 'num' : '' }, tr, c));
+    const tb = h('tbody', null, t);
+    rows.forEach(r => { const row = h('tr', null, tb); r.forEach((c, i) => h(i ? 'td' : 'th', i ? { class: 'num' } : { scope: 'row' }, row, c)); });
+    host.replaceChildren(t);
+  }
+
+  const k = v => v.toFixed(0) + 'K';
+  function renderAll() {
+    groupedBars(document.getElementById('chart-pulls'), {
+      rows: D.pulls, labelW: 190, noteW: 52, aria: 'Mage DPS per pull, Sohj versus Azunazx',
+      tick: t => t + 'K', fmt: v => k(v) + ' DPS', note: r => pct(r.a, r.b),
+      extraA: r => ', ' + mmss(r.ad) + ' pull', extraB: r => ', ' + mmss(r.bd) + ' pull'
+    });
+    groupedBars(document.getElementById('chart-cpm'), {
+      rows: D.cpm, labelW: 150, noteW: 52, aria: 'Casts per combat minute by spell',
+      tick: t => String(t), fmt: v => v.toFixed(2) + ' / min', note: r => pct(r.a, r.b)
+    });
+    groupedBars(document.getElementById('chart-salvo'), {
+      rows: D.salvo, labelW: 130, noteW: 4, max: 60, aria: 'Share of Barrages by Arcane Salvo spent',
+      tick: t => t + '%', fmt: v => v.toFixed(1) + '%',
+      extraA: r => ' (' + r.an + ' Barrages)', extraB: r => ' (' + r.bn + ' Barrages)'
+    });
+    dumbbell(document.getElementById('chart-starts'), { rows: D.starts, aria: 'Seconds from pull start to first damaging cast' });
+    timeline(document.getElementById('chart-timeline'));
+  }
+
+  table('tv-pulls', ['Pull', 'Sohj DPS', 'Azunazx DPS', 'Azunazx lead'], D.pulls.map(r => [r.label + (r.boss ? ' (boss)' : ''), k(r.a), k(r.b), pct(r.a, r.b)]));
+  table('tv-cpm', ['Spell', 'Sohj / min', 'Azunazx / min'], D.cpm.map(r => [r.label, r.a.toFixed(2), r.b.toFixed(2)]));
+  table('tv-salvo', ['Salvo spent', 'Bolt proc rate', 'Sohj', 'Azunazx'], D.salvo.map(r => [r.label, r.rate.replace(' Bolt procs', ''), r.a.toFixed(1) + '% (' + r.an + ')', r.b.toFixed(1) + '% (' + r.bn + ')']));
+  table('tv-starts', ['Pull', 'Sohj', 'Azunazx'], D.starts.map(r => [r.label, r.a ? r.a.toFixed(1) + 's' : 'pre-cast', r.b ? r.b.toFixed(1) + 's' : 'pre-cast']));
+  table('tv-timeline', ['Player', 'Touch casts', 'Surge casts', 'Touch ready, not pressed'], D.lanes.map(L => [L.name, String(L.touch.length), String(L.surge.length), Math.round(L.gaps.reduce((s, g) => s + g[1] - g[0], 0)) + 's in combat']));
+
+  const gearBody = document.querySelector('#gear-table tbody');
+  D.gear.forEach(g => {
+    const row = h('tr', null, gearBody);
+    h('th', { scope: 'row' }, row, g[0]);
+    h('td', null, row, g[1]);
+    h('td', { class: 'num' }, row, String(g[2]));
+    h('td', null, row, g[3]);
+    h('td', { class: 'num' }, row, String(g[4]));
+    const d = g[2] - g[4];
+    h('td', { class: 'num ' + (d < 0 ? 'down' : d > 0 ? 'up' : '') }, row, d === 0 ? 'even' : (d > 0 ? '+' : '−') + Math.abs(d));
+    if (d <= -13) row.className = 'hl';
+  });
+
+  const abBody = document.querySelector('#ability-table tbody');
+  const fmtM = v => v >= 1 ? v.toFixed(1) + 'M' : (v * 1000).toFixed(0) + 'K';
+  const per = (d, c) => c ? (d / c >= 1 ? (d / c).toFixed(2) + 'M' : Math.round(d / c * 1000) + 'K') : '–';
+  D.abilities.forEach(a => {
+    const row = h('tr', null, abBody);
+    h('th', { scope: 'row' }, row, a[0]);
+    h('td', { class: 'num' }, row, fmtM(a[1]) + ' (' + (a[1] / D.totals[0] * 100).toFixed(1) + '%)');
+    h('td', { class: 'num' }, row, a[2] == null ? '–' : String(a[2]));
+    h('td', { class: 'num' }, row, a[5] ? '–' : per(a[1], a[2]));
+    h('td', { class: 'num' }, row, fmtM(a[3]) + ' (' + (a[3] / D.totals[1] * 100).toFixed(1) + '%)');
+    h('td', { class: 'num' }, row, a[4] == null ? '–' : String(a[4]));
+    h('td', { class: 'num' }, row, a[5] ? '–' : per(a[3], a[4]));
+  });
+  const tot = h('tr', { class: 'hl' }, abBody);
+  h('th', { scope: 'row' }, tot, 'Total');
+  h('td', { class: 'num' }, tot, '475.9M');
+  h('td', { class: 'num' }, tot, '');
+  h('td', { class: 'num' }, tot, '');
+  h('td', { class: 'num' }, tot, '762.0M');
+  h('td', { class: 'num' }, tot, '');
+  h('td', { class: 'num' }, tot, '');
+
+  renderAll();
+  let rt;
+  const ro = new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(renderAll, 80); });
+  ro.observe(document.querySelector('.wrap'));
+  addEventListener('scroll', tipHide, { passive: true });
+})();
+</script>
+</body>
+</html>
