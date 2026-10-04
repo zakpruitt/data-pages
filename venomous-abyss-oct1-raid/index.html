@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta name="description" content="Sanity Capped&#x27;s Oct 1 Mythic Venomous Abyss night: the Sszorak kill, 23 Twin Fangs wipes, and player performance from Warcraft Logs.">
+<meta name="created" content="2026-10-04">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{color-scheme:light}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:#fbfbfa}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Venomous Abyss Oct 1 Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one 960px report column. Charts and the player table span it; the table scrolls inside its own box on phones. */
+:root {
+  --bg: #f2f5f3;
+  --surface: #fbfcfb;
+  --ink: #111a16;
+  --ink-2: #38443e;
+  --muted: #5a6861;
+  --line: #dbe2dd;
+  --axis: #b6c2bb;
+  --accent: #5a48b5;
+  --accent-soft: #ebe8f8;
+  --burst: #eb6834;
+  --burst-band: #fbe8de;
+  --glob: #2a78d6;
+  --other: #8a9690;
+  --good: #12782f;
+  --good-soft: #e1f2e5;
+  --bad: #b3261e;
+  --bad-soft: #f8e3e1;
+  --font-display: "Saira Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "Roboto Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1412; --surface: #151d1a; --ink: #e5eee9; --ink-2: #b8c6bf; --muted: #8d9b94;
+    --line: #26312c; --axis: #3b4842; --accent: #9d8ff0; --accent-soft: #252040;
+    --burst: #d95926; --burst-band: #35221a; --glob: #3987e5; --other: #7b8882;
+    --good: #55c474; --good-soft: #15301e; --bad: #f07167; --bad-soft: #3a1c1a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1412; --surface: #151d1a; --ink: #e5eee9; --ink-2: #b8c6bf; --muted: #8d9b94;
+  --line: #26312c; --axis: #3b4842; --accent: #9d8ff0; --accent-soft: #252040;
+  --burst: #d95926; --burst-band: #35221a; --glob: #3987e5; --other: #7b8882;
+  --good: #55c474; --good-soft: #15301e; --bad: #f07167; --bad-soft: #3a1c1a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.6; }
+.wrap { max-width: 960px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.1; letter-spacing: 0.01em; }
+h1 { font-size: clamp(2.4rem, 6vw, 3.6rem); font-weight: 700; }
+h2 { font-size: 1.9rem; font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 600; }
+p { margin: 0; max-width: 68ch; color: var(--ink-2); }
+section { display: grid; gap: 16px; min-width: 0; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, th button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.eyebrow { font-family: var(--font-data); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+
+header { display: grid; gap: 14px; }
+header .lede { font-size: 1.08rem; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; margin-top: 8px; }
+.tile { background: var(--surface); padding: 14px 16px; display: grid; gap: 2px; align-content: start; }
+.tile b { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile span { font-size: 0.82rem; color: var(--muted); }
+.tile.kill b { color: var(--good); }
+@media (max-width: 640px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.short { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.short li { display: grid; grid-template-columns: 6px 1fr; gap: 14px; align-items: stretch; }
+.short li::before { content: ""; background: var(--accent); border-radius: 3px; }
+.short li > div { color: var(--ink-2); max-width: 72ch; }
+.short strong { color: var(--ink); }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px 18px 14px; display: grid; gap: 12px; min-width: 0; }
+.panel-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; align-items: baseline; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.82rem; color: var(--ink-2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.legend i.dot { border-radius: 50%; }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: var(--font-data); font-size: 11px; fill: var(--muted); }
+.chart .lbl { fill: var(--ink-2); }
+.chart .lbl-strong { fill: var(--ink); font-weight: 500; }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 0.8rem; line-height: 1.45; padding: 8px 10px; border-radius: 4px; max-width: 240px; transform: translate(-50%, calc(-100% - 10px)); white-space: normal; z-index: 2; }
+.tip b { font-weight: 600; }
+.note { font-size: 0.82rem; color: var(--muted); max-width: 80ch; }
+
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+@media (max-width: 760px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+
+.wipes { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+.wipes th, .wipes td { white-space: nowrap; text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.wipes th { font-weight: 600; color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.wipes td.num, .wipes th.num { text-align: right; }
+.wipes tr.k td { background: var(--good-soft); }
+.chip { display: inline-block; font-size: 0.74rem; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); white-space: nowrap; }
+.chip.k { background: var(--good-soft); color: var(--good); font-weight: 600; }
+
+.bars { display: grid; gap: 6px; }
+.bar-row { display: grid; grid-template-columns: 9.5rem 1fr 3.2rem; gap: 10px; align-items: center; font-size: 0.86rem; }
+.bar-row .name { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar-row .track { height: 12px; }
+.bar-row .fill { height: 100%; border-radius: 0 4px 4px 0; background: var(--other); min-width: 2px; }
+.bar-row .fill.burst { background: var(--burst); }
+.bar-row .fill.glob { background: var(--glob); }
+.bar-row .fill.acc { background: var(--accent); }
+.bar-row .val { text-align: right; font-family: var(--font-data); font-variant-numeric: tabular-nums; color: var(--ink); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.filters button { font: inherit; font-size: 0.82rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.table-box { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table.players { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 720px; }
+.players th, .players td { padding: 8px 12px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+.players thead th { position: sticky; top: 0; background: var(--surface); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; vertical-align: bottom; }
+.players th button { all: unset; cursor: pointer; display: inline-flex; gap: 4px; align-items: center; }
+.players th button[data-dir]::after { content: attr(data-dir); font-size: 0.7rem; color: var(--accent); }
+.players td.num, .players th.num { text-align: right; font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.players th.num button { justify-content: flex-end; }
+.players tbody tr:last-child td { border-bottom: 0; }
+.players .who b { font-weight: 600; color: var(--ink); }
+.players .who span { display: block; font-size: 0.76rem; color: var(--muted); }
+.parse { display: inline-block; min-width: 2.4em; text-align: center; padding: 1px 6px; border-radius: 4px; font-family: var(--font-data); font-size: 0.8rem; }
+.p-hi { background: var(--good-soft); color: var(--good); font-weight: 500; }
+.p-lo { background: var(--bad-soft); color: var(--bad); font-weight: 500; }
+.p-mid { background: var(--accent-soft); color: var(--ink); }
+.died { color: var(--bad); font-size: 0.76rem; display: block; }
+.dash { color: var(--muted); }
+
+.todo { display: grid; gap: 12px; counter-reset: todo; margin: 0; padding: 0; list-style: none; }
+.todo li { counter-increment: todo; display: grid; grid-template-columns: 2rem 1fr; gap: 12px; }
+.todo li::before { content: counter(todo); font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+.todo li div { color: var(--ink-2); max-width: 72ch; }
+.todo strong { color: var(--ink); }
+.method p { font-size: 0.88rem; }
+footer { font-size: 0.82rem; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { .bar-row .fill { transition: width .3s ease; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Sanity Capped · Illidan (US) · Mythic The Venomous Abyss · Thu Oct 1 2026</div>
+  <h1>Raid night, October 1</h1>
+  <p class="lede">Sszorak went down on the 11th pull. The rest of the night went to The Twin Fangs: 23 pulls, the best one ending at 63.2%. Nearly every Twin Fangs wipe came at the same two moments, both of them Visceral Burst.</p>
+  <div class="tiles">
+    <div class="tile kill"><b>Kill</b><span>Sszorak Mythic, pull 11, 5:57</span></div>
+    <div class="tile"><b class="num">63.2%</b><span>Best Twin Fangs pull (19 of 23)</span></div>
+    <div class="tile"><b class="num">34</b><span>Boss pulls, 9:16 PM to 12:02 AM</span></div>
+    <div class="tile"><b class="num">46%</b><span>Twin Fangs deaths to Visceral Burst</span></div>
+  </div>
+</header>
+
+<section id="short">
+  <h2>The short version</h2>
+  <ul class="short">
+    <li><div><strong>Sszorak was a clean kill.</strong> The kill pull had only 3 deaths. Wipes before it came from Venomous Surge wiping the raid in one second (pulls 7 and 9), Virulence at 3:19 (pull 10), and Mutilate or Mutilated Gash deaths late in the longer pulls.</div></li>
+    <li><div><strong>Twin Fangs has two walls, and both are Visceral Burst.</strong> 11 pulls ended at about 0:45 with the raid dying to the first Burst, and 7 more ended at about 1:48 to the second. Only one pull got past both.</div></li>
+    <li><div><strong>The first wall got solved mid-night.</strong> In the first 11 pulls, the raid got past the first Burst once. In the last 12, it got past it 9 times.</div></li>
+    <li><div><strong>Caustic Globule is the next problem.</strong> It caused 69 deaths, the second most, and it picked people off before the Burst in 6 different pulls. The best pull ended to Vile Flood and then a Globule wipe at 2:42, the only time the raid saw that part of the fight.</div></li>
+  </ul>
+</section>
+
+<section id="pulls">
+  <h2>Every pull</h2>
+  <p>Boss health left when each pull ended. Shorter bars are better. Hover a bar for the time, length and what ended it.</p>
+  <div class="panel">
+    <div class="panel-head">
+      <h3>Boss health remaining by pull</h3>
+      <div class="legend"><span><i style="background:var(--accent)"></i>Wipe</span><span><i style="background:var(--other)"></i>Reset</span><span><i style="background:var(--good)"></i>Kill</span></div>
+    </div>
+    <div class="chart" id="pullChart"></div>
+    <div class="note">Twin Fangs pull 14 was a 25-second reset at 99.9%.</div>
+  </div>
+</section>
+
+<section id="sszorak">
+  <h2>Sszorak: killed on pull 11</h2>
+  <p>Ten wipes, then a 5:57 kill with three deaths. The best wipe (pull 5) reached 15.8% at 4:52. "Ended by" is the ability behind most deaths in the few seconds the raid went down. On four pulls most deaths had no killing blow logged, which usually means the wipe was called.</p>
+  <div class="panel">
+    <div class="table-box" style="border:0">
+      <table class="wipes" id="sszTable">
+        <thead><tr><th>Pull</th><th>Time</th><th class="num">Length</th><th class="num">Boss HP</th><th>Ended by</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="fangs">
+  <h2>The Twin Fangs: two walls</h2>
+  <p>Each dot is a wipe, placed at the moment the 10th player died. The dots stack into two columns: the first Visceral Burst at about 0:45 and the second at about 1:48. Lower dots got the boss further down.</p>
+  <div class="panel">
+    <div class="panel-head">
+      <h3>When each wipe happened, and how far the boss got</h3>
+      <div class="legend"><span><i class="dot" style="background:var(--burst)"></i>Visceral Burst</span><span><i class="dot" style="background:var(--glob)"></i>Caustic Globule</span><span><i class="dot" style="background:var(--other)"></i>Something else</span></div>
+    </div>
+    <div class="chart" id="tfChart"></div>
+    <div class="note">The 25-second reset is left out. The shaded columns mark the two Burst windows seen in the log.</div>
+  </div>
+  <div class="cols">
+    <div class="panel">
+      <h3>What killed people</h3>
+      <p class="note">All 407 deaths across 22 Twin Fangs pulls.</p>
+      <div class="bars" id="abBars"></div>
+    </div>
+    <div class="panel">
+      <h3>Died before the wipe</h3>
+      <p class="note">Deaths more than 5 seconds before the 10th death of the pull, across 22 pulls. These cost the raid a player before the big moment.</p>
+      <div class="bars" id="earlyBars"></div>
+    </div>
+  </div>
+</section>
+
+<section id="players">
+  <h2>Player performance</h2>
+  <p>Kill numbers come from the Sszorak kill and its Warcraft Logs parse. Twin Fangs numbers are averages over 22 wipes, weighted by pull length; wipe parses are left out because they compare short pulls with full kills. Healers show healing per second, everyone else damage per second.</p>
+  <div class="filters" role="group" aria-label="Filter by role">
+    <button type="button" id="f-all" data-role="all" aria-pressed="true">Everyone</button>
+    <button type="button" id="f-dps" data-role="dps" aria-pressed="false">Damage</button>
+    <button type="button" id="f-heal" data-role="heal" aria-pressed="false">Healers</button>
+    <button type="button" id="f-tank" data-role="tank" aria-pressed="false">Tanks</button>
+  </div>
+  <div class="table-box">
+    <table class="players" id="playerTable">
+      <thead><tr>
+        <th><button type="button" data-k="name">Player</button></th>
+        <th class="num"><button type="button" data-k="kv">Sszorak kill<br>DPS / HPS</button></th>
+        <th class="num"><button type="button" data-k="kp">Kill parse</button></th>
+        <th class="num"><button type="button" data-k="tv">Twin Fangs avg<br>DPS / HPS</button></th>
+        <th class="num"><button type="button" data-k="te">Twin Fangs<br>early deaths</button></th>
+        <th class="num"><button type="button" data-k="se">Sszorak<br>early deaths</button></th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="note">Numbers are in thousands. A death on the kill pull lowers that player's kill DPS and parse, so check the red note before reading too much into a low number.</p>
+</section>
+
+<section id="next">
+  <h2>What to work on next week</h2>
+  <ol class="todo">
+    <li><div><strong>Lock in the first Visceral Burst.</strong> The raid cleared it 9 of the last 12 pulls but lost pulls 17 and 21 to it again. Whatever changed around pull 12 should be written down and called the same way every pull.</div></li>
+    <li><div><strong>Plan the second Burst at 1:48.</strong> Seven of the last 12 pulls died there with most of the raid alive. It is now the main wall between the raid and new parts of the fight.</div></li>
+    <li><div><strong>Stop losing people to Caustic Globule before the Burst.</strong> It killed players early in pulls 1, 3, 12, 13, 16 and 18, and it ended pulls 2, 12 and 19 outright.</div></li>
+    <li><div><strong>Learn Vile Flood.</strong> The raid only saw it once, on the 63% pull, where it killed six players between 2:20 and 2:33. It will matter as soon as the second Burst is handled.</div></li>
+    <li><div><strong>Cut the early deaths.</strong> Vilkas died before the wipe 7 times on Twin Fangs and also died on the Sszorak kill. Smolp, Bigchomper and Anchorhowl each had 4 early deaths.</div></li>
+  </ol>
+</section>
+
+<section id="method" class="method">
+  <h2>How this was measured</h2>
+  <p>Data comes from the public Warcraft Logs report <a href="https://www.warcraftlogs.com/reports/hN9nrRaFPX8Mq1Cw" target="_blank" rel="noopener">hN9nrRaFPX8Mq1Cw</a>: the damage done, healing and deaths tables for each of the 34 boss pulls. The wipe moment of a pull is when its 10th player died. "Ended by" and the dot colors use the ability behind most deaths within 4 seconds of that moment. A Visceral Burst wipe before 1:20 counts as the first Burst and one after counts as the second. Clock times are Warcraft Logs report times. Parses are Warcraft Logs percentiles for the Sszorak kill.</p>
+</section>
+
+<footer>Built from Warcraft Logs data on October 4, 2026.</footer>
+</div>
+
+<script>
+const D = {"pulls": [{"b": "S", "n": 1, "id": 5, "t": "9:16 PM", "dur": 164, "pct": 52.53, "cat": "mut", "deaths": 18, "w": 151}, {"b": "S", "n": 2, "id": 6, "t": "9:21 PM", "dur": 136, "pct": 62.31, "cat": "called", "deaths": 21, "w": 125}, {"b": "S", "n": 3, "id": 7, "t": "9:24 PM", "dur": 163, "pct": 50.43, "cat": "mut", "deaths": 19, "w": 156}, {"b": "S", "n": 4, "id": 8, "t": "9:28 PM", "dur": 127, "pct": 63.78, "cat": "called", "deaths": 20, "w": 116}, {"b": "S", "n": 5, "id": 9, "t": "9:31 PM", "dur": 292, "pct": 15.78, "cat": "mut", "deaths": 20, "w": 279}, {"b": "S", "n": 6, "id": 10, "t": "9:40 PM", "dur": 183, "pct": 48.95, "cat": "called", "deaths": 20, "w": 174}, {"b": "S", "n": 7, "id": 11, "t": "9:43 PM", "dur": 44, "pct": 83.08, "cat": "surge", "deaths": 17, "w": 40}, {"b": "S", "n": 8, "id": 12, "t": "9:46 PM", "dur": 56, "pct": 81.66, "cat": "called", "deaths": 18, "w": 49}, {"b": "S", "n": 9, "id": 13, "t": "9:48 PM", "dur": 87, "pct": 72.82, "cat": "surge", "deaths": 18, "w": 81}, {"b": "S", "n": 10, "id": 14, "t": "9:51 PM", "dur": 208, "pct": 46.13, "cat": "viru", "deaths": 20, "w": 199}, {"b": "S", "n": 11, "id": 15, "t": "9:56 PM", "dur": 357, "pct": 0.01, "cat": "kill", "deaths": 3, "w": null}, {"b": "T", "n": 1, "id": 19, "t": "10:44 PM", "dur": 62, "pct": 83.39, "cat": "b1", "deaths": 19, "w": 49}, {"b": "T", "n": 2, "id": 20, "t": "10:47 PM", "dur": 94, "pct": 76.09, "cat": "glob", "deaths": 18, "w": 85}, {"b": "T", "n": 3, "id": 21, "t": "10:50 PM", "dur": 63, "pct": 82.1, "cat": "b1", "deaths": 19, "w": 52}, {"b": "T", "n": 4, "id": 22, "t": "10:54 PM", "dur": 57, "pct": 82.82, "cat": "b1", "deaths": 18, "w": 50}, {"b": "T", "n": 5, "id": 23, "t": "10:57 PM", "dur": 62, "pct": 82.75, "cat": "b1", "deaths": 18, "w": 49}, {"b": "T", "n": 6, "id": 24, "t": "11:01 PM", "dur": 53, "pct": 82.98, "cat": "b1", "deaths": 18, "w": 42}, {"b": "T", "n": 7, "id": 25, "t": "11:03 PM", "dur": 62, "pct": 82.75, "cat": "b1", "deaths": 18, "w": 53}, {"b": "T", "n": 8, "id": 26, "t": "11:13 PM", "dur": 61, "pct": 81.77, "cat": "b1", "deaths": 18, "w": 49}, {"b": "T", "n": 9, "id": 27, "t": "11:15 PM", "dur": 65, "pct": 80.68, "cat": "feast", "deaths": 18, "w": 63}, {"b": "T", "n": 10, "id": 28, "t": "11:18 PM", "dur": 57, "pct": 83.01, "cat": "b1", "deaths": 18, "w": 49}, {"b": "T", "n": 11, "id": 29, "t": "11:19 PM", "dur": 56, "pct": 86.19, "cat": "b1", "deaths": 19, "w": 44}, {"b": "T", "n": 12, "id": 30, "t": "11:22 PM", "dur": 92, "pct": 74.48, "cat": "glob", "deaths": 18, "w": 86}, {"b": "T", "n": 13, "id": 31, "t": "11:25 PM", "dur": 121, "pct": 70.16, "cat": "b2", "deaths": 19, "w": 109}, {"b": "T", "n": 14, "id": 32, "t": "11:29 PM", "dur": 25, "pct": 99.94, "cat": "reset", "deaths": 18, "w": 21}, {"b": "T", "n": 15, "id": 33, "t": "11:34 PM", "dur": 127, "pct": 71.64, "cat": "b2", "deaths": 20, "w": 110}, {"b": "T", "n": 16, "id": 34, "t": "11:37 PM", "dur": 118, "pct": 69.7, "cat": "b2", "deaths": 19, "w": 110}, {"b": "T", "n": 17, "id": 35, "t": "11:40 PM", "dur": 58, "pct": 82.37, "cat": "b1", "deaths": 18, "w": 46}, {"b": "T", "n": 18, "id": 36, "t": "11:42 PM", "dur": 118, "pct": 71.16, "cat": "b2", "deaths": 19, "w": 108}, {"b": "T", "n": 19, "id": 37, "t": "11:47 PM", "dur": 165, "pct": 63.19, "cat": "flood", "deaths": 18, "w": 162}, {"b": "T", "n": 20, "id": 38, "t": "11:52 PM", "dur": 121, "pct": 69.45, "cat": "b2", "deaths": 20, "w": 112}, {"b": "T", "n": 21, "id": 39, "t": "11:55 PM", "dur": 63, "pct": 80.49, "cat": "b1", "deaths": 18, "w": 55}, {"b": "T", "n": 22, "id": 40, "t": "11:57 PM", "dur": 120, "pct": 69.01, "cat": "b2", "deaths": 18, "w": 109}, {"b": "T", "n": 23, "id": 41, "t": "12:00 AM", "dur": 120, "pct": 70.89, "cat": "b2", "deaths": 19, "w": 111}], "players": [{"name": "Ovidk", "spec": "Blood Death Knight", "role": "tank", "cls": "dk", "kv": 87.6, "kp": 43, "kdeath": null, "tv": null, "te": null, "se": 0, "tn": 0}, {"name": "Ovipal", "spec": "Protection Paladin", "role": "tank", "cls": "pal", "kv": null, "kp": null, "kdeath": null, "tv": 83.3, "te": 1, "se": null, "tn": 22}, {"name": "Shivreign", "spec": "Protection Warrior", "role": "tank", "cls": "war", "kv": 102.6, "kp": 60, "kdeath": null, "tv": 150.8, "te": 0, "se": 0, "tn": 22}, {"name": "Huudaevoker", "spec": "Preservation Evoker", "role": "heal", "cls": "evo", "kv": 310.3, "kp": 4, "kdeath": null, "tv": 360.6, "te": 2, "se": 0, "tn": 22}, {"name": "Tequilalight", "spec": "Holy Priest", "role": "heal", "cls": "pri", "kv": 405.5, "kp": 81, "kdeath": null, "tv": 401.1, "te": 0, "se": 0, "tn": 22}, {"name": "Panburgler", "spec": "Holy Priest", "role": "heal", "cls": "pri", "kv": 380.5, "kp": 51, "kdeath": null, "tv": 416.5, "te": 0, "se": 0, "tn": 22}, {"name": "Anchorhowl", "spec": "Holy Paladin", "role": "heal", "cls": "pal", "kv": 329.1, "kp": 24, "kdeath": null, "tv": 271.2, "te": 4, "se": 3, "tn": 22}, {"name": "Smolp", "spec": "Windwalker Monk", "role": "dps", "cls": "monk", "kv": 169.6, "kp": 14, "kdeath": "4:50", "tv": 318.4, "te": 4, "se": 2, "tn": 22}, {"name": "Enzyte", "spec": "Enhancement Shaman", "role": "dps", "cls": "sham", "kv": 196.3, "kp": 64, "kdeath": null, "tv": 275.5, "te": 1, "se": 3, "tn": 22}, {"name": "Dabbzy", "spec": "Rogue", "role": "dps", "cls": "rog", "kv": 238.6, "kp": 93, "kdeath": null, "tv": 300.7, "te": 1, "se": 0, "tn": 22}, {"name": "Aarragorn", "spec": "Fury Warrior", "role": "dps", "cls": "war", "kv": 214.7, "kp": 85, "kdeath": null, "tv": 256.9, "te": 1, "se": 0, "tn": 22}, {"name": "Jgoosetotems", "spec": "Elemental Shaman", "role": "dps", "cls": "sham", "kv": 221.4, "kp": 95, "kdeath": null, "tv": 297.8, "te": 2, "se": 2, "tn": 22}, {"name": "Ghdej", "spec": "Balance Druid", "role": "dps", "cls": "dru", "kv": 195.1, "kp": 68, "kdeath": "3:17", "tv": 311.3, "te": 1, "se": 3, "tn": 22}, {"name": "Ravesngraves", "spec": "Unholy Death Knight", "role": "dps", "cls": "dk", "kv": 243.2, "kp": 78, "kdeath": null, "tv": 273.9, "te": 3, "se": 0, "tn": 22}, {"name": "Vilkas", "spec": "Marksmanship Hunter", "role": "dps", "cls": "hun", "kv": 151.5, "kp": 4, "kdeath": "3:29", "tv": 267.4, "te": 7, "se": 3, "tn": 22}, {"name": "Plzholdme", "spec": "Arcane Mage", "role": "dps", "cls": "mage", "kv": 199.0, "kp": 77, "kdeath": null, "tv": 268.3, "te": 1, "se": 0, "tn": 22}, {"name": "Hated", "spec": "Retribution Paladin", "role": "dps", "cls": "pal", "kv": 222.4, "kp": 77, "kdeath": null, "tv": 341.1, "te": 2, "se": 0, "tn": 22}, {"name": "Bigchomper", "spec": "Devastation Evoker", "role": "dps", "cls": "evo", "kv": 202.2, "kp": 92, "kdeath": null, "tv": 370.4, "te": 4, "se": 0, "tn": 22}, {"name": "Evdh", "spec": "Devourer Demon Hunter", "role": "dps", "cls": "dh", "kv": 186.4, "kp": 34, "kdeath": null, "tv": 220.0, "te": 3, "se": 1, "tn": 22}, {"name": "Scrúblock", "spec": "Warlock", "role": "dps", "cls": "lock", "kv": 122.5, "kp": 10, "kdeath": null, "tv": 290.1, "te": 0, "se": 3, "tn": 22}, {"name": "Kirillas", "spec": "Arms Warrior", "role": "dps", "cls": "war", "kv": 204.1, "kp": 58, "kdeath": null, "tv": 328.6, "te": 3, "se": 2, "tn": 22}], "tfab": [["Visceral Burst", 186], ["Caustic Globule", 69], ["Eternal Venom", 32], ["Stir the Depths", 32], ["Ravenous Feast", 24], ["Toxic Fumes", 15], ["Stone Breaker", 13], ["Corrosive Spit", 12], ["Coiling Ichor", 11], ["Vile Flood", 6]], "tftot": 407};
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const mmss = s => Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+const CAT = {
+  kill: 'Kill', surge: 'Venomous Surge', viru: 'Virulence', mut: 'Mutilate / Mutilated Gash', called: 'No killing blow (called wipe)',
+  b1: 'First Visceral Burst', b2: 'Second Visceral Burst', glob: 'Caustic Globule', feast: 'Ravenous Feast', flood: 'Vile Flood, then Caustic Globule', reset: 'Reset'
+};
+const BOSS = { S: 'Sszorak', T: 'The Twin Fangs' };
+
+function tooltip(box) {
+  const t = document.createElement('div'); t.className = 'tip'; t.hidden = true; box.appendChild(t);
+  return {
+    show(html, x, y) { t.innerHTML = html; t.hidden = false; const w = box.clientWidth; t.style.left = Math.min(Math.max(x, 110), w - 110) + 'px'; t.style.top = y + 'px'; },
+    hide() { t.hidden = true; }
+  };
+}
+
+// Pull chart: one bar per pull, boss HP remaining.
+(function pullChart() {
+  const box = document.getElementById('pullChart');
+  const P = D.pulls, W = 920, H = 260, m = { l: 40, r: 8, t: 26, b: 34 }, gap = 18;
+  const n = P.length, iw = W - m.l - m.r - gap, bw = iw / n;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Boss health remaining at the end of each of 34 pulls' }, box);
+  const y = v => m.t + (H - m.t - m.b) * (1 - v / 100);
+  [0, 25, 50, 75, 100].forEach(v => {
+    el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: v ? 'var(--line)' : 'var(--axis)', 'stroke-width': 1 }, svg);
+    el('text', { x: m.l - 6, y: y(v) + 4, 'text-anchor': 'end' }, svg).textContent = v + '%';
+  });
+  const tip = tooltip(box);
+  let firstT = P.findIndex(p => p.b === 'T');
+  P.forEach((p, i) => {
+    const x = m.l + i * bw + (i >= firstT ? gap : 0);
+    const v = p.cat === 'kill' ? 0 : p.pct;
+    const h = Math.max(y(0) - y(v), 0);
+    const kill = p.cat === 'kill';
+    const r = el('rect', { x: x + 1, y: kill ? y(0) - 4 : y(v), width: bw - 2, height: kill ? 4 : h, rx: 2, fill: kill ? 'var(--good)' : p.cat === 'reset' ? 'var(--other)' : 'var(--accent)' }, svg);
+    if (kill) el('text', { x: x + bw / 2, y: y(0) - 10, 'text-anchor': 'middle', class: 'lbl-strong' }, svg).textContent = 'Kill';
+    if (p.b === 'T' && p.n === 19) el('text', { x: x + bw / 2, y: y(v) - 6, 'text-anchor': 'middle', class: 'lbl-strong' }, svg).textContent = '63%';
+    if (p.b === 'S' && p.n === 5) el('text', { x: x + bw / 2, y: y(v) - 6, 'text-anchor': 'middle', class: 'lbl-strong' }, svg).textContent = '16%';
+    if (p.n % 5 === 0 || p.n === 1) el('text', { x: x + bw / 2, y: H - m.b + 15, 'text-anchor': 'middle' }, svg).textContent = p.n;
+    const hit = el('rect', { x, y: m.t, width: bw, height: H - m.t - m.b, fill: 'transparent' }, svg);
+    const show = () => {
+      const bb = box.getBoundingClientRect(), sb = svg.getBoundingClientRect(), k = sb.width / W;
+      r.setAttribute('opacity', 0.75);
+      tip.show(`<b>${BOSS[p.b]} pull ${p.n}</b><br>${p.t} · ${mmss(p.dur)}<br>${kill ? 'Killed' : p.pct.toFixed(1) + '% left'}<br>${CAT[p.cat]}`, (x + bw / 2) * k + sb.left - bb.left, (kill ? y(0) - 4 : y(v)) * k + sb.top - bb.top);
+    };
+    const hide = () => { r.setAttribute('opacity', 1); tip.hide(); };
+    hit.addEventListener('mouseenter', show); hit.addEventListener('mouseleave', hide);
+    hit.addEventListener('touchstart', show, { passive: true });
+  });
+  const sEnd = m.l + firstT * bw, tStart = sEnd + gap;
+  el('text', { x: m.l, y: 12, class: 'lbl-strong' }, svg).textContent = 'SSZORAK · 11 PULLS';
+  el('text', { x: tStart, y: 12, class: 'lbl-strong' }, svg).textContent = 'THE TWIN FANGS · 23 PULLS';
+  el('text', { x: m.l + (W - m.l - m.r) / 2, y: H - 4, 'text-anchor': 'middle' }, svg).textContent = 'Pull number';
+})();
+
+// Sszorak wipe table.
+(function sszTable() {
+  const tb = document.querySelector('#sszTable tbody');
+  D.pulls.filter(p => p.b === 'S').forEach(p => {
+    const tr = document.createElement('tr'); if (p.cat === 'kill') tr.className = 'k';
+    tr.innerHTML = `<td class="num">${p.n}</td><td>${p.t}</td><td class="num">${mmss(p.dur)}</td><td class="num">${p.cat === 'kill' ? '0%' : p.pct.toFixed(1) + '%'}</td><td><span class="chip${p.cat === 'kill' ? ' k' : ''}">${CAT[p.cat]}</span></td>`;
+    tb.appendChild(tr);
+  });
+})();
+
+// Twin Fangs scatter: wipe moment vs boss HP.
+(function tfChart() {
+  const box = document.getElementById('tfChart');
+  const P = D.pulls.filter(p => p.b === 'T' && p.cat !== 'reset');
+  const W = 920, H = 320, m = { l: 46, r: 16, t: 16, b: 40 };
+  const xMax = 180, yMin = 60, yMax = 90;
+  const x = s => m.l + (W - m.l - m.r) * s / xMax;
+  const y = v => m.t + (H - m.t - m.b) * (yMax - v) / (yMax - yMin);
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Twin Fangs wipes by time of the 10th death and boss health' }, box);
+  [[40, 56, 'First Burst'], [106, 114, 'Second Burst']].forEach(([a, b, t]) => {
+    el('rect', { x: x(a), y: m.t, width: x(b) - x(a), height: H - m.t - m.b, fill: 'var(--burst-band)' }, svg);
+    el('text', { x: (x(a) + x(b)) / 2, y: H - m.b - 8, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = t;
+  });
+  for (let v = yMin; v <= yMax; v += 5) {
+    el('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: 'var(--line)' }, svg);
+    el('text', { x: m.l - 6, y: y(v) + 4, 'text-anchor': 'end' }, svg).textContent = v + '%';
+  }
+  for (let s = 0; s <= xMax; s += 30) {
+    el('line', { x1: x(s), x2: x(s), y1: H - m.b, y2: H - m.b + 4, stroke: 'var(--axis)' }, svg);
+    el('text', { x: x(s), y: H - m.b + 17, 'text-anchor': 'middle' }, svg).textContent = mmss(s);
+  }
+  el('line', { x1: m.l, x2: W - m.r, y1: H - m.b, y2: H - m.b, stroke: 'var(--axis)' }, svg);
+  el('text', { x: m.l + (W - m.l - m.r) / 2, y: H - 4, 'text-anchor': 'middle' }, svg).textContent = 'Time of the 10th death';
+  el('text', { x: 12, y: m.t + (H - m.t - m.b) / 2, 'text-anchor': 'middle', transform: `rotate(-90 12 ${m.t + (H - m.t - m.b) / 2})` }, svg).textContent = 'Boss HP at wipe';
+  const tip = tooltip(box);
+  const col = c => (c === 'b1' || c === 'b2') ? 'var(--burst)' : (c === 'glob') ? 'var(--glob)' : 'var(--other)';
+  P.forEach(p => {
+    const cx = x(p.w), cy = y(p.pct);
+    const dot = el('circle', { cx, cy, r: 6, fill: col(p.cat), stroke: 'var(--surface)', 'stroke-width': 2 }, svg);
+    if (p.n === 19 || p.n === 9 || p.n === 2) el('text', { x: cx + 10, y: cy + 4, class: 'lbl' }, svg).textContent = 'Pull ' + p.n + (p.n === 19 ? ' · best' : '');
+    const hit = el('circle', { cx, cy, r: 13, fill: 'transparent' }, svg);
+    const show = () => {
+      const bb = box.getBoundingClientRect(), sb = svg.getBoundingClientRect(), k = sb.width / W;
+      dot.setAttribute('r', 8);
+      tip.show(`<b>Pull ${p.n}</b> · ${p.t}<br>Wipe at ${mmss(p.w)}, boss ${p.pct.toFixed(1)}%<br>${CAT[p.cat]}`, cx * k + sb.left - bb.left, cy * k + sb.top - bb.top);
+    };
+    const hide = () => { dot.setAttribute('r', 6); tip.hide(); };
+    hit.addEventListener('mouseenter', show); hit.addEventListener('mouseleave', hide);
+    hit.addEventListener('touchstart', show, { passive: true });
+  });
+})();
+
+function bars(id, rows, cls) {
+  const box = document.getElementById(id), max = Math.max(...rows.map(r => r[1]));
+  rows.forEach(([name, v]) => {
+    const row = document.createElement('div'); row.className = 'bar-row';
+    row.innerHTML = `<span class="name" title="${name}">${name}</span><div class="track"><div class="fill ${cls(name)}" style="width:${(v / max * 100).toFixed(1)}%"></div></div><span class="val">${v}</span>`;
+    box.appendChild(row);
+  });
+}
+bars('abBars', D.tfab.slice(0, 8), n => n === 'Visceral Burst' ? 'burst' : n === 'Caustic Globule' ? 'glob' : '');
+bars('earlyBars', D.players.filter(p => p.te >= 2).sort((a, b) => b.te - a.te).map(p => [p.name, p.te]), () => 'acc');
+
+// Player table.
+(function players() {
+  const tb = document.querySelector('#playerTable tbody');
+  let role = 'all', key = 'kv', dir = -1;
+  const k = v => v == null ? '<span class="dash">–</span>' : Math.round(v).toLocaleString('en-US') + 'k';
+  const parse = v => v == null ? '<span class="dash">–</span>' : `<span class="parse ${v >= 75 ? 'p-hi' : v < 25 ? 'p-lo' : 'p-mid'}">${v}</span>`;
+  const cnt = v => v == null ? '<span class="dash">–</span>' : v;
+  function render() {
+    const rows = D.players.filter(p => role === 'all' || p.role === role).slice().sort((a, b) => {
+      const av = a[key], bv = b[key];
+      if (key === 'name') return dir * a.name.localeCompare(b.name);
+      if (av == null) return 1; if (bv == null) return -1;
+      return dir * (av - bv);
+    });
+    tb.innerHTML = rows.map(p => `<tr>
+      <td class="who"><b>${p.name}</b><span>${p.spec}</span></td>
+      <td class="num">${k(p.kv)}${p.kdeath ? `<span class="died">died at ${p.kdeath}</span>` : ''}</td>
+      <td class="num">${parse(p.kp)}</td>
+      <td class="num">${k(p.tv)}</td>
+      <td class="num">${cnt(p.te)}</td>
+      <td class="num">${cnt(p.se)}</td></tr>`).join('');
+    document.querySelectorAll('#playerTable th button').forEach(b => { if (b.dataset.k === key) b.dataset.dir = dir < 0 ? '▼' : '▲'; else delete b.dataset.dir; });
+  }
+  document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+    role = b.dataset.role;
+    document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    render();
+  }));
+  document.querySelectorAll('#playerTable th button').forEach(b => b.addEventListener('click', () => {
+    if (key === b.dataset.k) dir = -dir; else { key = b.dataset.k; dir = key === 'name' ? 1 : -1; }
+    render();
+  }));
+  render();
+})();
+</script>
+</body>
+</html>
