@@ -336,7 +336,7 @@ ol.keys .kn{width:22px;height:22px;border-radius:50%;background:var(--gold);colo
     <div class="eyebrow">Collector's archive · Michi Method · v1 Oct 2026</div>
     <h1>The Binder Archive</h1>
     <p>A field guide for turning a 9-pocket binder into a Pokémon art book: the method, per-Pokémon design languages, what to buy, a label maker, and how to wire sound and NFC into the cover. Click through the chapters; each one stands on its own.</p>
-    <div class="meta-row"><span>10 EXAMPLE SPREADS</span><span>10 SPECIMENS</span><span>45+ SOURCES</span><span>4 LABEL STYLES</span><span>2 AUDIO BUILDS</span></div>
+    <div class="meta-row"><span>12 EXAMPLE SPREADS</span><span>10 SPECIMENS</span><span>45+ SOURCES</span><span>4 LABEL STYLES</span><span>2 AUDIO BUILDS</span></div>
   </div>
   <div class="hanko" aria-hidden="true">標本</div>
 </header>
@@ -411,7 +411,7 @@ ol.keys .kn{width:22px;height:22px;border-radius:50%;background:var(--gold);colo
 
 <!-- MOCKUPS -->
 <section class="ch" id="binder" data-title="Your binder" hidden>
-  <div class="ch-head"><div class="eyebrow">Chapter II</div><h2>Your binder, spread by spread</h2><p>A walk-through of a Gallade master set in English and Japanese, then a few spreads from the rest of the collection, using everything in this guide. Gold dots are keyed to the notes under each spread. Drag across a spread or use the tilt slider to see the holo and dichroic pieces catch the light. Cards are drawn as stand-ins, labelled with real set numbers.</p></div>
+  <div class="ch-head"><div class="eyebrow">Chapter II</div><h2>Your binder, spread by spread</h2><p>A walk-through of a Gallade master set in English and Japanese, then a few spreads from the rest of the collection, using everything in this guide. Gold dots are keyed to the notes under each spread. Drag across a spread or use the tilt slider to see the holo and dichroic pieces catch the light. Cards are drawn as stand-ins, labelled with real set numbers. The Japanese pages come from your checklist: <b id="clCount"></b> owned so far.</p></div>
   <div class="sp-nav" id="spNav" role="group" aria-label="Spreads"></div>
   <div class="sp-head" id="spHead"></div>
   <div class="spread" id="spread"></div>
@@ -1041,6 +1041,31 @@ const rcpt=(o={})=>({k:"rcpt",...o});
 const want=(a,b,o={})=>({k:"want",a,b,...o});
 const glow=(o={})=>({k:"glow",...o});
 const fill=(sc,marks={})=>Array.from({length:9},(_,i)=>art(sc,marks[i]||{}));
+// Japanese checklist, copied from the collector's own sheet: [name, release, edition, owned, finish]
+const JPCL=[
+ ["エルレイド","DP3","Unl",1,"holo"],["エルレイド","DP3","1st",0,"holo"],
+ ["エルレイド","Palkia LV.X deck","Unl",0,"plain"],["エルレイド","Palkia LV.X deck","1st",1,"plain"],
+ ["エルレイド","BW7","Unl",1,"holo"],["エルレイド","BW7","1st",0,"holo"],
+ ["エルレイド","EBB","Unl",0,"plain"],["エルレイド","EBB","1st",1,"plain"],
+ ["エルレイド","EBB mirror","Unl",0,"rev"],["エルレイド","EBB mirror","1st",0,"rev"],
+ ["エルレイド","XY8-Br","Unl",0,"holo"],["エルレイド","XY8-Br","1st",1,"holo"],
+ ["エルレイド","XY-P 270","",1,"holo"],["エルレイド","SM11b 027/049","",1,"holo"],["エルレイド","SM11b 057/049","",1,"fa"],
+ ["エルレイド","S6H","",1,"plain"],["エルレイド","S8b","",1,"plain"],["エルレイド","S8b mirror","",0,"rev"],
+ ["エルレイド","SI Start Deck 100","",0,"plain"],["エルレイド","S9a","",1,"holo"],
+ ["エルレイドE4","SP E4 kit","Unl",1,"plain"],["エルレイドE4","SP E4 kit","1st",1,"plain"],
+ ["エルレイドE4 LV.X","SP E4 kit","Unl",1,"holo"],["エルレイドE4 LV.X","SP E4 kit","1st",1,"holo"],
+ ["エルレイドEX","XY-P 084","",0,"holo"],
+ ["エルレイドEX","XY6 030/078","Unl",0,"holo"],["エルレイドEX","XY6 030/078","1st",1,"holo"],
+ ["エルレイドEX","XY6 030/078 ✱","Unl",1,"holo"],["エルレイドEX","XY6 030/078 ✱","1st",0,"holo"],
+ ["Spirit Link","XY6","Unl",0,"plain"],["Spirit Link","XY6","1st",0,"plain"],
+ ["MエルレイドEX","XY6 031/078","Unl",0,"holo"],["MエルレイドEX","XY6 031/078","1st",0,"holo"],
+ ["MエルレイドEX","XY6 081/078","Unl",0,"fa"],["MエルレイドEX","XY6 081/078","1st",0,"fa"],
+ ["エルレイドV","S10a 040/071","",1,"holo"],["エルレイドV","S10a 081/071","",1,"fa"],["エルレイドV","S10a 089/071","",1,"fa"],
+ ["メガエルレイドex","M-P 068","",0,"holo"],["メガエルレイドex","M-P 137","",0,"holo"]];
+const jc=(i,o={})=>{const [n,set,ed,own,fx]=JPCL[i];
+  return own?jcard(n,set,{fx,ty:n==="Spirit Link"?"item":"psy",lang:"JP"+(ed?" "+ed:""),cl:1,own:1,...o})
+            :want(n,set+(ed?" · "+(ed==="1st"?"1st Edition":"Unlimited"):""),{cl:1,own:0,...o});};
+const tg=(code,name,o={})=>lab("tg",code,name,"Unl · 1st",o);
 
 const SPREADS=[
  {nav:"Cover",e:"Front cover",t:"The Blade Archive",cover:true,
@@ -1054,9 +1079,9 @@ const SPREADS=[
  {nav:"Index",e:"Inside cover · page i",t:"Colophon and index",
   d:"The first thing anyone sees: what the archive is and where everything lives.",
   left:{inside:true},
-  right:[idx("I","Gallade","English master set","pp. 2–9"),idx("II","エルレイド","Japanese master set","p. 10"),idx("III","Provenance","Wrappers, tickets, receipts","p. 11"),
-   idx("IV","Kirlia's paths","Gardevoir and Gallade","pp. 12–13"),idx("V","Umbreon","Observatory","pp. 14–15"),idx("VI","Charizard","Showa matchbox","pp. 16–17"),
-   idx("VII","Rayquaza","Atmosphere","pp. 18–19"),idx("VIII","Lugia","Sea chart","pp. 20–21"),{...idx("IX","Reserved","Future pulls","—"),m:3}],
+  right:[idx("I","Gallade","English master set","pp. 2–9"),idx("II","エルレイド","Japanese master set","pp. 10–14"),idx("III","Provenance","Wrappers, tickets, receipts","p. 15"),
+   idx("IV","Kirlia's paths","Gardevoir and Gallade","pp. 16–17"),idx("V","Umbreon","Observatory","pp. 18–19"),idx("VI","Charizard","Showa matchbox","pp. 20–21"),
+   idx("VII","Rayquaza","Atmosphere","pp. 22–23"),idx("VIII","Lugia","Sea chart","pp. 24–25"),{...idx("IX","Reserved","Future pulls","—"),m:3}],
   keys:["Colophon printed on cardstock and glued to the cover lining. It also hides the electronics bay.",
    "NFC tag behind the colophon: tap to open the binder's master playlist.",
    "Index placards, one per pocket, in the placard style used on every spread. Roman numerals are the section numbers."]},
@@ -1071,18 +1096,18 @@ const SPREADS=[
    "Section placard in the house style.",
    "NFC tag behind this art tile: tap to open the Gallade playlist."]},
  {nav:"XY mirror",e:"Section I · pp. 4–5",t:"Mirror spread: Roaring Skies / Emerald Break",
-  d:"English on the left page, Japanese on the right, each card in the same pocket position on both pages. This is the core layout for an EN + JP master set.",
-  left:[card("Gallade-EX","ROS 34/108",{fx:"holo",m:1}),card("M Gallade-EX","ROS 35/108",{fx:"holo"}),lab("st","ROS","Roaring Skies","2015",{m:2}),
-   card("Gallade-EX","ROS 99/108",{fx:"fa",m:3}),card("M Gallade-EX","ROS 100/108",{fx:"fa"}),card("Gallade Spirit Link","ROS 83/108",{ty:"item"}),
+  d:"English on the left page, Japanese on the right, matched row by row: row 1 is Gallade EX, row 2 is Mega Gallade EX and Spirit Link, row 3 is the promos. The Japanese side comes from your checklist.",
+  left:[card("Gallade-EX","ROS 34/108",{fx:"holo",m:1}),card("Gallade-EX","ROS 99/108",{fx:"fa",m:3}),lab("st","ROS","Roaring Skies","2015",{m:2}),
+   card("M Gallade-EX","ROS 35/108",{fx:"holo"}),card("M Gallade-EX","ROS 100/108",{fx:"fa"}),card("Gallade Spirit Link","ROS 83/108",{ty:"item"}),
    card("Gallade-EX","XY45 promo",{fx:"holo"}),blk(),wrap("ROARING SKIES","#1F7A54",{m:4})],
-  right:[jcard("エルレイドEX","XY6 030/078",{fx:"holo"}),jcard("MエルレイドEX","XY6 031/078",{fx:"holo"}),lab("st","XY6","Emerald Break","2015"),
-   jcard("エルレイドEX","XY6 080/078",{fx:"fa"}),jcard("MエルレイドEX","XY6 081/078",{fx:"fa"}),wrap("エメラルドブレイク","#1D6B4C"),
-   want("Japanese promo","Slot held until found",{m:5}),blk(),stamp()],
-  keys:["Mirror rule: English on the left, Japanese on the right, same pocket position. Flip back and forth to compare the two printings.",
+  right:[jc(25),jc(26),lab("st","XY6","Emerald Break","2015"),
+   jc(31,{m:5}),jc(32),jc(29),
+   jc(24),jc(30),wrap("エメラルドブレイク","#1D6B4C")],
+  keys:["Mirror rule: English on the left, Japanese on the right, the same card family in the same row. Flip back and forth to compare the printings.",
    "Set plates: steel-style labels with set code, name, and year.",
-   "Full arts get no decoration at all. They're already the loudest thing on the page.",
+   "Full arts get no decoration at all. They're already the loudest thing on the page. On the Japanese side, the middle column holds 1st Editions instead.",
    "Booster wrapper strips: Roaring Skies on the English side, Emerald Break on the Japanese side.",
-   "Reserved slot: a placard holding the place of a card you don't own yet, so the set reads as a work in progress."]},
+   "Reserved slots for the Emerald Break cards your checklist marks as missing, so the set reads as a work in progress."]},
  {nav:"Variants",e:"Section I · pp. 6–7",t:"Variant columns: holo over reverse",
   d:"Dense master-set pages. Each column is one print: the regular card on top, its reverse holo underneath, and a set plate at the bottom. Rising Rivals Gallade E4 and E4 LV.X, POP Series 7 and the Secret Wonders reverse follow the same pattern on the next page.",
   left:[card("Gallade","PLS 61/135",{fx:"holo",m:1}),card("Gallade","LTR 81/113"),card("Gallade","BKT 84/162",{fx:"holo"}),
@@ -1105,22 +1130,33 @@ const SPREADS=[
    "Vellum note laid over an emerald art tile.",
    "Loose dichroic shards in black pockets. Rearrange them whenever you like.",
    "Promo with a gold-on-clear label strip along the top of its outer sleeve."]},
- {nav:"JP + provenance",e:"Sections II–III · pp. 10–11",t:"Japanese prints and provenance",
-  d:"The remaining Japanese Gallade prints on the left. The right page holds the paper trail: where the cards came from.",
-  left:[jcard("エルレイド","DP2 · 2007",{fx:"holo"}),lab("jv","","エルレイド","No.475",{m:1}),jcard("エルレイド","SM11b 027/049",{fx:"holo"}),
-   jcard("エルレイド","S6H 040/070"),blk(),jcard("エルレイド","S9a 034/067"),
-   jcard("エルレイドV","S10a",{fx:"holo"}),stamp({m:2}),want("エルレイド","Next Japanese print",{m:3})],
+ {nav:"JP · DP–BW",e:"Section II · pp. 10–11",t:"Japanese master set: DP to BW",
+  d:"Built from your checklist. Each row is one release: Unlimited on the left, 1st Edition in the middle, a kraft tag on the right. Cards you own show as cards; missing ones show as reserved slots.",
+  left:[jc(0,{m:1}),jc(1,{m:2}),tg("DP3","Shining Darkness",{m:3}),jc(2),jc(3),tg("Deck","Palkia LV.X deck"),jc(20),jc(21),tg("SP kit","Gallade E4")],
+  right:[jc(22),jc(23),tg("SP kit","Gallade E4 LV.X"),jc(4),jc(5),tg("BW7","Plasma Gale"),jc(6),jc(7),tg("EBB","EX Battle Boost")],
+  keys:["Column rule: Unlimited in the left column, 1st Edition in the middle. Every pair lines up, so a missing copy stands out.",
+   "Reserved slot: a copy your checklist marks as not owned yet. Swap in the card when it arrives.",
+   "Kraft tag naming the release. Use the same tag style down the whole Japanese section."]},
+ {nav:"JP · XY",e:"Section II · pp. 12–13",t:"Japanese master set: XY to Sword & Shield",
+  d:"The rest of the XY pairs, then singles in release order once the pairs run out.",
+  left:[jc(8),jc(9),tg("EBB","Mirror holo"),jc(10),jc(11),tg("XY8-Br","Red Flash"),jc(33),jc(34),tg("XY6","M Gallade EX SR")],
+  right:[jc(27,{m:1}),jc(28),tg("XY6","030/078 · 2nd entry"),jc(12,{m:2}),jc(13),jc(14),jc(15),jc(16),jc(17)],
+  keys:["Your checklist lists Gallade EX 030/078 twice, Unlimited and 1st Edition both times. If the second pair is really the 080/078 full art, relabel it.",
+   "Singles fill rows in release order after the pairs: the XY promo, both Dream League cards (including the 057/049 character rare), Silver Lance, and both VMAX Climax prints."]},
+ {nav:"JP · S–M + provenance",e:"Sections II–III · pp. 14–15",t:"Japanese master set end + provenance",
+  d:"The last Japanese prints on the left. The right page holds the paper trail: where the cards came from.",
+  left:[jc(18),jc(19),lab("jv","","エルレイド","No.475",{m:1}),jc(35),jc(36),jc(37,{m:2}),jc(38),jc(39),stamp({m:3})],
   right:[wrap("エメラルドブレイク","#1F7A54",{m:4}),rcpt({m:5}),tix("COLLECT-A-CON","Admit one","CHICAGO · 10.10.26",{m:6}),
    tix("JR 東日本","乗車券","東京 → 新宿",{kp:true}),acc("2026.014","Emerald Break box","Opened 2026"),stamp(),
    art("mist",{vel:"Pulled live on camera. Tap the gold ring for the video."}),blk(),art("mist",{nfc:true,m:7})],
-  keys:["Vertical Japanese tag with a red hanko seal. Japanese pages use this label style throughout.",
+  keys:["Vertical Japanese tag with a red hanko seal, closing out the Japanese section.",
+   "The three Dark Phantasma Gallade V cards together in one row: 040, 081 and 089/071.",
    "Used Japanese postage stamps as colour accents in a spare pocket.",
-   "Reserved slot for the next Japanese print.",
    "Emerald Break booster wrapper, opened flat and cut to pocket size.",
    "Pokémon Center receipt, trimmed to a strip.",
    "Convention ticket stub, placed next to the accession card for the card you bought there.",
    "NFC tag behind the art: tap to open the pack-opening video."]},
- {nav:"Kirlia split",e:"Section IV · pp. 12–13",t:"Kirlia's two paths",
+ {nav:"Kirlia split",e:"Section IV · pp. 16–17",t:"Kirlia's two paths",
   d:"Gardevoir and Gallade both evolve from Kirlia, so the spread splits down the spine: herbarium on one side, blueprint on the other.",
   left:fill("herb",{0:{m:1},4:card("Gardevoir ex","SVI 245/198",{fx:"fa",bd:"s",g:"サ",m:2}),6:lab("pl","Section IV","Gardevoir","Psychic / Fairy",{m:3})}),
   right:fill("blade",{4:card("Gallade","BKT 84/162",{fx:"holo"}),8:lab("st","475","Gallade","Psychic / Fighting",{m:4})}),
@@ -1128,7 +1164,7 @@ const SPREADS=[
    "Gardevoir ex special illustration rare (Scarlet & Violet 245/198), surrounded by its herbarium tiles.",
    "Paper placard on the soft side…",
    "…and a steel plate on the hard side. The two label styles set the two personalities apart."]},
- {nav:"Umbreon",e:"Section V · pp. 14–15",t:"Umbreon observatory",
+ {nav:"Umbreon",e:"Section V · pp. 18–19",t:"Umbreon observatory",
   d:"Navy, gold and moon phases. One of the rest-of-collection spreads, to show how a different theme sits in the same binder.",
   left:[art("night",{m:1}),art("night"),art("night"),blk(),card("Umbreon VMAX","EVS 215/203",{fx:"fa",ty:"dark",g:"ブ",m:2}),blk(),holo(),lab("pl","Section V","Umbreon","Dark · Johto"),holo()],
   right:[art("night"),art("night"),art("night"),glow({m:3}),card("Umbreon ex","PRE 161/131",{fx:"fa",ty:"dark",bd:"s",g:"ブ"}),glow(),blk(),lab("st","197","Umbreon","New moon"),art("night",{nfc:true,m:4})],
@@ -1136,7 +1172,7 @@ const SPREADS=[
    "Umbreon VMAX alternate art (Evolving Skies 215/203).",
    "Umbreon's rings cut from glow-in-the-dark vinyl on black inserts. Turn the lights off.",
    "NFC tag: tap to open a Johto night playlist."]},
- {nav:"Charizard",e:"Section VI · pp. 16–17",t:"Charizard matchbox",
+ {nav:"Charizard",e:"Section VI · pp. 20–21",t:"Charizard matchbox",
   d:"Showa-era matchbox graphics for the most famous card in the hobby, with its Japanese counterpart opposite.",
   left:fill("match",{4:card("Charizard","BS 4/102",{fx:"holo",ty:"fire",g:"リ",m:1}),7:{m:2}}),
   right:[lab("jv","","リザードン","No.006",{m:3}),jcard("リザードン","Base · No.006",{fx:"holo",ty:"fire",g:"リ"}),blk(),wrap("拡張パック","#B5301F",{m:4}),blk(),stamp(),blk(),lab("tg","Base Set · 1999","Charizard","Fire / Flying"),blk()],
@@ -1220,7 +1256,9 @@ function renderSpread(i){
   const s=SPREADS[spI];
   document.getElementById("spNav").innerHTML=SPREADS.map((x,j)=>`<button class="chip" data-i="${j}" aria-pressed="${j===spI}">${esc(x.nav)}</button>`).join("");
   document.getElementById("spNav").querySelectorAll("button").forEach(b=>b.onclick=()=>renderSpread(+b.dataset.i));
-  document.getElementById("spHead").innerHTML=`<div><div class="eyebrow">${esc(s.e)} · ${spI+1} of ${SPREADS.length}</div><h3>${esc(s.t)}</h3></div><p>${esc(s.d)}</p>`;
+  const cl=[...(s.left&&!s.left.inside?s.left:[]),...(s.right||[])].filter(p=>p.cl);
+  const tally=cl.length?` · <span style="color:var(--emerald)">${cl.filter(p=>p.own).length} of ${cl.length} checklist cards owned</span>`:"";
+  document.getElementById("spHead").innerHTML=`<div><div class="eyebrow">${esc(s.e)} · ${spI+1} of ${SPREADS.length}</div><h3>${esc(s.t)}</h3></div><p>${esc(s.d)}${tally}</p>`;
   spEl.classList.toggle("is-cover",!!s.cover);
   spEl.innerHTML=s.cover?`<div class="cover-wrap">${coverSVG()}</div>`:pageHTML(s.left)+pageHTML(s.right);
   document.getElementById("spKeys").innerHTML=s.keys.map((k,j)=>`<li><span class="kn">${j+1}</span><span>${esc(k)}</span></li>`).join("");
@@ -1236,6 +1274,7 @@ document.addEventListener("keydown",e=>{
   if(e.key==="ArrowRight") renderSpread(spI+1);
   if(e.key==="ArrowLeft") renderSpread(spI-1);
 });
+document.getElementById("clCount").textContent=`${JPCL.filter(c=>c[3]).length} of ${JPCL.length}`;
 renderSpread(0); setTilt(.5);
 
 show((location.hash||"#start").slice(1), false);
