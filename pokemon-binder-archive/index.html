@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="robots" content="noindex">
-<meta name="description" content="Michi Method binder guide: per-Pokémon design dossiers, curated sticker and ephemera sources, a printable museum label maker, and audio/NFC cover builds.">
+<meta name="description" content="Michi Method binder guide: example spreads for a Gallade EN/JP master set, per-Pokémon design dossiers, curated sticker and ephemera sources, a printable label maker, and audio/NFC cover builds.">
 <meta name="created" content="2026-10-08">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -222,6 +222,111 @@ pre.code .c{color:#6f7a74}pre.code .k{color:var(--gold)}pre.code .s{color:var(--
 footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.04em}
 @media (max-width:600px){header.top{grid-template-columns:1fr}.hanko{width:70px;height:70px;font-size:22px;order:-1}.kv{grid-template-columns:1fr;gap:2px}.kv dd{margin-bottom:8px}.form{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:no-preference){section.ch{animation:in .25s ease-out}@keyframes in{from{transform:translateY(6px)}to{transform:none}}}
+
+/* ---------- mockup spreads ---------- */
+.sp-nav{display:flex;flex-wrap:wrap;gap:6px}
+.sp-nav .chip .n{font:11px var(--f-m);color:var(--faint)}
+.sp-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;align-items:flex-end}
+.sp-head h3{font-size:clamp(22px,3vw,28px);margin:4px 0 0}
+.sp-head p{color:var(--muted);max-width:62ch;font-size:14px}
+.spread{--tilt:.5;display:grid;grid-template-columns:1fr 1fr;background:#050706;border:1px solid var(--line);border-radius:10px;padding:14px;touch-action:pan-y;user-select:none}
+.spread.is-cover{grid-template-columns:1fr;justify-items:center;padding:24px 14px}
+.cover-wrap{width:min(100%,440px)}
+.cover-wrap svg{display:block;width:100%;height:auto}
+.page{container-type:inline-size;min-width:0;background:#0A0C0B;border-radius:4px}
+.page+.page{border-left:2px solid #000;box-shadow:inset 8px 0 12px -8px rgba(0,0,0,.9)}
+@media (max-width:700px){.spread{grid-template-columns:1fr;gap:12px}.page+.page{border-left:0;box-shadow:none}}
+.pg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5cqw;padding:3.5cqw}
+.pk{position:relative;aspect-ratio:63/88;container-type:inline-size;background:#050606;border-radius:2px;overflow:hidden;max-width:100%}
+.pk::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.08),transparent 38%);pointer-events:none;z-index:4}
+.pk>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mk{position:absolute;top:4%;left:5%;z-index:6;width:clamp(16px,17cqw,22px);height:clamp(16px,17cqw,22px);border-radius:50%;background:var(--gold);color:#121212;font:600 clamp(9px,9cqw,12px)/1 var(--f-m);display:grid;place-items:center;box-shadow:0 0 0 2px #050606}
+.nfc{position:absolute;right:7%;bottom:5%;width:13cqw;height:13cqw;border:1.4cqw solid var(--gold);border-radius:50%;z-index:5;box-shadow:0 0 0 1.6cqw rgba(207,174,98,.22)}
+.vel{position:absolute;inset:9%;z-index:3;background:rgba(236,235,228,.66);backdrop-filter:blur(1.5px);color:#1a1a18;font:500 5.8cqw/1.45 var(--f-m);padding:7cqw 6cqw;border-radius:1cqw}
+/* stand-in cards */
+.cd{position:absolute;inset:4%;border-radius:4.5cqw;padding:4.5cqw;background:var(--bd);box-shadow:0 1px 3px rgba(0,0,0,.7)}
+.b-y{--bd:#E2C044}.b-s{--bd:linear-gradient(135deg,#aeb5bc,#e3e7ea,#9aa2aa)}
+.t-psy{--tb:linear-gradient(160deg,#d8c6e1,#a98fc4);--tw:linear-gradient(150deg,#2c2140,#1F7A54)}
+.t-dark{--tb:linear-gradient(160deg,#6a6e7c,#30333d);--tw:linear-gradient(150deg,#0A0C14,#1B2A4A 70%,#5a4a1e)}
+.t-fire{--tb:linear-gradient(160deg,#f2bd92,#d9774a);--tw:linear-gradient(150deg,#120D0C,#B5301F 70%,#E7782A)}
+.t-item{--tb:linear-gradient(160deg,#e4e8eb,#b9c0c6);--tw:linear-gradient(150deg,#3a4248,#1F7A54)}
+.ci{position:relative;height:100%;border-radius:2.5cqw;background:var(--tb);padding:4cqw;display:flex;flex-direction:column;gap:3cqw;overflow:hidden}
+.ci>*{position:relative;z-index:1}
+.cn{font:700 7.4cqw/1.15 var(--f-b);color:#1a1a18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cw{flex:1;border-radius:1.5cqw;background:var(--tw);display:grid;place-items:center;overflow:hidden;box-shadow:0 0 0 .8cqw rgba(255,255,255,.55)}
+.gl{font:800 34cqw/1 var(--f-d);color:rgba(255,255,255,.2)}
+.cb{display:flex;justify-content:space-between;align-items:center;gap:2cqw;font:500 5.2cqw/1 var(--f-m);color:#1a1a18;white-space:nowrap}
+.cb span:first-child{overflow:hidden;text-overflow:ellipsis}
+.lg{background:#1a1a18;color:#fff;padding:1.2cqw 2cqw;border-radius:1cqw;flex:0 0 auto}
+.holo .cw::after,.rev .ci::before,.fa .ci::after,.wr::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 22%,rgba(255,80,190,.5) 36%,rgba(80,255,210,.5) 50%,rgba(255,230,80,.5) 64%,transparent 78%);background-size:300% 100%;background-position:calc(var(--tilt) * 100%) 0;mix-blend-mode:screen;pointer-events:none}
+.holo .cw{position:relative}
+.rev .ci::before{opacity:.6;z-index:0}
+.fa .ci{background:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 1.2cqw,transparent 1.2cqw 2.6cqw),var(--tw)}
+.fa .ci::after{opacity:.55;z-index:2}
+.fa .cw{background:none;box-shadow:none}
+.fa .cn,.fa .cb{color:#fff}
+.fa .lg{background:#fff;color:#111}
+/* pocket objects */
+.mp{position:absolute;inset:7%;display:flex;flex-direction:column;gap:2.5cqw;padding:7cqw 6cqw;border-radius:1.5cqw;overflow:hidden}
+.mp .e{font:500 5.2cqw/1.25 var(--f-m);letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.mp .t{font:800 12cqw/1.05 var(--f-d)}
+.mp .s{font:500 5.4cqw/1.3 var(--f-m);letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.pl{background:var(--paper);color:var(--paper-ink);justify-content:flex-end}
+.pl .t{border-bottom:.6cqw solid currentColor;padding-bottom:2.5cqw}
+.ix{justify-content:space-between}
+.ix .rn{font:800 24cqw/1 var(--f-d);color:var(--emerald-deep)}
+.ix .pg2{font:500 6cqw var(--f-m);color:#8a6a2a}
+.st{inset:30% 6%;background:linear-gradient(180deg,#2c3236,#1a1e21);color:#d8dde1;border:.5cqw solid #4a5258;justify-content:center;gap:1.5cqw;padding:5cqw}
+.st .t2{font:500 12cqw/1 var(--f-m);color:var(--gold)}
+.st .t{font:500 6.4cqw/1.2 var(--f-m);letter-spacing:.14em;text-transform:uppercase}
+.tg{inset:26% 6%;background:var(--kraft);color:#2b2012;clip-path:polygon(14% 0,100% 0,100% 100%,14% 100%,0 50%);padding-left:17cqw;justify-content:flex-end}
+.tg .t{font-size:10cqw}
+.jv{inset:5% 25%;background:var(--paper);color:var(--paper-ink);align-items:center;border-top:3cqw solid var(--red);padding:5cqw 2cqw;border-radius:0}
+.jv .v{writing-mode:vertical-rl;font:800 13cqw/1 var(--f-d);letter-spacing:.1em}
+.jv .s{font-size:4.6cqw;letter-spacing:0}
+.jv .sl{margin-top:auto;border:.8cqw solid var(--red);color:var(--red);font:800 6cqw/1 var(--f-d);padding:1.5cqw;border-radius:1cqw}
+.ac{background:#f3efe4;color:var(--paper-ink);gap:2.2cqw;justify-content:center}
+.ac .no{font:500 8cqw var(--f-m);color:var(--red)}
+.ac i{display:block;height:.4cqw;background:#c9c2b0}
+.tx{position:absolute;inset:32% 5%;background:#e9dcc0;color:#2b2012;border-radius:1.5cqw;padding:4cqw 4cqw 4cqw 15cqw;display:flex;flex-direction:column;justify-content:center;gap:1.5cqw;transform:rotate(-4deg)}
+.tx::before{content:"";position:absolute;left:10cqw;top:3cqw;bottom:3cqw;border-left:.6cqw dashed #8a7550}
+.tx .e{font:500 5cqw var(--f-m);letter-spacing:.12em}
+.tx .t{font:800 9cqw/1 var(--f-d)}
+.tx .s{font:500 5cqw var(--f-m)}
+.tx.kp{background:#cfe0e8;color:#1b2a3a;transform:rotate(3deg)}
+.tx.kp::before{border-color:#6f8797}
+.stp{position:absolute;width:50%;aspect-ratio:.82;background:var(--sc);border:2.6cqw dotted #050606;display:flex;flex-direction:column;justify-content:space-between;padding:4cqw;color:#f3efe4;font:500 5cqw var(--f-m)}
+.stp b{font:800 14cqw/1 var(--f-d);align-self:flex-end}
+.s1{--sc:#B5301F;top:9%;left:8%;transform:rotate(-6deg)}
+.s2{--sc:#1D6B4C;bottom:10%;right:7%;transform:rotate(5deg)}
+.wr{position:absolute;inset:0;background:repeating-linear-gradient(100deg,var(--wc) 0 10cqw,color-mix(in srgb,var(--wc),#fff 22%) 10cqw 14cqw);display:grid;place-items:center}
+.wr::after{opacity:.5}
+.wr span{writing-mode:vertical-rl;font:800 10cqw var(--f-d);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);letter-spacing:.1em;position:relative;z-index:1}
+.rc{position:absolute;inset:6% 20%;background:#fbfbf7;color:#222;font:500 5cqw/1.5 var(--f-m);padding:6cqw 4cqw;display:flex;flex-direction:column;gap:.8cqw;clip-path:polygon(0 0,100% 0,100% 97%,90% 100%,80% 97%,70% 100%,60% 97%,50% 100%,40% 97%,30% 100%,20% 97%,10% 100%,0 97%)}
+.rc b{font:700 6cqw var(--f-b)}
+.rc i{border-top:.4cqw dashed #999;margin:1.5cqw 0}
+.wn{position:absolute;inset:6%;border:.8cqw dashed #4a5551;border-radius:3cqw;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:2.5cqw;padding:6cqw;color:var(--muted)}
+.wn .e{font:500 5.5cqw var(--f-m);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.wn .t{font:800 10cqw/1.1 var(--f-d);color:var(--ink)}
+.wn .s{font:500 5cqw var(--f-m)}
+/* inside cover */
+.colo{position:relative;aspect-ratio:199/274;margin:3.5cqw;background:#111514;border:1px solid #232a27;border-radius:3px;padding:9cqw 8cqw;display:flex;flex-direction:column;gap:3cqw}
+.colo .ct{font:800 12cqw/1 var(--f-d)}
+.colo .cj{font:600 5.5cqw var(--f-d);color:var(--muted)}
+.colo p{font-size:3.6cqw;color:var(--muted);max-width:34ch}
+.colo dl{display:grid;grid-template-columns:auto 1fr;gap:1.5cqw 4cqw;font:3.2cqw var(--f-m);color:var(--muted);margin:2cqw 0 0}
+.colo dt{color:var(--gold)}
+.colo dd{margin:0}
+.colo .bay{margin-top:auto;border:1px dashed #3a4440;padding:5cqw;font:3cqw var(--f-m);letter-spacing:.14em;color:var(--faint);text-align:center}
+.colo .seal{position:absolute;top:8cqw;right:8cqw;width:13cqw;height:13cqw;border:.7cqw solid var(--red);color:var(--red);border-radius:1.5cqw;display:grid;place-items:center;font:800 4.5cqw/1 var(--f-d);writing-mode:vertical-rl;transform:rotate(-6deg)}
+.colo .nfc{width:6cqw;height:6cqw;border-width:.7cqw;box-shadow:0 0 0 .8cqw rgba(207,174,98,.22);right:10cqw;bottom:24cqw}
+.sp-ctl{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.sp-ctl label{display:flex;align-items:center;gap:10px;font:11px var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.sp-ctl input[type=range]{accent-color:var(--emerald);width:min(220px,40vw)}
+.btn:disabled{opacity:.35;cursor:default}
+ol.keys{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px 24px}
+ol.keys li{display:grid;grid-template-columns:24px 1fr;gap:10px;font-size:14px;color:var(--muted)}
+ol.keys .kn{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#121212;font:600 12px/1 var(--f-m);display:grid;place-items:center}
 </style>
 </head>
 <body>
@@ -231,7 +336,7 @@ footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.0
     <div class="eyebrow">Collector's archive · Michi Method · v1 Oct 2026</div>
     <h1>The Binder Archive</h1>
     <p>A field guide for turning a 9-pocket binder into a Pokémon art book: the method, per-Pokémon design languages, what to buy, a label maker, and how to wire sound and NFC into the cover. Click through the chapters; each one stands on its own.</p>
-    <div class="meta-row"><span>10 SPECIMENS</span><span>45+ SOURCES</span><span>4 LABEL STYLES</span><span>2 AUDIO BUILDS</span></div>
+    <div class="meta-row"><span>10 EXAMPLE SPREADS</span><span>10 SPECIMENS</span><span>45+ SOURCES</span><span>4 LABEL STYLES</span><span>2 AUDIO BUILDS</span></div>
   </div>
   <div class="hanko" aria-hidden="true">標本</div>
 </header>
@@ -304,16 +409,30 @@ footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.0
   </div>
 </section>
 
+<!-- MOCKUPS -->
+<section class="ch" id="binder" data-title="Your binder" hidden>
+  <div class="ch-head"><div class="eyebrow">Chapter II</div><h2>Your binder, spread by spread</h2><p>A walk-through of a Gallade master set in English and Japanese, then a few spreads from the rest of the collection, using everything in this guide. Gold dots are keyed to the notes under each spread. Drag across a spread or use the tilt slider to see the holo and dichroic pieces catch the light. Cards are drawn as stand-ins, labelled with real set numbers.</p></div>
+  <div class="sp-nav" id="spNav" role="group" aria-label="Spreads"></div>
+  <div class="sp-head" id="spHead"></div>
+  <div class="spread" id="spread"></div>
+  <div class="sp-ctl">
+    <button class="btn" id="spPrev">← Previous spread</button>
+    <label for="tilt">Tilt<input type="range" id="tilt" min="0" max="100" value="50"></label>
+    <button class="btn" id="spNext">Next spread →</button>
+  </div>
+  <ol class="keys" id="spKeys"></ol>
+</section>
+
 <!-- THEMES -->
 <section class="ch" id="themes" data-title="Themes" hidden>
-  <div class="ch-head"><div class="eyebrow">Chapter II</div><h2>Specimen dossiers</h2><p>Each Pokémon gets its own design language: palette, motifs, materials, a suggested 3×3 layout, one standout move, and matching audio and NFC ideas. Pick one.</p></div>
+  <div class="ch-head"><div class="eyebrow">Chapter III</div><h2>Specimen dossiers</h2><p>Each Pokémon gets its own design language: palette, motifs, materials, a suggested 3×3 layout, one standout move, and matching audio and NFC ideas. Pick one.</p></div>
   <div class="roster" id="roster" role="group" aria-label="Pokémon"></div>
   <div class="dossier" id="dossier"></div>
 </section>
 
 <!-- SHOP -->
 <section class="ch" id="shop" data-title="Shop" hidden>
-  <div class="ch-head"><div class="eyebrow">Chapter III</div><h2>Sources &amp; materials</h2><p>Hand-picked toward premium, archival and technical looks. Links marked <span class="mono small">SEARCH</span> open a tuned search instead of one listing, because sticker shops rotate stock fast. Prices are rough tiers.</p></div>
+  <div class="ch-head"><div class="eyebrow">Chapter IV</div><h2>Sources &amp; materials</h2><p>Hand-picked toward premium, archival and technical looks. Links marked <span class="mono small">SEARCH</span> open a tuned search instead of one listing, because sticker shops rotate stock fast. Prices are rough tiers.</p></div>
   <div class="filters" id="filters"></div>
   <div class="count" id="shopCount"></div>
   <div class="grid3" id="shopList"></div>
@@ -321,7 +440,7 @@ footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.0
 
 <!-- LABELS -->
 <section class="ch" id="labels" data-title="Labels" hidden>
-  <div class="ch-head"><div class="eyebrow">Chapter IV</div><h2>Label maker</h2><p>Museum placards, specimen tags, steel plates and vertical Japanese tags, drawn at true size in millimetres. Load a preset or type your own, add to the sheet, then print on cardstock, kraft, or clear sticker paper.</p></div>
+  <div class="ch-head"><div class="eyebrow">Chapter V</div><h2>Label maker</h2><p>Museum placards, specimen tags, steel plates and vertical Japanese tags, drawn at true size in millimetres. Load a preset or type your own, add to the sheet, then print on cardstock, kraft, or clear sticker paper.</p></div>
   <div class="lab">
     <div class="panel">
       <div class="row" style="margin-bottom:14px"><span class="eyebrow">Preset</span><select id="preset" class="btn" aria-label="Preset"></select></div>
@@ -353,7 +472,7 @@ footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.0
 
 <!-- AUDIO -->
 <section class="ch" id="audio" data-title="Audio" hidden>
-  <div class="ch-head"><div class="eyebrow">Chapter V</div><h2>The sounding cover</h2><p>All electronics live in the front cover, so card pages stay flat. Open the binder and the cover theme plays; press flat membrane buttons printed as <span class="mono">▶ MUSIC · CRY · EFFECT</span> for the rest.</p></div>
+  <div class="ch-head"><div class="eyebrow">Chapter VI</div><h2>The sounding cover</h2><p>All electronics live in the front cover, so card pages stay flat. Open the binder and the cover theme plays; press flat membrane buttons printed as <span class="mono">▶ MUSIC · CRY · EFFECT</span> for the rest.</p></div>
 
   <div class="compare">
     <div class="build">
@@ -482,7 +601,7 @@ footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.0
 
 <!-- NFC -->
 <section class="ch" id="nfc" data-title="NFC" hidden>
-  <div class="ch-head"><div class="eyebrow">Chapter VI</div><h2>Tap-to-open pages</h2><p>NFC stickers are paper-thin, need no battery, and give every spread its own sound or link. Hold a phone to the page and it opens whatever the tag points at.</p></div>
+  <div class="ch-head"><div class="eyebrow">Chapter VII</div><h2>Tap-to-open pages</h2><p>NFC stickers are paper-thin, need no battery, and give every spread its own sound or link. Hold a phone to the page and it opens whatever the tag points at.</p></div>
   <div class="grid2">
     <div class="panel">
       <h3>Setup</h3>
@@ -512,7 +631,7 @@ footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.0
 
 <!-- IDEAS -->
 <section class="ch" id="ideas" data-title="Ideas" hidden>
-  <div class="ch-head"><div class="eyebrow">Chapter VII</div><h2>Ideas worth stealing</h2><p>Things that make a binder feel designed rather than decorated. Most cost a few dollars; a couple are free.</p></div>
+  <div class="ch-head"><div class="eyebrow">Chapter VIII</div><h2>Ideas worth stealing</h2><p>Things that make a binder feel designed rather than decorated. Most cost a few dollars; a couple are free.</p></div>
   <div class="grid3" id="ideaList"></div>
 </section>
 
@@ -706,7 +825,7 @@ const tabs = document.getElementById("tabs");
 chapters.forEach((s,i)=>{
   const b = document.createElement("button");
   b.className="tab"; b.setAttribute("role","tab"); b.id="tab-"+s.id; b.setAttribute("aria-controls",s.id);
-  b.innerHTML=`<span class="n">${["I","II","III","IV","V","VI","VII"][i]}</span>${s.dataset.title}`;
+  b.innerHTML=`<span class="n">${["I","II","III","IV","V","VI","VII","VIII"][i]}</span>${s.dataset.title}`;
   b.onclick=()=>show(s.id,true);
   tabs.appendChild(b);
 });
@@ -850,6 +969,274 @@ DFRobotDFPlayerMini player;
 /* ---------- nfc + ideas ---------- */
 document.getElementById("nfcRows").innerHTML = SPECIMENS.map(s=>`<tr><td class="num">${s.no}</td><td>${esc(s.name)} <span class="muted">${esc(s.jp)}</span></td><td>${esc(s.nfc)}</td><td class="muted">${esc(s.audio)}</td></tr>`).join("");
 document.getElementById("ideaList").innerHTML = IDEAS.map(i=>`<article class="idea"><div class="t">${esc(i.t)}</div><p>${esc(i.d)}</p><div class="for">For · ${esc(i.f)}</div></article>`).join("");
+
+/* ---------- mockup spreads ---------- */
+// Art scenes are drawn once on a 199 × 274 page (three 63 × 88 pockets + 5-unit gutters);
+// each art pocket shows its own window of the scene, so one image runs across pockets.
+const rnd=(s=>()=>(s=s*16807%2147483647)/2147483647)(42);
+const MONO='font-family="DM Mono, monospace"', MIN='font-family="Shippori Mincho B1, serif" font-weight="800"';
+const stars=Array.from({length:70},()=>`<circle cx="${(rnd()*199).toFixed(1)}" cy="${(rnd()*274).toFixed(1)}" r="${(rnd()*.7+.2).toFixed(2)}" fill="#F2E3A0" opacity="${(rnd()*.6+.2).toFixed(2)}"/>`).join("");
+const ticks=Array.from({length:27},(_,i)=>`<line x1="${i%5?194:189}" y1="${10+i*10}" x2="198" y2="${10+i*10}" stroke="#3DB585" stroke-opacity=".5" stroke-width=".35"/>`).join("");
+const moons=[0,5,10,null,-10,-5,0].map((d,i)=>{const x=(22+i*25.8).toFixed(1);return `<circle cx="${x}" cy="46" r="8" fill="${d===0?"none":"#D9B45A"}" stroke="#D9B45A" stroke-width=".5"/>`+(d===null||d===0?"":`<circle cx="${+x+d}" cy="46" r="8.4" fill="#0D1220"/>`)}).join("");
+const cons=[[30,150],[58,132],[84,148],[112,126],[140,140],[168,118]];
+const SCENES={
+ blade:`<rect width="199" height="274" fill="#0B100E"/><rect width="199" height="274" fill="url(#pGrid)"/>
+  <circle cx="100" cy="128" r="72" fill="none" stroke="#3DB585" stroke-opacity=".45" stroke-width=".5"/>
+  <circle cx="100" cy="128" r="48" fill="none" stroke="#3DB585" stroke-opacity=".35" stroke-width=".4" stroke-dasharray="2 2"/>
+  <path d="M100 44V212M16 128H184" stroke="#3DB585" stroke-opacity=".3" stroke-width=".3"/>
+  <polygon points="62,238 146,44 157,49 75,242" fill="#1D6B4C" fill-opacity=".6" stroke="#3DB585" stroke-width=".5"/>
+  <polygon points="199,18 199,40 0,254 0,232" fill="url(#holoG)" opacity=".9"/>
+  <text x="30" y="62" ${MIN} font-size="24" fill="#3DB585" fill-opacity=".2" style="writing-mode:vertical-rl">エルレイド</text>
+  <text x="12" y="14" ${MONO} font-size="4.2" letter-spacing=".6" fill="#9AA39E">FIG. 475 — ELBOW BLADE, EXTENDED</text>
+  <text x="12" y="266" ${MONO} font-size="4.2" letter-spacing=".6" fill="#9AA39E">HT 1.6 m · WT 52.0 kg · PSYCHIC / FIGHTING</text>
+  <path d="M118 222H178M118 219V225M178 219V225" stroke="#B8C0C2" stroke-width=".4"/><text x="148" y="217" text-anchor="middle" ${MONO} font-size="3.8" fill="#B8C0C2">SCALE 1:10</text>${ticks}`,
+ mist:`<rect width="199" height="274" fill="#0D1311"/><rect width="199" height="274" fill="url(#gMist)"/><rect width="199" height="274" fill="url(#pHex)"/>
+  <path d="M0 200L199 60" stroke="#B8C0C2" stroke-opacity=".25" stroke-width=".4"/>
+  <text x="187" y="266" text-anchor="end" ${MONO} font-size="4" letter-spacing=".8" fill="#9AA39E">SPECIMEN 475 · SINNOH</text>`,
+ night:`<rect width="199" height="274" fill="url(#gNight)"/>${stars}${moons}
+  <polyline points="${cons.join(" ")}" fill="none" stroke="#D9B45A" stroke-opacity=".6" stroke-width=".5"/>${cons.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.5" fill="#F2E3A0"/>`).join("")}
+  <circle cx="100" cy="205" r="40" fill="none" stroke="#F2E3A0" stroke-opacity=".15" stroke-width="3"/>
+  <text x="12" y="266" ${MONO} font-size="4.2" letter-spacing=".8" fill="#8EA6C2">LUNAR SURVEY · 月相 · JOHTO</text>`,
+ match:`<rect width="199" height="274" fill="#EFE3C8"/><rect x="8" y="8" width="183" height="258" fill="none" stroke="#B5301F" stroke-width="3"/><rect x="16" y="16" width="167" height="242" fill="#B5301F"/>
+  ${Array.from({length:16},(_,i)=>{const a=i*Math.PI/8;return `<line x1="100" y1="118" x2="${(100+Math.cos(a)*78).toFixed(1)}" y2="${(118+Math.sin(a)*78).toFixed(1)}" stroke="#EFE3C8" stroke-opacity=".18" stroke-width="5"/>`}).join("")}
+  <circle cx="100" cy="118" r="54" fill="#F2C14E"/><circle cx="100" cy="118" r="42" fill="#E7782A"/>
+  <polygon points="100,72 111,103 130,94 118,128 100,160 82,128 70,94 89,103" fill="#120D0C" fill-opacity=".85"/>
+  <text x="100" y="40" text-anchor="middle" ${MONO} font-size="6" letter-spacing="1.6" fill="#EFE3C8">SAFETY MATCHES · 火</text>
+  <text x="100" y="208" text-anchor="middle" ${MIN} font-size="28" fill="#EFE3C8">リザードン</text>
+  <text x="100" y="230" text-anchor="middle" ${MONO} font-size="6" letter-spacing="1.5" fill="#EFE3C8">No. 006 · KANTO MATCH CO.</text>`,
+ herb:`<rect width="199" height="274" fill="#F1F3EF"/><rect width="199" height="274" fill="url(#pGridL)"/>
+  <path d="M98 258C94 200 110 150 96 70M96 150C80 130 70 120 52 116M100 190C120 170 136 166 150 150" fill="none" stroke="#3B6B5A" stroke-width=".9"/>
+  ${[[84,128,10,4,-30],[66,118,9,3.5,-15],[118,174,10,4,-35],[140,156,9,3.5,-25],[104,110,9,3.5,40],[92,90,8,3,30],[100,226,9,3.5,-50],[94,240,8,3,35]].map(([x,y,a,b,r])=>`<ellipse cx="${x}" cy="${y}" rx="${a}" ry="${b}" transform="rotate(${r} ${x} ${y})" fill="#A8DCC4" stroke="#3B6B5A" stroke-width=".3"/>`).join("")}
+  ${[[96,68,6],[52,114,4],[150,148,4.5]].map(([x,y,r])=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#E9B7C3"/><circle cx="${x}" cy="${y}" r="${r/3}" fill="#fff"/>`).join("")}
+  <text x="12" y="14" ${MONO} font-size="4.2" letter-spacing=".6" fill="#3B6B5A">SPECIMEN PRESSED · ROUTE 113</text>
+  <rect x="140" y="222" width="52" height="40" fill="#fff" stroke="#3B6B5A" stroke-width=".4"/>
+  <text x="144" y="232" ${MONO} font-size="3.6" letter-spacing=".5" fill="#3B6B5A">HERBARIUM · PL. 282</text>
+  <text x="144" y="246" ${MIN} font-size="8" fill="#1A1A18">サーナイト</text>
+  <text x="144" y="256" ${MONO} font-size="3.2" fill="#6a665c">PSYCHIC / FAIRY · HOENN</text>`
+};
+const hex=(cx,cy)=>{const r=6.93;return `M${cx} ${cy-r}L${cx+6} ${cy-r/2}L${cx+6} ${cy+r/2}L${cx} ${cy+r}L${cx-6} ${cy+r/2}L${cx-6} ${cy-r/2}Z`;};
+document.body.insertAdjacentHTML("afterbegin",`<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+ <linearGradient id="holoG" x1="0" y1="0" x2=".28" y2=".28" spreadMethod="reflect"><stop offset="0" stop-color="#1D6B4C"/><stop offset=".25" stop-color="#3DB585"/><stop offset=".45" stop-color="#3AA7C9"/><stop offset=".65" stop-color="#6A6FD6"/><stop offset=".85" stop-color="#CFAE62"/><stop offset="1" stop-color="#3DB585"/></linearGradient>
+ <pattern id="pGrid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#1D6B4C" stroke-width=".3" stroke-opacity=".6"/></pattern>
+ <pattern id="pGridL" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#A8DCC4" stroke-width=".3" stroke-opacity=".7"/></pattern>
+ <pattern id="pHex" width="12" height="20.8" patternUnits="userSpaceOnUse"><path d="${hex(6,6.93)}${hex(0,17.33)}${hex(12,17.33)}" fill="none" stroke="#B8C0C2" stroke-opacity=".13" stroke-width=".35"/></pattern>
+ <radialGradient id="gMist" cx=".5" cy=".45" r=".7"><stop offset="0" stop-color="#1F7A54" stop-opacity=".55"/><stop offset="1" stop-color="#0D1311" stop-opacity="0"/></radialGradient>
+ <linearGradient id="gNight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A0C14"/><stop offset="1" stop-color="#1B2A4A"/></linearGradient>
+ <linearGradient id="steelG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c3236"/><stop offset="1" stop-color="#1a1e21"/></linearGradient>
+ ${Object.entries(SCENES).map(([k,v])=>`<g id="sc-${k}">${v}</g>`).join("")}
+</defs></svg>`);
+
+const card=(n,set,o={})=>({k:"card",n,set,lang:"EN",fx:"plain",ty:"psy",bd:"y",g:"エ",...o});
+const jcard=(n,set,o={})=>card(n,set,{lang:"JP",...o});
+const art=(sc,o={})=>({k:"art",sc,...o});
+const blk=(o={})=>({k:"blk",...o});
+const holo=(o={})=>({k:"holo",...o});
+const lab=(st,a,b,c,o={})=>({k:"lab",st,a,b,c,...o});
+const idx=(rn,a,b,pg)=>({k:"idx",rn,a,b,pg});
+const acc=(no,a,b,o={})=>({k:"acc",no,a,b,...o});
+const tix=(a,b,c,o={})=>({k:"tix",a,b,c,...o});
+const stamp=(o={})=>({k:"stamp",...o});
+const wrap=(t,col,o={})=>({k:"wrap",t,col,...o});
+const rcpt=(o={})=>({k:"rcpt",...o});
+const want=(a,b,o={})=>({k:"want",a,b,...o});
+const glow=(o={})=>({k:"glow",...o});
+const fill=(sc,marks={})=>Array.from({length:9},(_,i)=>art(sc,marks[i]||{}));
+
+const SPREADS=[
+ {nav:"Cover",e:"Front cover",t:"The Blade Archive",cover:true,
+  d:"Gallade art panel with the sound system built in behind it. Slip the strap off and the cover theme plays.",
+  keys:["Art panel: the Gallade blueprint printed on matte photo paper and sealed under clear laminate. The emerald band is dichroic film laid under the laminate.",
+   "Title plate: laser-printed, then run through a laminator with gold toner-reactive foil.",
+   "Membrane keypad under a printed vellum strip: ▶ MUSIC · CRY · EFFECT · STOP.",
+   "Speaker grille: holes drilled in a constellation pattern, with the speaker behind them.",
+   "Strap magnet. While the strap is on, it holds the reed switch open and the electronics are off.",
+   "USB-C charging port set into the cover edge."]},
+ {nav:"Index",e:"Inside cover · page i",t:"Colophon and index",
+  d:"The first thing anyone sees: what the archive is and where everything lives.",
+  left:{inside:true},
+  right:[idx("I","Gallade","English master set","pp. 2–9"),idx("II","エルレイド","Japanese master set","p. 10"),idx("III","Provenance","Wrappers, tickets, receipts","p. 11"),
+   idx("IV","Kirlia's paths","Gardevoir and Gallade","pp. 12–13"),idx("V","Umbreon","Observatory","pp. 14–15"),idx("VI","Charizard","Showa matchbox","pp. 16–17"),
+   idx("VII","Rayquaza","Atmosphere","pp. 18–19"),idx("VIII","Lugia","Sea chart","pp. 20–21"),{...idx("IX","Reserved","Future pulls","—"),m:3}],
+  keys:["Colophon printed on cardstock and glued to the cover lining. It also hides the electronics bay.",
+   "NFC tag behind the colophon: tap to open the binder's master playlist.",
+   "Index placards, one per pocket, in the placard style used on every spread. Roman numerals are the section numbers."]},
+ {nav:"Opener",e:"Section I · pp. 2–3",t:"Gallade section opener",
+  d:"A full-page scene on the left, the first Gallade card ever printed on the right, plenty of black around it.",
+  left:fill("blade",{0:{m:1},2:{m:2}}),
+  right:[blk(),art("mist"),blk(),art("mist"),card("Gallade","SW 6/132",{fx:"holo",m:3}),art("mist"),acc("2026.001","Secret Wonders · 2007","Source: ________",{m:4}),lab("pl","Section I","Gallade","Psychic / Fighting",{m:5}),art("mist",{nfc:true,m:6})],
+  keys:["One blueprint image split across all nine pockets. Cut each tile at 63 × 88 mm and throw away the gutter strips so the lines meet across pockets.",
+   "Emerald dichroic film strip running diagonally through three pockets. Tilt to watch it shift.",
+   "Secret Wonders Gallade 6/132 (2007), the first Gallade card, as the hero. Perfect-fit sleeve, outer sleeve, and a gold-on-clear name strip on the outer sleeve.",
+   "Accession card: number, set, date acquired, and where it came from.",
+   "Section placard in the house style.",
+   "NFC tag behind this art tile: tap to open the Gallade playlist."]},
+ {nav:"XY mirror",e:"Section I · pp. 4–5",t:"Mirror spread: Roaring Skies / Emerald Break",
+  d:"English on the left page, Japanese on the right, each card in the same pocket position on both pages. This is the core layout for an EN + JP master set.",
+  left:[card("Gallade-EX","ROS 34/108",{fx:"holo",m:1}),card("M Gallade-EX","ROS 35/108",{fx:"holo"}),lab("st","ROS","Roaring Skies","2015",{m:2}),
+   card("Gallade-EX","ROS 99/108",{fx:"fa",m:3}),card("M Gallade-EX","ROS 100/108",{fx:"fa"}),card("Gallade Spirit Link","ROS 83/108",{ty:"item"}),
+   card("Gallade-EX","XY45 promo",{fx:"holo"}),blk(),wrap("ROARING SKIES","#1F7A54",{m:4})],
+  right:[jcard("エルレイドEX","XY6 030/078",{fx:"holo"}),jcard("MエルレイドEX","XY6 031/078",{fx:"holo"}),lab("st","XY6","Emerald Break","2015"),
+   jcard("エルレイドEX","XY6 080/078",{fx:"fa"}),jcard("MエルレイドEX","XY6 081/078",{fx:"fa"}),wrap("エメラルドブレイク","#1D6B4C"),
+   want("Japanese promo","Slot held until found",{m:5}),blk(),stamp()],
+  keys:["Mirror rule: English on the left, Japanese on the right, same pocket position. Flip back and forth to compare the two printings.",
+   "Set plates: steel-style labels with set code, name, and year.",
+   "Full arts get no decoration at all. They're already the loudest thing on the page.",
+   "Booster wrapper strips: Roaring Skies on the English side, Emerald Break on the Japanese side.",
+   "Reserved slot: a placard holding the place of a card you don't own yet, so the set reads as a work in progress."]},
+ {nav:"Variants",e:"Section I · pp. 6–7",t:"Variant columns: holo over reverse",
+  d:"Dense master-set pages. Each column is one print: the regular card on top, its reverse holo underneath, and a set plate at the bottom. Rising Rivals Gallade E4 and E4 LV.X, POP Series 7 and the Secret Wonders reverse follow the same pattern on the next page.",
+  left:[card("Gallade","PLS 61/135",{fx:"holo",m:1}),card("Gallade","LTR 81/113"),card("Gallade","BKT 84/162",{fx:"holo"}),
+   card("Gallade","PLS 61/135",{fx:"rev",m:2}),card("Gallade","LTR 81/113",{fx:"rev"}),card("Gallade","BKT 84/162",{fx:"rev"}),
+   lab("st","PLS","Plasma Storm","2013",{m:3}),lab("st","LTR","Legendary Treasures","2013"),lab("st","BKT","BREAKthrough","2015")],
+  right:[card("Gallade","CEC 82/236",{fx:"holo"}),card("Gallade","CRE 081/198"),card("Gallade","ASR 062/189",{fx:"holo"}),
+   card("Gallade","CEC 82/236",{fx:"rev"}),card("Gallade","CRE 081/198",{fx:"rev"}),card("Gallade","ASR 062/189",{fx:"rev"}),
+   lab("st","CEC","Cosmic Eclipse","2019"),lab("st","CRE","Chilling Reign","2021"),lab("st","ASR","Astral Radiance","2022")],
+  keys:["Top row: the regular print of each card, holo where the set has one.",
+   "Middle row: the reverse holo of the same card, directly underneath it.",
+   "Bottom row: set plates. Dense pages get labels and nothing else; the cards are the decoration."]},
+ {nav:"Showcase",e:"Section I · pp. 8–9",t:"Showcase: modern art cards",
+  d:"The opposite of the variants page. The big modern cards get room to breathe.",
+  left:[blk(),blk(),blk(),blk(),card("Gallade V","LOR 181/196",{fx:"fa",m:1}),blk(),blk(),lab("pl","Illustration","Gallade V","Full Art · Lost Origin",{m:2}),blk()],
+  right:[art("mist",{vel:"NOTE — Full art, Lost Origin, 2022. Illustrator credit on the placard opposite.",m:3}),card("Gallade","CEC 244/236",{fx:"fa"}),art("mist"),
+   holo({m:4}),blk(),holo(),
+   card("Gallade V","LOR TG19",{fx:"fa"}),lab("tg","Trainer Gallery","Gallade V","LOR TG19"),card("Gallade V","SWSH258 promo",{fx:"holo",m:5})],
+  keys:["Gallade V full art alone in the middle of eight black pockets. The Michi Method at its plainest: empty space as the frame.",
+   "Illustration placard: card name, set, year, and illustrator, like a gallery wall label.",
+   "Vellum note laid over an emerald art tile.",
+   "Loose dichroic shards in black pockets. Rearrange them whenever you like.",
+   "Promo with a gold-on-clear label strip along the top of its outer sleeve."]},
+ {nav:"JP + provenance",e:"Sections II–III · pp. 10–11",t:"Japanese prints and provenance",
+  d:"The remaining Japanese Gallade prints on the left. The right page holds the paper trail: where the cards came from.",
+  left:[jcard("エルレイド","DP2 · 2007",{fx:"holo"}),lab("jv","","エルレイド","No.475",{m:1}),jcard("エルレイド","SM11b 027/049",{fx:"holo"}),
+   jcard("エルレイド","S6H 040/070"),blk(),jcard("エルレイド","S9a 034/067"),
+   jcard("エルレイドV","S10a",{fx:"holo"}),stamp({m:2}),want("エルレイド","Next Japanese print",{m:3})],
+  right:[wrap("エメラルドブレイク","#1F7A54",{m:4}),rcpt({m:5}),tix("COLLECT-A-CON","Admit one","CHICAGO · 10.10.26",{m:6}),
+   tix("JR 東日本","乗車券","東京 → 新宿",{kp:true}),acc("2026.014","Emerald Break box","Opened 2026"),stamp(),
+   art("mist",{vel:"Pulled live on camera. Tap the gold ring for the video."}),blk(),art("mist",{nfc:true,m:7})],
+  keys:["Vertical Japanese tag with a red hanko seal. Japanese pages use this label style throughout.",
+   "Used Japanese postage stamps as colour accents in a spare pocket.",
+   "Reserved slot for the next Japanese print.",
+   "Emerald Break booster wrapper, opened flat and cut to pocket size.",
+   "Pokémon Center receipt, trimmed to a strip.",
+   "Convention ticket stub, placed next to the accession card for the card you bought there.",
+   "NFC tag behind the art: tap to open the pack-opening video."]},
+ {nav:"Kirlia split",e:"Section IV · pp. 12–13",t:"Kirlia's two paths",
+  d:"Gardevoir and Gallade both evolve from Kirlia, so the spread splits down the spine: herbarium on one side, blueprint on the other.",
+  left:fill("herb",{0:{m:1},4:card("Gardevoir ex","SVI 245/198",{fx:"fa",bd:"s",g:"サ",m:2}),6:lab("pl","Section IV","Gardevoir","Psychic / Fairy",{m:3})}),
+  right:fill("blade",{4:card("Gallade","BKT 84/162",{fx:"holo"}),8:lab("st","475","Gallade","Psychic / Fighting",{m:4})}),
+  keys:["Two full-page scenes meet at the spine: a pressed-specimen plate for Gardevoir, the blueprint for Gallade.",
+   "Gardevoir ex special illustration rare (Scarlet & Violet 245/198), surrounded by its herbarium tiles.",
+   "Paper placard on the soft side…",
+   "…and a steel plate on the hard side. The two label styles set the two personalities apart."]},
+ {nav:"Umbreon",e:"Section V · pp. 14–15",t:"Umbreon observatory",
+  d:"Navy, gold and moon phases. One of the rest-of-collection spreads, to show how a different theme sits in the same binder.",
+  left:[art("night",{m:1}),art("night"),art("night"),blk(),card("Umbreon VMAX","EVS 215/203",{fx:"fa",ty:"dark",g:"ブ",m:2}),blk(),holo(),lab("pl","Section V","Umbreon","Dark · Johto"),holo()],
+  right:[art("night"),art("night"),art("night"),glow({m:3}),card("Umbreon ex","PRE 161/131",{fx:"fa",ty:"dark",bd:"s",g:"ブ"}),glow(),blk(),lab("st","197","Umbreon","New moon"),art("night",{nfc:true,m:4})],
+  keys:["Moon-phase strip across the top row of both pages, printed on navy, with gold-foil PET stars on top.",
+   "Umbreon VMAX alternate art (Evolving Skies 215/203).",
+   "Umbreon's rings cut from glow-in-the-dark vinyl on black inserts. Turn the lights off.",
+   "NFC tag: tap to open a Johto night playlist."]},
+ {nav:"Charizard",e:"Section VI · pp. 16–17",t:"Charizard matchbox",
+  d:"Showa-era matchbox graphics for the most famous card in the hobby, with its Japanese counterpart opposite.",
+  left:fill("match",{4:card("Charizard","BS 4/102",{fx:"holo",ty:"fire",g:"リ",m:1}),7:{m:2}}),
+  right:[lab("jv","","リザードン","No.006",{m:3}),jcard("リザードン","Base · No.006",{fx:"holo",ty:"fire",g:"リ"}),blk(),wrap("拡張パック","#B5301F",{m:4}),blk(),stamp(),blk(),lab("tg","Base Set · 1999","Charizard","Fire / Flying"),blk()],
+  keys:["Base Set Charizard 4/102 set into a matchbox design spread across the whole page.",
+   "Matchbox art: cream-and-red frame, big katakana, a No. 006 cartouche.",
+   "Vertical Japanese tag beside the Japanese Base Set Charizard.",
+   "A strip of Japanese expansion-pack wrapper."]}
+];
+
+function coverSVG(){
+  const holes=[[232,58],[241,74],[236,92],[247,104],[238,122],[230,138],[244,152]];
+  const mk=(x,y,n)=>`<circle cx="${x}" cy="${y}" r="7" fill="#CFAE62" stroke="#050606" stroke-width="2"/><text x="${x}" y="${y+3}" text-anchor="middle" ${MONO} font-size="8.5" font-weight="600" fill="#121212">${n}</text>`;
+  const keys=["▶ MUSIC","CRY","EFFECT","■ STOP"].map((l,i)=>`<rect x="${34+i*44}" y="320" width="38" height="24" rx="2" fill="#E9E6DC" fill-opacity=".9"/><text x="${53+i*44}" y="335" text-anchor="middle" ${MONO} font-size="6.2" fill="#1A1A18">${l}</text>`).join("");
+  return `<svg viewBox="0 0 300 380" role="img" aria-label="Front cover mockup: Gallade art panel, gold title plate, four flat buttons, constellation speaker grille, strap with magnet, USB-C port">
+  <defs><pattern id="pTex" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 6L6 0" stroke="#1d2321" stroke-width=".6"/></pattern></defs>
+  <rect x="1" y="1" width="298" height="378" rx="10" fill="#121514" stroke="#2A322F"/><rect x="1" y="1" width="298" height="378" rx="10" fill="url(#pTex)"/>
+  <rect x="1" y="1" width="16" height="378" rx="8" fill="#0A0D0C"/>
+  <rect x="32" y="30" width="174" height="240" fill="#050606"/>
+  <svg x="34" y="32" width="170" height="236" viewBox="0 0 199 274" preserveAspectRatio="xMidYMid slice"><use href="#sc-blade"/></svg>
+  <rect x="34" y="280" width="170" height="28" rx="2" fill="url(#steelG)" stroke="#4a5258" stroke-width=".6"/>
+  <text x="119" y="293" text-anchor="middle" ${MONO} font-size="8.5" letter-spacing="2.4" fill="#CFAE62">THE BLADE ARCHIVE</text>
+  <text x="119" y="303" text-anchor="middle" font-family="Shippori Mincho B1, serif" font-size="6.5" letter-spacing="1" fill="#9AA4AB">エルレイド · VOL. I</text>
+  ${keys}
+  <polyline points="${holes.join(" ")}" fill="none" stroke="#CFAE62" stroke-opacity=".35" stroke-width=".5"/>
+  ${holes.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4" fill="#050606" stroke="#2A322F"/>`).join("")}
+  <rect x="262" y="0" width="16" height="380" fill="#1A1F1D" stroke="#2A322F"/><path d="M265 0V380M275 0V380" stroke="#3a4440" stroke-dasharray="3 3"/>
+  <circle cx="270" cy="200" r="5" fill="#3A4440" stroke="#9AA39E"/>
+  <rect x="293" y="330" width="6" height="16" rx="2" fill="#050606" stroke="#9AA39E"/>
+  ${mk(30,30,1)}${mk(30,294,2)}${mk(30,332,3)}${mk(224,46,4)}${mk(270,184,5)}${mk(286,322,6)}
+  </svg>`;
+}
+function insideHTML(){
+  return `<div class="page"><div class="colo">
+    <span class="mk">1</span>
+    <div class="eyebrow" style="font-size:3cqw">Archive · Vol. I</div>
+    <div class="ct">The Blade<br>Archive</div><div class="cj">エルレイド資料館</div>
+    <p>A Gallade master set in English and Japanese, with selected specimens from the rest of the collection. Established 2026.</p>
+    <dl><dt>Placard</dt><dd>Section openers</dd><dt>Plate</dt><dd>Set name and year</dd><dt>Tag</dt><dd>Provenance and variants</dd><dt>縦 tag</dt><dd>Japanese prints</dd><dt>◯ ring</dt><dd>Tap here with a phone</dd></dl>
+    <div class="bay">ELECTRONICS BAY BEHIND THIS PANEL</div>
+    <div class="seal">標本</div>
+    <span class="nfc"></span><span class="mk" style="top:auto;left:auto;right:6cqw;bottom:30cqw">2</span>
+  </div></div>`;
+}
+function pocketInner(p,i){
+  const col=i%3,row=i/3|0;
+  switch(p.k){
+    case "art": return `<svg viewBox="${col*68} ${row*93} 63 88" preserveAspectRatio="none" aria-hidden="true"><use href="#sc-${p.sc}"/></svg>`;
+    case "card": return `<div class="cd ${p.fx} t-${p.ty} b-${p.bd}"><div class="ci"><div class="cn">${esc(p.n)}</div><div class="cw"><span class="gl">${p.g}</span></div><div class="cb"><span>${esc(p.set)}</span><span class="lg">${p.lang}</span></div></div></div>`;
+    case "holo": return `<svg viewBox="0 0 63 88" aria-hidden="true"><polygon points="10,14 34,6 24,38" fill="url(#holoG)"/><polygon points="38,40 56,52 40,70" fill="url(#holoG)"/><polygon points="8,58 22,50 26,80 12,84" fill="url(#holoG)" opacity=".8"/></svg>`;
+    case "lab":
+      if(p.st==="st") return `<div class="mp st"><span class="t2">${esc(p.a)}</span><span class="t">${esc(p.b)}</span><span class="s">${esc(p.c)}</span></div>`;
+      if(p.st==="jv") return `<div class="mp jv"><span class="v">${esc(p.b)}</span><span class="s">${esc(p.c)}</span><span class="sl">標本</span></div>`;
+      if(p.st==="tg") return `<div class="mp tg"><span class="e">${esc(p.a)}</span><span class="t">${esc(p.b)}</span><span class="s">${esc(p.c)}</span></div>`;
+      return `<div class="mp pl"><span class="e">${esc(p.a)}</span><span class="t">${esc(p.b)}</span><span class="s">${esc(p.c)}</span></div>`;
+    case "idx": return `<div class="mp pl ix"><span class="rn">${p.rn}</span><span><span class="t" style="display:block">${esc(p.a)}</span></span><span class="s">${esc(p.b)}</span><span class="pg2">${esc(p.pg)}</span></div>`;
+    case "acc": return `<div class="mp ac"><span class="e">Accession</span><span class="no">No. ${esc(p.no)}</span><i></i><span class="s">${esc(p.a)}</span><i></i><span class="s">${esc(p.b)}</span><i></i><span class="s">Condition ____</span></div>`;
+    case "tix": return `<div class="tx ${p.kp?"kp":""}"><span class="e">${esc(p.a)}</span><span class="t">${esc(p.b)}</span><span class="s">${esc(p.c)}</span></div>`;
+    case "stamp": return `<div class="stp s1"><span>日本郵便</span><b>84</b></div><div class="stp s2"><span>NIPPON</span><b>120</b></div>`;
+    case "wrap": return `<div class="wr" style="--wc:${p.col}"><span>${esc(p.t)}</span></div>`;
+    case "rcpt": return `<div class="rc"><b>ポケモンセンター</b><span>TOKYO DX</span><i></i><span>拡張パック ×5</span><span>BOOSTER ×5</span><i></i><span>2026.03.14</span></div>`;
+    case "want": return `<div class="wn"><span class="e">Reserved</span><span class="t">${esc(p.a)}</span><span class="s">${esc(p.b)}</span></div>`;
+    case "glow": return `<svg viewBox="0 0 63 88" aria-hidden="true"><rect width="63" height="88" fill="#0A0C14"/><g fill="none" stroke="#F2E3A0" stroke-width="2.2" style="filter:drop-shadow(0 0 2px #F2E3A0)"><circle cx="31.5" cy="44" r="14"/><circle cx="14" cy="16" r="6"/><circle cx="49" cy="72" r="6"/></g></svg>`;
+    default: return "";
+  }
+}
+function pocketHTML(p,i){
+  return `<div class="pk k-${p.k}">${pocketInner(p,i)}${p.vel?`<div class="vel">${esc(p.vel)}</div>`:""}${p.nfc?'<span class="nfc" title="NFC tag"></span>':""}${p.m?`<span class="mk">${p.m}</span>`:""}</div>`;
+}
+const pageHTML=pg=>pg.inside?insideHTML():`<div class="page"><div class="pg">${pg.map(pocketHTML).join("")}</div></div>`;
+
+let spI=0;
+const spEl=document.getElementById("spread"), holoG=document.getElementById("holoG"), tiltIn=document.getElementById("tilt");
+function setTilt(t){
+  t=Math.min(1,Math.max(0,t));
+  spEl.style.setProperty("--tilt",t.toFixed(3));
+  holoG.setAttribute("gradientTransform",`translate(${(t-.5).toFixed(3)} 0) rotate(${(t*80-40).toFixed(1)} .5 .5)`);
+  tiltIn.value=Math.round(t*100);
+}
+function renderSpread(i){
+  spI=Math.max(0,Math.min(SPREADS.length-1,i));
+  const s=SPREADS[spI];
+  document.getElementById("spNav").innerHTML=SPREADS.map((x,j)=>`<button class="chip" data-i="${j}" aria-pressed="${j===spI}">${esc(x.nav)}</button>`).join("");
+  document.getElementById("spNav").querySelectorAll("button").forEach(b=>b.onclick=()=>renderSpread(+b.dataset.i));
+  document.getElementById("spHead").innerHTML=`<div><div class="eyebrow">${esc(s.e)} · ${spI+1} of ${SPREADS.length}</div><h3>${esc(s.t)}</h3></div><p>${esc(s.d)}</p>`;
+  spEl.classList.toggle("is-cover",!!s.cover);
+  spEl.innerHTML=s.cover?`<div class="cover-wrap">${coverSVG()}</div>`:pageHTML(s.left)+pageHTML(s.right);
+  document.getElementById("spKeys").innerHTML=s.keys.map((k,j)=>`<li><span class="kn">${j+1}</span><span>${esc(k)}</span></li>`).join("");
+  document.getElementById("spPrev").disabled=spI===0;
+  document.getElementById("spNext").disabled=spI===SPREADS.length-1;
+}
+spEl.addEventListener("pointermove",e=>{const r=spEl.getBoundingClientRect();setTilt((e.clientX-r.left)/r.width);});
+tiltIn.addEventListener("input",()=>setTilt(tiltIn.value/100));
+document.getElementById("spPrev").onclick=()=>renderSpread(spI-1);
+document.getElementById("spNext").onclick=()=>renderSpread(spI+1);
+document.addEventListener("keydown",e=>{
+  if(document.getElementById("binder").hidden||/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return;
+  if(e.key==="ArrowRight") renderSpread(spI+1);
+  if(e.key==="ArrowLeft") renderSpread(spI-1);
+});
+renderSpread(0); setTilt(.5);
 
 show((location.hash||"#start").slice(1), false);
 </script>
