@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta name="description" content="Michi Method binder guide: per-Pokémon design dossiers, curated sticker and ephemera sources, a printable museum label maker, and audio/NFC cover builds.">
+<meta name="created" content="2026-10-08">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{color-scheme:light}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;background:#fbfbfa}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Pokémon Binder Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a museum catalogue in one dark binder. Sticky chapter tabs -> one chapter visible at a time -> prev/next at the foot. Single dark theme by choice (black binder pages). */
+:root{color-scheme:dark;
+--bg:#0D100F;--surface:#151A18;--raise:#1C2220;--line:#2A322F;--ink:#ECE8DE;--muted:#9AA39E;--faint:#6B746F;
+--emerald:#3DB585;--emerald-deep:#1D6B4C;--gold:#CFAE62;--red:#C8402F;--paper:#EFEBE1;--paper-ink:#1A1A18;--kraft:#C9A878;
+--f-d:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+--f-b:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+--f-m:"DM Mono",ui-monospace,Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--f-b);padding-inline:16px}
+a{color:var(--emerald)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:28px 72px}
+.mono{font-family:var(--f-m)}
+.eyebrow{font:500 11.5px var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+
+/* header */
+header.top{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding-bottom:22px;border-bottom:1px solid var(--line)}
+header.top h1{font:800 clamp(34px,6vw,58px)/1 var(--f-d);margin:10px 0 12px;letter-spacing:-.01em;text-wrap:balance}
+header.top p{margin:0;color:var(--muted);max-width:62ch}
+.hanko{width:92px;height:92px;border:3px solid var(--red);border-radius:10px;color:var(--red);display:grid;place-items:center;font:800 30px/1 var(--f-d);writing-mode:vertical-rl;letter-spacing:.08em;transform:rotate(-6deg);opacity:.92}
+.meta-row{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font:12px var(--f-m);color:var(--faint);letter-spacing:.06em}
+
+/* tabs */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin-inline:-16px;padding:10px 16px;border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:none;border:1px solid transparent;color:var(--muted);font:500 13px var(--f-b);padding:8px 14px;border-radius:999px;cursor:pointer;display:flex;gap:8px;align-items:baseline}
+.tab .n{font:11px var(--f-m);color:var(--faint)}
+.tab:hover{color:var(--ink);border-color:var(--line)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.tab[aria-selected="true"] .n{color:var(--emerald-deep)}
+
+section.ch{padding-top:30px;display:flex;flex-direction:column;gap:28px}
+.ch-head h2{font:800 clamp(26px,4vw,36px)/1.1 var(--f-d);margin:6px 0 8px;text-wrap:balance}
+.ch-head p{margin:0;color:var(--muted);max-width:66ch}
+h3{font:800 20px/1.25 var(--f-d);margin:0 0 10px;text-wrap:balance}
+h4{font:700 14px/1.3 var(--f-b);margin:0 0 6px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px}
+.grid2>*,.grid3>*{min-width:0}
+p{margin:0}
+ul.clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+/* rules */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.rule{background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.rule .k{font:500 11px var(--f-m);letter-spacing:.14em;color:var(--emerald);text-transform:uppercase}
+.rule b{font:800 17px/1.3 var(--f-d)}
+.rule p{color:var(--muted);font-size:14px}
+
+/* layer stack */
+.stack{display:flex;flex-direction:column;gap:6px}
+.layer{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:var(--raise)}
+.layer .sw{height:28px;border-radius:3px}
+.layer b{display:block;font-size:14px}
+.layer span{color:var(--muted);font-size:13px}
+.layer.card{border-color:var(--gold)}
+.front-back{display:flex;justify-content:space-between;font:11px var(--f-m);color:var(--faint);letter-spacing:.1em;text-transform:uppercase}
+
+/* steps */
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:flex;flex-direction:column}
+ol.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+ol.steps li:first-child{border-top:0}
+ol.steps li::before{content:counter(s,decimal-leading-zero);font:500 13px var(--f-m);color:var(--gold);padding-top:2px}
+ol.steps li p{color:var(--muted);font-size:14px}
+
+/* dims */
+.dims{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px}
+.dims dt{font:13px var(--f-m);color:var(--gold);font-variant-numeric:tabular-nums}
+.dims dd{margin:0;color:var(--muted)}
+
+/* themes */
+.roster{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--surface);border:1px solid var(--line);color:var(--ink);font:500 13px var(--f-b);padding:7px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.chip .dot{width:10px;height:10px;border-radius:50%}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{border-color:var(--gold);background:var(--raise)}
+.dossier{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px}
+@media (max-width:760px){.dossier{grid-template-columns:1fr}}
+.dos-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.dos-head h3{font-size:clamp(28px,4vw,38px);margin:4px 0 2px}
+.dos-jp{font:600 20px var(--f-d);color:var(--muted)}
+.dos-no{font:500 44px/1 var(--f-m);color:var(--faint);font-variant-numeric:tabular-nums}
+.pal{display:flex;gap:0;border-radius:4px;overflow:hidden;height:46px;border:1px solid var(--line)}
+.pal div{flex:1;display:flex;align-items:flex-end;padding:4px 6px;font:10px var(--f-m);letter-spacing:.04em}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:10px 14px;margin-top:16px;font-size:14px}
+.kv dt{font:11px var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);padding-top:3px}
+.kv dd{margin:0}
+.sig{margin-top:16px;padding:14px 16px;border-left:3px solid var(--gold);background:var(--raise);border-radius:0 4px 4px 0}
+.sig .eyebrow{display:block;margin-bottom:4px}
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;max-width:210px}
+.mini-grid div{aspect-ratio:63/88;border-radius:3px;display:grid;place-items:center;font:500 11px var(--f-m);max-width:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font:11px var(--f-m);color:var(--muted);margin-top:10px}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.legend i{width:12px;height:12px;border-radius:2px;display:inline-block}
+.c-C{background:var(--gold);color:var(--paper-ink)}
+.c-A{background:#2C3A35;color:var(--ink)}
+.c-H{background:linear-gradient(135deg,#7fd6c1,#b9a7e0 40%,#f2d58a 70%,#8fd3e8);color:var(--paper-ink)}
+.c-L{background:var(--paper);color:var(--paper-ink)}
+.c-x{background:transparent;border:1px dashed var(--line);color:var(--faint)}
+
+/* shop */
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters .sep{width:1px;height:22px;background:var(--line);margin-inline:6px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.item .src{font:11px var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);display:flex;justify-content:space-between;gap:8px}
+.item h4{font:700 15px/1.35 var(--f-b);margin:0}
+.item p{color:var(--muted);font-size:13.5px}
+.item .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font:10.5px var(--f-m);letter-spacing:.06em;padding:2px 7px;border-radius:3px;background:var(--raise);color:var(--muted);border:1px solid var(--line)}
+.tag.kit{color:var(--gold);border-color:#5b4c2a}
+.go{font:500 13px var(--f-b);text-decoration:none;color:var(--emerald);white-space:nowrap}
+.go:hover{text-decoration:underline}
+.count{font:12px var(--f-m);color:var(--faint)}
+
+/* labels */
+.lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px}
+@media (max-width:760px){.lab{grid-template-columns:1fr}}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form label{display:flex;flex-direction:column;gap:4px;font:11px var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.form .full{grid-column:1/-1}
+.form input,.form select{background:var(--bg);border:1px solid var(--line);color:var(--ink);font:14px var(--f-b);padding:8px 10px;border-radius:4px;width:100%;text-transform:none;letter-spacing:0}
+.btn{background:var(--raise);border:1px solid var(--line);color:var(--ink);font:500 13px var(--f-b);padding:8px 14px;border-radius:4px;cursor:pointer}
+.btn:hover{border-color:var(--muted)}
+.btn.pri{background:var(--emerald);border-color:var(--emerald);color:#06140E}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.stage{background:repeating-linear-gradient(45deg,#121615 0 10px,#151a18 10px 20px);border:1px solid var(--line);border-radius:6px;min-height:260px;display:grid;place-items:center;padding:28px 16px;overflow-x:auto}
+.styles{display:flex;flex-wrap:wrap;gap:6px}
+
+/* label designs — sized in mm so print is true scale */
+.L{flex:0 0 auto;color:var(--paper-ink);font-family:var(--f-b);position:relative}
+.L-placard{width:72mm;min-height:32mm;background:var(--paper);padding:3.2mm 3.6mm;display:flex;flex-direction:column;gap:1mm;box-shadow:0 1px 0 rgba(0,0,0,.4)}
+.L-placard .e{font:500 6.5pt var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:#6a665c;display:flex;justify-content:space-between}
+.L-placard .nm{font:800 15pt/1.05 var(--f-d)}
+.L-placard .jp{font:600 8pt var(--f-d);color:#6a665c}
+.L-placard .ty{font:500 7pt var(--f-m);letter-spacing:.1em;text-transform:uppercase;border-top:.3mm solid #1A1A18;padding-top:1.2mm;margin-top:auto;display:flex;justify-content:space-between;gap:2mm}
+.L-tag{width:58mm;min-height:30mm;background:var(--kraft);padding:3mm 3mm 3mm 9mm;clip-path:polygon(5mm 0,100% 0,100% 100%,5mm 100%,0 50%);display:flex;flex-direction:column;gap:.8mm}
+.L-tag::before{content:"";position:absolute;left:3.2mm;top:50%;width:2.6mm;height:2.6mm;margin-top:-1.3mm;border-radius:50%;background:#121615}
+.L-tag .e{font:500 6pt var(--f-m);letter-spacing:.16em;text-transform:uppercase;color:#4d3b22}
+.L-tag .nm{font:800 13pt/1.05 var(--f-d)}
+.L-tag .jp{font:600 7.5pt var(--f-d);color:#4d3b22}
+.L-tag .ty{font:500 6.5pt var(--f-m);letter-spacing:.08em;text-transform:uppercase;margin-top:auto;color:#3a2c18}
+.L-plate{width:66mm;min-height:20mm;background:linear-gradient(180deg,#2c3236,#1a1e21);color:#d8dde1;padding:2.6mm 3.4mm;border-radius:1.2mm;border:.3mm solid #4a5258;display:grid;grid-template-columns:auto 1fr;gap:.6mm 3mm;align-items:center}
+.L-plate .no{grid-row:1/3;font:500 15pt var(--f-m);color:var(--gold);letter-spacing:.02em}
+.L-plate .nm{font:500 9pt var(--f-m);letter-spacing:.2em;text-transform:uppercase}
+.L-plate .ty{font:400 6pt var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:#9aa4ab}
+.L-plate .e{grid-column:1/-1;font:400 5.5pt var(--f-m);letter-spacing:.24em;text-transform:uppercase;color:#7c868d;border-top:.2mm solid #4a5258;padding-top:.8mm;display:flex;justify-content:space-between}
+.L-jp{width:24mm;min-height:74mm;background:var(--paper);padding:3mm 2mm;display:flex;flex-direction:column;align-items:center;gap:2mm;border-top:2.4mm solid var(--red)}
+.L-jp .jp{writing-mode:vertical-rl;font:800 15pt/1 var(--f-d);letter-spacing:.12em}
+.L-jp .no{font:500 6.5pt var(--f-m);letter-spacing:.06em}
+.L-jp .nm{font:500 5.5pt var(--f-m);letter-spacing:.14em;text-transform:uppercase;writing-mode:vertical-rl;color:#6a665c}
+.L-jp .seal{margin-top:auto;width:8mm;height:8mm;border:.5mm solid var(--red);color:var(--red);border-radius:1mm;display:grid;place-items:center;font:800 6pt/1 var(--f-d)}
+.sheet-list{display:flex;flex-wrap:wrap;gap:4mm;align-items:flex-start}
+#printSheet{display:none}
+@media print{
+  @page{margin:10mm}
+  body{background:#fff!important;padding:0}
+  .wrap{display:none!important}
+  #printSheet{display:flex!important;flex-wrap:wrap;gap:4mm;align-items:flex-start}
+  #printSheet .L{box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* audio */
+.compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.build{border:1px solid var(--line);border-radius:6px;padding:20px;background:var(--surface);display:flex;flex-direction:column;gap:12px}
+.build.pick{border-color:var(--emerald)}
+.pill{display:inline-block;font:500 10.5px var(--f-m);letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid currentColor}
+.pill.g{color:var(--emerald)}.pill.y{color:var(--gold)}.pill.r{color:var(--red)}
+.build ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:4px}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11px var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);background:var(--surface)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--f-m);font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--gold)}
+.diagram{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px}
+.diagram svg{display:block;min-width:720px;width:100%;height:auto}
+.bars{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:150px 1fr 52px;gap:12px;align-items:center;font-size:13.5px}
+.bar .track{height:12px;background:var(--raise);border-radius:2px;position:relative;overflow:hidden}
+.bar .fill{height:100%;background:var(--emerald-deep);border-right:2px solid var(--emerald)}
+.bar .v{font:12px var(--f-m);color:var(--gold);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:520px){.bar{grid-template-columns:110px 1fr 44px}}
+pre.code{margin:0;background:#0A0C0B;border:1px solid var(--line);border-radius:6px;padding:16px;overflow-x:auto;font:12.5px/1.6 var(--f-m);color:#cfd6d2}
+pre.code .c{color:#6f7a74}pre.code .k{color:var(--gold)}pre.code .s{color:var(--emerald)}
+.callout{border:1px solid #5b2a22;background:#1c1311;border-radius:6px;padding:14px 16px;font-size:14px}
+.callout b{color:#e7806f}
+.tree{font:13px/1.7 var(--f-m);color:var(--muted);background:var(--raise);border-radius:4px;padding:12px 14px;white-space:pre;overflow-x:auto}
+
+/* ideas */
+.idea{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.idea .t{font:800 17px/1.3 var(--f-d)}
+.idea p{color:var(--muted);font-size:14px}
+.idea .for{font:11px var(--f-m);color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-top:auto}
+
+.pager{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:18px;margin-top:8px}
+.pager button{background:none;border:1px solid var(--line);color:var(--ink);padding:12px 16px;border-radius:6px;cursor:pointer;text-align:left;font:15px var(--f-d);display:flex;flex-direction:column;gap:2px;max-width:48%}
+.pager button span{font:11px var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.pager button.nx{text-align:right;margin-left:auto}
+.pager button:hover{border-color:var(--emerald)}
+footer{margin-top:40px;font:12px var(--f-m);color:var(--faint);letter-spacing:.04em}
+@media (max-width:600px){header.top{grid-template-columns:1fr}.hanko{width:70px;height:70px;font-size:22px;order:-1}.kv{grid-template-columns:1fr;gap:2px}.kv dd{margin-bottom:8px}.form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){section.ch{animation:in .25s ease-out}@keyframes in{from{transform:translateY(6px)}to{transform:none}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div>
+    <div class="eyebrow">Collector's archive · Michi Method · v1 Oct 2026</div>
+    <h1>The Binder Archive</h1>
+    <p>A field guide for turning a 9-pocket binder into a Pokémon art book: the method, per-Pokémon design languages, what to buy, a label maker, and how to wire sound and NFC into the cover. Click through the chapters; each one stands on its own.</p>
+    <div class="meta-row"><span>10 SPECIMENS</span><span>45+ SOURCES</span><span>4 LABEL STYLES</span><span>2 AUDIO BUILDS</span></div>
+  </div>
+  <div class="hanko" aria-hidden="true">標本</div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Chapters" id="tabs"></nav>
+
+<!-- START -->
+<section class="ch" id="start" data-title="Start here">
+  <div class="ch-head"><div class="eyebrow">Chapter I</div><h2>How the archive works</h2><p>The Michi Method mixes cards, art that spans pockets, and deliberate empty space instead of filling all nine slots. Treat each spread as a museum case: a few objects, lit well, with a label.</p></div>
+
+  <div class="rules">
+    <div class="rule"><span class="k">Safety</span><b>Nothing sticky touches a card.</b><p>Adhesive goes on outer sleeves, acetate overlays, or the printed inserts. Every decoration can come off later.</p></div>
+    <div class="rule"><span class="k">Hierarchy</span><b>Decorate art pockets. Frame card pockets.</b><p>Cards get at most a label or a thin border on the outer sleeve. The heavy layering happens in the art pockets around them.</p></div>
+    <div class="rule"><span class="k">Palette</span><b>Two colours, one metal, one motif.</b><p>Each spread picks from its Pokémon's dossier. Gold or silver, never both on one spread.</p></div>
+    <div class="rule"><span class="k">Restraint</span><b>Three elements per pocket, max.</b><p>A sticker, a label, a holo shard. If you add a fourth, take one away.</p></div>
+    <div class="rule"><span class="k">System</span><b>One label system across the book.</b><p>Same fonts, same numbering, same position on every spread. That consistency is what makes it read as an archive.</p></div>
+    <div class="rule"><span class="k">Air</span><b>Leave a black pocket on purpose.</b><p>An empty black slot next to a card does more than another sticker. Michi layouts rely on that negative space.</p></div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Card pocket stack</h3>
+      <div class="front-back"><span>Front of page</span><span>&nbsp;</span></div>
+      <div class="stack">
+        <div class="layer"><div class="sw" style="background:#2a3330"></div><div><b>Binder pocket</b><span>Side-loading, so double-sleeved cards slide in without catching.</span></div></div>
+        <div class="layer"><div class="sw" style="background:linear-gradient(135deg,#d8d8d8,#9aa)"></div><div><b>Outer sleeve + border decorations</b><span>PET stickers, rub-ons, or a gold-on-clear label on the sleeve margin only.</span></div></div>
+        <div class="layer card"><div class="sw" style="background:var(--gold)"></div><div><b>Card in a perfect-fit sleeve</b><span>Never touched by adhesive or ink.</span></div></div>
+        <div class="layer"><div class="sw" style="background:#111"></div><div><b>Black backing card (optional)</b><span>Stops the next pocket's art showing through the clear back.</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Art pocket stack</h3>
+      <div class="front-back"><span>Front of page</span><span>&nbsp;</span></div>
+      <div class="stack">
+        <div class="layer"><div class="sw" style="background:#2a3330"></div><div><b>Binder pocket</b><span>The pocket plastic itself stays clean.</span></div></div>
+        <div class="layer"><div class="sw" style="background:rgba(239,235,225,.25);border:1px solid #555"></div><div><b>Acetate overlay</b><span>Clear 63×88 mm sheet carrying PET stickers, rub-ons, or printed linework.</span></div></div>
+        <div class="layer"><div class="sw" style="background:linear-gradient(135deg,#7fd6c1,#b9a7e0,#f2d58a)"></div><div><b>Holo / dichroic shards or vellum</b><span>Loose or lightly tacked to the insert. Catches light as pages turn.</span></div></div>
+        <div class="layer"><div class="sw" style="background:var(--paper)"></div><div><b>Printed art insert</b><span>The base image. NFC tags hide on its back.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Sizes to design at</h3>
+      <dl class="dims">
+        <dt>63 × 88 mm</dt><dd>Standard card. Cut every insert and overlay to this size so it slides in like a card.</dd>
+        <dt>66 × 91 mm</dt><dd>Typical sleeved size. Use for inserts going into an outer sleeve.</dd>
+        <dt>3 × 63 mm + 2 gutters</dt><dd>Full-page art. Measure the gap between pockets on your binder (often 4–7 mm), build the canvas at full width including gutters, then slice into nine tiles and throw away the gutter strips so the image lines up across pockets.</dd>
+        <dt>300 dpi</dt><dd>Export resolution. A 63 × 88 mm tile is about 744 × 1039 px.</dd>
+      </dl>
+    </div>
+    <div class="panel">
+      <h3>Build order</h3>
+      <ol class="steps">
+        <li><div><h4>Pick the roster</h4><p>Choose the 10–20 Pokémon that get spreads. Open the Themes chapter for each one's palette and layout.</p></div></li>
+        <li><div><h4>Design inserts</h4><p>Canva or Affinity at the sizes above. Make the label set at the same time so typography matches.</p></div></li>
+        <li><div><h4>Dry-fit with no adhesive</h4><p>Load cards, inserts and overlays. Live with the layout for a few days before sticking anything.</p></div></li>
+        <li><div><h4>Decorate overlays and sleeves</h4><p>PET stickers and rub-ons go on acetate and outer sleeves, never the cards.</p></div></li>
+        <li><div><h4>Hide NFC tags</h4><p>Behind art inserts, one per spread. Program them last so the links are final.</p></div></li>
+        <li><div><h4>Build the audio cover</h4><p>Last, because it is the only step that is hard to undo. See the Audio chapter.</p></div></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>If you buy six things first</h3>
+    <p class="muted small" style="margin-bottom:14px">The starter kit. These cover most spreads before you specialise. Each is tagged <span class="tag kit">STARTER</span> in the Shop.</p>
+    <div class="grid3" id="kitList"></div>
+  </div>
+</section>
+
+<!-- THEMES -->
+<section class="ch" id="themes" data-title="Themes" hidden>
+  <div class="ch-head"><div class="eyebrow">Chapter II</div><h2>Specimen dossiers</h2><p>Each Pokémon gets its own design language: palette, motifs, materials, a suggested 3×3 layout, one standout move, and matching audio and NFC ideas. Pick one.</p></div>
+  <div class="roster" id="roster" role="group" aria-label="Pokémon"></div>
+  <div class="dossier" id="dossier"></div>
+</section>
+
+<!-- SHOP -->
+<section class="ch" id="shop" data-title="Shop" hidden>
+  <div class="ch-head"><div class="eyebrow">Chapter III</div><h2>Sources &amp; materials</h2><p>Hand-picked toward premium, archival and technical looks. Links marked <span class="mono small">SEARCH</span> open a tuned search instead of one listing, because sticker shops rotate stock fast. Prices are rough tiers.</p></div>
+  <div class="filters" id="filters"></div>
+  <div class="count" id="shopCount"></div>
+  <div class="grid3" id="shopList"></div>
+</section>
+
+<!-- LABELS -->
+<section class="ch" id="labels" data-title="Labels" hidden>
+  <div class="ch-head"><div class="eyebrow">Chapter IV</div><h2>Label maker</h2><p>Museum placards, specimen tags, steel plates and vertical Japanese tags, drawn at true size in millimetres. Load a preset or type your own, add to the sheet, then print on cardstock, kraft, or clear sticker paper.</p></div>
+  <div class="lab">
+    <div class="panel">
+      <div class="row" style="margin-bottom:14px"><span class="eyebrow">Preset</span><select id="preset" class="btn" aria-label="Preset"></select></div>
+      <div class="form">
+        <label class="full">Heading<input id="f-eyebrow" value="Pokédex Archive"></label>
+        <label>Number<input id="f-no" value="376"></label>
+        <label>Japanese name<input id="f-jp" value="メタグロス"></label>
+        <label class="full">Name<input id="f-name" value="Metagross"></label>
+        <label>Type<input id="f-type" value="Steel / Psychic"></label>
+        <label>Region<input id="f-region" value="Hoenn"></label>
+        <label class="full">Footer line<input id="f-note" value="Collection No. 047"></label>
+      </div>
+      <div style="margin-top:16px"><span class="eyebrow">Style</span>
+        <div class="styles" id="styleBtns" style="margin-top:8px"></div></div>
+      <div class="row" style="margin-top:16px">
+        <button class="btn pri" id="addSheet">Add to print sheet</button>
+        <button class="btn" id="printBtn">Print sheet</button>
+        <button class="btn" id="clearSheet">Clear sheet</button>
+      </div>
+      <p class="muted small" style="margin-top:12px">Print at 100% scale (turn off “fit to page”). For gold text, print the plate or placard on a laser printer and run it through a laminator with toner-reactive foil.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+      <div class="stage" id="stage"></div>
+      <div class="panel"><div class="row" style="justify-content:space-between"><h4 style="margin:0">Print sheet</h4><span class="count" id="sheetCount"></span></div>
+        <div class="sheet-list" id="sheetPreview" style="margin-top:12px;transform-origin:top left"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIO -->
+<section class="ch" id="audio" data-title="Audio" hidden>
+  <div class="ch-head"><div class="eyebrow">Chapter V</div><h2>The sounding cover</h2><p>All electronics live in the front cover, so card pages stay flat. Open the binder and the cover theme plays; press flat membrane buttons printed as <span class="mono">▶ MUSIC · CRY · EFFECT</span> for the rest.</p></div>
+
+  <div class="compare">
+    <div class="build">
+      <div class="row"><span class="pill y">Build A</span><span class="pill y">No code</span></div>
+      <h3>Button soundboard</h3>
+      <p class="muted small">DFPlayer Mini on its own. Battery, charger, slide switch, speaker, buttons.</p>
+      <ul><li>Two buttons on IO1/IO2: short press = previous/next track, long press = volume.</li><li>Direct “play track N” keys through the ADKEY resistor ladder (0 Ω, 3 kΩ, 6.2 kΩ, 9.1 kΩ…). Check the DFPlayer datasheet table for which segment does what.</li><li>Cannot auto-play when the cover opens.</li><li>Fine as a first prototype on a breadboard.</li></ul>
+    </div>
+    <div class="build pick">
+      <div class="row"><span class="pill g">Build B</span><span class="pill g">Recommended</span></div>
+      <h3>Opens-and-plays cover</h3>
+      <p class="muted small">Adds a thumb-sized Seeed XIAO board and a reed switch. About 20 lines of Arduino code.</p>
+      <ul><li>Reed switch cuts all power while the binder is shut: zero standby drain.</li><li>Opening the cover powers up and plays the intro track.</li><li>Each membrane key plays a specific file.</li><li>Room to grow: per-section volume, random cries, a “now playing” LED.</li></ul>
+    </div>
+  </div>
+
+  <div>
+    <h3>Parts for Build B</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Part</th><th>Pick</th><th>Thickness</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>MP3 player</td><td><a href="https://www.dfrobot.com/product-1121.html" target="_blank" rel="noopener">DFRobot DFPlayer Mini (DFR0299)</a></td><td class="num">~7 mm</td><td>The thickest part once the microSD is in. Genuine DFRobot boards are less fussy than clones.</td></tr>
+        <tr><td>Controller</td><td><a href="https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html" target="_blank" rel="noopener">Seeed XIAO RP2040</a></td><td class="num">~3.5 mm</td><td>21 × 17.5 mm. Any small Arduino-compatible board works.</td></tr>
+        <tr><td>Speaker</td><td><a href="https://www.adafruit.com/product/3923" target="_blank" rel="noopener">Adafruit mini oval 8 Ω 1 W (#3923)</a></td><td class="num">5 mm</td><td>30 × 20 mm. Face it toward a grille in the cover.</td></tr>
+        <tr><td>Battery</td><td><a href="https://www.adafruit.com/product/1578" target="_blank" rel="noopener">Adafruit LiPo 3.7 V 500 mAh (#1578)</a></td><td class="num">~5 mm</td><td>Flat pouch with built-in protection. Hours of playback per charge.</td></tr>
+        <tr><td>Charger</td><td><a href="https://www.adafruit.com/product/4410" target="_blank" rel="noopener">Adafruit Micro-Lipo USB-C (#4410)</a></td><td class="num">~5 mm</td><td>Mount the USB-C jack at the cover edge. Charges whether the binder is open or shut.</td></tr>
+        <tr><td>Buttons</td><td><a href="https://www.adafruit.com/product/1332" target="_blank" rel="noopener">Adafruit membrane 1×4 keypad (#1332)</a></td><td class="num">&lt;1 mm</td><td>Each key has its own wire. Cover it with a printed vellum label.</td></tr>
+        <tr><td>Open sensor</td><td><a href="https://www.amazon.com/s?k=normally+closed+reed+switch+plastic" target="_blank" rel="noopener">Normally-closed reed switch</a> + <a href="https://www.amazon.com/s?k=neodymium+disc+magnet+10x2mm" target="_blank" rel="noopener">10×2 mm magnets</a></td><td class="num">~2 mm</td><td>Prefer plastic-cased reeds; bare glass ones crack when the cover flexes.</td></tr>
+        <tr><td>Storage</td><td>microSD, 8–32 GB, FAT32</td><td class="num">—</td><td>Files go in a folder named <span class="mono">mp3</span>.</td></tr>
+        <tr><td>Small bits</td><td>1 kΩ resistor, 28–30 AWG silicone wire, Kapton tape</td><td class="num">—</td><td>Kapton insulates the boards from each other inside the cover.</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div>
+    <h3>Wiring</h3>
+    <div class="diagram">
+      <svg viewBox="0 0 900 420" role="img" aria-label="Wiring: battery and charger feed a reed switch, which powers the XIAO and DFPlayer. XIAO TX goes through 1k to DFPlayer RX. DFPlayer drives the speaker. Keypad keys connect XIAO D0 to D3 to ground.">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9AA39E"/></marker></defs>
+        <g font-family="DM Mono, monospace" font-size="12" fill="#ECE8DE">
+          <!-- battery -->
+          <rect x="20" y="40" width="150" height="70" rx="4" fill="#1C2220" stroke="#CFAE62"/>
+          <text x="35" y="66" fill="#CFAE62">LIPO 3.7V</text><text x="35" y="86" fill="#9AA39E">500 mAh</text>
+          <!-- charger -->
+          <rect x="20" y="170" width="150" height="80" rx="4" fill="#1C2220" stroke="#2A322F"/>
+          <text x="35" y="196">MICRO-LIPO</text><text x="35" y="216" fill="#9AA39E">USB-C charger</text><text x="35" y="236" fill="#9AA39E">(always on batt)</text>
+          <line x1="95" y1="110" x2="95" y2="170" stroke="#9AA39E" stroke-width="2"/>
+          <!-- reed -->
+          <rect x="240" y="45" width="140" height="60" rx="4" fill="#1C2220" stroke="#C8402F"/>
+          <text x="255" y="70" fill="#E7806F">REED (N.C.)</text><text x="255" y="90" fill="#9AA39E">magnet = OFF</text>
+          <line x1="170" y1="75" x2="240" y2="75" stroke="#C8402F" stroke-width="2"/><text x="182" y="66" fill="#9AA39E" font-size="11">BAT+</text>
+          <!-- rail -->
+          <line x1="380" y1="75" x2="760" y2="75" stroke="#C8402F" stroke-width="2"/>
+          <text x="560" y="66" fill="#9AA39E" font-size="11">switched +3.7–4.2 V</text>
+          <!-- XIAO -->
+          <rect x="430" y="140" width="170" height="220" rx="4" fill="#151A18" stroke="#3DB585"/>
+          <text x="445" y="165" fill="#3DB585">XIAO RP2040</text>
+          <text x="445" y="192">5V  ← rail</text><text x="445" y="212">GND</text>
+          <text x="445" y="240">D6  TX</text><text x="445" y="260">D7  RX</text>
+          <text x="445" y="292">D0  MUSIC</text><text x="445" y="310">D1  CRY</text><text x="445" y="328">D2  EFFECT</text><text x="445" y="346">D3  STOP</text>
+          <line x1="470" y1="75" x2="470" y2="140" stroke="#C8402F" stroke-width="2" marker-end="url(#ar)"/>
+          <!-- DFPlayer -->
+          <rect x="690" y="140" width="180" height="150" rx="4" fill="#151A18" stroke="#CFAE62"/>
+          <text x="705" y="165" fill="#CFAE62">DFPLAYER MINI</text>
+          <text x="705" y="192">VCC ← rail</text><text x="705" y="212">GND</text>
+          <text x="705" y="240">RX</text><text x="705" y="260">TX</text>
+          <text x="705" y="282" fill="#9AA39E">SPK1 · SPK2</text>
+          <line x1="760" y1="75" x2="760" y2="140" stroke="#C8402F" stroke-width="2" marker-end="url(#ar)"/>
+          <!-- serial -->
+          <line x1="600" y1="236" x2="690" y2="236" stroke="#3DB585" stroke-width="2"/>
+          <rect x="626" y="226" width="38" height="18" rx="2" fill="#0D100F" stroke="#3DB585"/><text x="632" y="239" font-size="10" fill="#3DB585">1kΩ</text>
+          <line x1="600" y1="256" x2="690" y2="256" stroke="#9AA39E" stroke-width="2" stroke-dasharray="4 3"/>
+          <!-- speaker -->
+          <rect x="720" y="330" width="120" height="60" rx="30" fill="#1C2220" stroke="#2A322F"/>
+          <text x="742" y="365">SPEAKER</text>
+          <line x1="780" y1="290" x2="780" y2="330" stroke="#9AA39E" stroke-width="2"/>
+          <!-- keypad -->
+          <rect x="240" y="270" width="140" height="100" rx="4" fill="#1C2220" stroke="#2A322F"/>
+          <text x="255" y="295">KEYPAD 1×4</text><text x="255" y="315" fill="#9AA39E">each key → Dn</text><text x="255" y="333" fill="#9AA39E">common → GND</text>
+          <line x1="380" y1="320" x2="430" y2="320" stroke="#9AA39E" stroke-width="2"/>
+          <!-- ground -->
+          <text x="20" y="400" fill="#9AA39E" font-size="11">All GNDs joined: battery −, charger GND, XIAO GND, DFPlayer GND (both pins), keypad common.</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Where the magnet goes</h3>
+      <p class="muted small">A reed switch only reacts within a centimetre or two, but the covers of a closed binder sit 4–5 cm apart. Two layouts that work:</p>
+      <ul class="clean small" style="margin-top:12px">
+        <li><b>Strap binder.</b> Put the reed under the front cover where the elastic strap crosses it, and glue a magnet inside the strap. Strap on = silent. Slip it off = music. The Vault X Exo-Tec Strap binder suits this.</li>
+        <li><b>Flap or clasp.</b> On a binder with a magnetic flap, mount the reed beside the existing clasp magnet.</li>
+        <li><b>No strap at all.</b> Swap the reed for a light sensor on the XIAO and play when the inside cover sees light. Uses a little standby power.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Thickness budget</h3>
+      <p class="muted small" style="margin-bottom:12px">Lay parts side by side, never stacked. The deepest part sets the cavity depth. Approximate figures.</p>
+      <div class="bars" id="bars"></div>
+      <p class="muted small" style="margin-top:12px">Build the cavity from two layers of 5 mm foam board glued inside the cover, cut out around each part, and close it with a printed art panel.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div style="min-width:0;display:flex;flex-direction:column;gap:10px">
+      <h3>Sketch</h3>
+      <pre class="code" id="code"></pre>
+      <p class="muted small">Needs the <span class="mono">DFRobotDFPlayerMini</span> library from the Arduino Library Manager. On the XIAO RP2040, <span class="mono">Serial1</span> is pins D6 (TX) and D7 (RX).</p>
+    </div>
+    <div style="min-width:0;display:flex;flex-direction:column;gap:14px">
+      <div><h3>microSD layout</h3>
+<div class="tree">SD/
+└── mp3/
+    ├── 0001.mp3   opening theme (cover Pokémon)
+    ├── 0002.mp3   ▶ MUSIC
+    ├── 0003.mp3   CRY
+    └── 0004.mp3   EFFECT</div>
+      <p class="muted small" style="margin-top:8px">Four-digit names are required. Copy files in numeric order onto a freshly formatted card. 128 kbps MP3 is plenty for a tiny speaker.</p></div>
+      <div class="callout"><b>LiPo care.</b> Tape over every bare joint, keep the pouch away from anything that can puncture it, and don't bend it with the cover. Use only cells with a protection circuit (the Adafruit ones have it). Unplug the charger once it shows full if the binder lives on a shelf.</div>
+      <div class="panel"><h4>Per-page sound, plainly</h4><p class="muted small">Detecting which page is open inside a 20-page binder isn't practical with switches. The cover handles one theme. For page-specific audio, use the NFC chapter: tap a page with your phone and its playlist opens.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NFC -->
+<section class="ch" id="nfc" data-title="NFC" hidden>
+  <div class="ch-head"><div class="eyebrow">Chapter VI</div><h2>Tap-to-open pages</h2><p>NFC stickers are paper-thin, need no battery, and give every spread its own sound or link. Hold a phone to the page and it opens whatever the tag points at.</p></div>
+  <div class="grid2">
+    <div class="panel">
+      <h3>Setup</h3>
+      <ol class="steps">
+        <li><div><h4>Buy NTAG215 stickers, 25 mm round</h4><p>504 bytes is far more than a URL needs, and every modern phone reads them. Get a pack of 20+.</p></div></li>
+        <li><div><h4>Install NFC Tools</h4><p>Free on iOS and Android. Choose Write → Add a record → URL.</p></div></li>
+        <li><div><h4>Point at a link you control</h4><p>Write a short URL that redirects to the playlist or video. Then you can change the destination later without rewriting the tag.</p></div></li>
+        <li><div><h4>Stick it behind an art insert</h4><p>On the back of the printed insert in an art pocket, never on a card. Mark the spot with a tiny symbol on the overlay so you know where to tap.</p></div></li>
+        <li><div><h4>Test through the page</h4><p>iPhones read URL tags from the lock screen; Android needs the screen unlocked. Leave tags unlocked so you can rewrite them.</p></div></li>
+      </ol>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+      <div class="panel"><h3>What to link</h3>
+        <ul class="clean small">
+          <li><b>Theme playlist.</b> A Spotify or YouTube playlist per Pokémon. The dossiers list a starting track.</li>
+          <li><b>Pokédex entry.</b> Bulbapedia or Serebii for the species.</li>
+          <li><b>The card itself.</b> Its PriceCharting page, or a photo log of the pull.</li>
+          <li><b>Provenance.</b> The video of the pack opening, or the con where you bought it.</li>
+          <li><b>Your own page.</b> A personal page per spread with notes, artist credits and acquisition date. This data-pages site can host those.</li>
+        </ul></div>
+      <div class="callout"><b>Metal kills the signal.</b> Metallised holo film, foil card stock and the Pokémon cards' own holo layer can block a tag sitting directly behind them. Put tags behind plain paper pockets, or buy “anti-metal” NTAG215 tags for spreads heavy with foil.</div>
+      <div class="panel"><h4>Mark the tap spot</h4><p class="muted small">Use one consistent symbol on every overlay: a small gold ring, a PET “)))” sticker, or a museum-style “AUDIO GUIDE ◉” label. It reads like a gallery audio tour.</p></div>
+    </div>
+  </div>
+  <div><h3>Tag plan by specimen</h3><div class="tbl-wrap"><table><thead><tr><th>No.</th><th>Specimen</th><th>Tap opens</th><th>Starter track</th></tr></thead><tbody id="nfcRows"></tbody></table></div></div>
+</section>
+
+<!-- IDEAS -->
+<section class="ch" id="ideas" data-title="Ideas" hidden>
+  <div class="ch-head"><div class="eyebrow">Chapter VII</div><h2>Ideas worth stealing</h2><p>Things that make a binder feel designed rather than decorated. Most cost a few dollars; a couple are free.</p></div>
+  <div class="grid3" id="ideaList"></div>
+</section>
+
+<div class="pager" id="pager"></div>
+<footer>Personal reference · decorations and builds are suggestions, check product listings before buying · Pokémon and all related names are trademarks of Nintendo / Creatures / GAME FREAK.</footer>
+</div>
+
+<div id="printSheet" aria-hidden="true"></div>
+
+<script>
+const SPECIMENS = [
+ {id:"gallade",name:"Gallade",jp:"エルレイド",no:"475",type:"Psychic / Fighting",region:"Sinnoh",
+  pal:[["#0B0F0D","Black"],["#1F7A54","Emerald"],["#3FBF85","Jade"],["#B8C0C2","Silver"],["#C6363C","Crest red"]],
+  motifs:"Sword strokes, 45° slash lines, technical drawings with dimension arrows, chrome edges, hexagon fragments.",
+  materials:"Emerald dichroic film shards, silver rub-on linework, black embossed tape serials, steel-plate labels.",
+  layout:"HAC|ACA|CAH",
+  sig:"Cut a long strip of emerald dichroic film and lay it diagonally across three pockets, lined up with the blade arm in the art. When the page tilts, the slash lights up green to blue.",
+  label:"plate",note:"Blade specimen · Gen IV",audio:"An orchestral Gen IV battle theme",nfc:"Gallade battle playlist"},
+ {id:"gardevoir",name:"Gardevoir",jp:"サーナイト",no:"282",type:"Psychic / Fairy",region:"Hoenn",
+  pal:[["#F4F6F2","White"],["#A8DCC4","Mint"],["#E9B7C3","Blush"],["#B9C1C4","Silver"],["#3B6B5A","Deep green"]],
+  motifs:"Botanical plates, pressed-specimen layouts, fine silver linework, sparse flowers, handwritten Latin-style captions.",
+  materials:"Vintage botanical PET labels, matte clear PET, white vellum, silver foil labels.",
+  layout:"LAx|ACA|xAL",
+  sig:"Make the art pockets look like a herbarium sheet: a white vellum overlay over a printed botanical plate, with a placard reading “Specimen pressed · Route 113” in the corner.",
+  label:"placard",note:"Herbarium sheet",audio:"A calm Hoenn town theme",nfc:"Hoenn ambient playlist"},
+ {id:"umbreon",name:"Umbreon",jp:"ブラッキー",no:"197",type:"Dark",region:"Johto",
+  pal:[["#0A0C14","Night"],["#1B2A4A","Navy"],["#D9B45A","Gold"],["#F2E3A0","Ring glow"],["#C93A3A","Red eye"]],
+  motifs:"Moon phases, star charts, constellation lines, observatory diagrams, gold ring shapes.",
+  materials:"Gold-foil celestial PET tape, glow-in-the-dark vinyl rings, navy art inserts, gold-on-clear labels.",
+  layout:"AAA|xCx|HLH",
+  sig:"Run a moon-phase strip across the top row from new to full moon. Cut Umbreon's rings from glow-in-the-dark vinyl and place them on the overlay so the page glows when the lights go off.",
+  label:"placard",note:"Observed under new moon",audio:"A Johto night theme",nfc:"Night / lo-fi Johto playlist"},
+ {id:"charizard",name:"Charizard",jp:"リザードン",no:"006",type:"Fire / Flying",region:"Kanto",
+  pal:[["#120D0C","Char"],["#B5301F","Red"],["#E7782A","Orange"],["#F2C14E","Flame"],["#2E5E8C","Wing teal"]],
+  motifs:"Showa-era matchbox labels, bold katakana, flame silhouettes, vintage advertising, 1990s Base Set nostalgia.",
+  materials:"Japanese matchbox labels, booster wrapper strips, red hanko stamp, kraft specimen tags.",
+  layout:"LAC|AAA|CAL",
+  sig:"Design the art like a Shōwa-era matchbox label: big リザードン in a red-and-cream frame with a numbered “No. 006” cartouche. Frame the cards with thin strips cut from Japanese booster wrappers.",
+  label:"jp",note:"Base Set era",audio:"The Red/Blue trainer battle theme",nfc:"Kanto battle playlist"},
+ {id:"rayquaza",name:"Rayquaza",jp:"レックウザ",no:"384",type:"Dragon / Flying",region:"Hoenn",
+  pal:[["#0B0F0D","Black"],["#1F6B45","Emerald"],["#D8B04A","Gold"],["#C23B2E","Marking red"],["#D6DEE0","Cloud"]],
+  motifs:"Atmosphere layer charts, altitude scales, cloud studies, serpent coils, Japanese wave-and-cloud patterns.",
+  materials:"Gold-foil cloud PET, altitude-scale rub-ons, emerald dichroic film, vellum cloud layer.",
+  layout:"AHA|ACA|AAA",
+  sig:"Print an atmospheric cross-section across all nine pockets, with an altitude scale running down the left column (TROPOSPHERE → STRATOSPHERE → OZONE LAYER) and Rayquaza coiling through it. Rayquaza lives in the ozone layer in the games.",
+  label:"plate",note:"Alt. 25,000 m · ozone layer",audio:"Battle! Rayquaza or Sky Pillar",nfc:"Sky Pillar / legendary playlist"},
+ {id:"mew",name:"Mew",jp:"ミュウ",no:"151",type:"Psychic",region:"Kanto",
+  pal:[["#FAF7FB","White"],["#E7B8D6","Pink"],["#B9A7E0","Lavender"],["#8FD3E8","Cyan"],["#C0C4CC","Silver"]],
+  motifs:"Lab journals, typewritten research notes, faint star fields, genetic diagrams, iridescence.",
+  materials:"Holographic rainbow film, typewriter-text PET, white vellum, lab-specimen labels.",
+  layout:"LxA|HCH|AxL",
+  sig:"Type out the Cinnabar Mansion diary on vellum (“July 5. Guyana, South America. A new species was discovered deep in the jungle.”) and lay it over a white insert backed by rainbow holo film.",
+  label:"tag",note:"Cinnabar lab · journal entry",audio:"Mew's theme",nfc:"Mew / Cinnabar playlist"},
+ {id:"lugia",name:"Lugia",jp:"ルギア",no:"249",type:"Psychic / Flying",region:"Johto",
+  pal:[["#0E1A33","Navy"],["#2F4E7A","Deep blue"],["#DDE3EA","Silver white"],["#8EA6C2","Sea"],["#B8333A","Red"]],
+  motifs:"Nautical charts, depth soundings, coordinates, compass roses, wave lines.",
+  materials:"Old map paper, silver rub-ons, wave-pattern washi, coordinate labels, navy inserts.",
+  layout:"AAA|ACA|LAH",
+  sig:"Back the spread with a nautical chart and add depth soundings plus a coordinate label for the Whirl Islands. Run a fine silver wave line across the bottom row.",
+  label:"placard",note:"Whirl Islands · depth 40 fathoms",audio:"Lugia's Song (Pokémon 2000)",nfc:"Lugia / ocean playlist"},
+ {id:"metagross",name:"Metagross",jp:"メタグロス",no:"376",type:"Steel / Psychic",region:"Hoenn",
+  pal:[["#0E141B","Gunmetal"],["#3A5A86","Steel blue"],["#A9B3BE","Silver"],["#C9CED4","Chrome"],["#B83A3A","Red eye"]],
+  motifs:"Blueprints, exploded diagrams, serial plates, rivets, the X-shaped body as a technical drawing.",
+  materials:"Embossed label tape, blueprint inserts, chrome PET, steel-plate labels, barcode stickers.",
+  layout:"LAL|ACA|HAH",
+  sig:"Draw the spread as a blueprint: Metagross in white linework on Prussian blue with dimension arrows, plus embossed serial tape reading SPECIMEN 376 · STEEL/PSYCHIC. Steven's ace earns the full engineering treatment.",
+  label:"plate",note:"Collection No. 047",audio:"Battle! Champion Steven",nfc:"Steven / Hoenn champion playlist"},
+ {id:"pikachu",name:"Pikachu",jp:"ピカチュウ",no:"025",type:"Electric",region:"Kanto",
+  pal:[["#1B1B1B","Black"],["#F4C430","Yellow"],["#C8382E","Red"],["#FFFFFF","White"],["#2A4FA0","Center blue"]],
+  motifs:"Pokémon Center Japan shop ephemera: bags, receipts, price tags, store stamps, shelf labels.",
+  materials:"Real Pokémon Center bags and receipts, price-tag stickers, barcode labels, ticket stubs.",
+  layout:"CAC|LxL|CAC",
+  sig:"Make this the gift-shop page: cut panels from real Pokémon Center bags, add a receipt strip and a store-tag label, and hide the NFC tag behind the bag panel to open Pokémon Center music.",
+  label:"tag",note:"Pokémon Center · gift shop",audio:"Pokémon Center theme",nfc:"Pokémon Center music"},
+ {id:"gengar",name:"Gengar",jp:"ゲンガー",no:"094",type:"Ghost / Poison",region:"Kanto",
+  pal:[["#0F0B14","Void"],["#4A2E6E","Purple"],["#7B57A8","Violet"],["#D64545","Red eye"],["#E9E4EF","Bone"]],
+  motifs:"Classified case files, redaction bars, Lavender Town tower, ghost photography, evidence tags.",
+  materials:"Kraft evidence tags, black redaction strips, “CLASSIFIED” stamps, purple vellum.",
+  layout:"LAA|ACx|AAL",
+  sig:"Treat it as a case file: a kraft folder insert stamped CLASSIFIED, black redaction bars on the overlay, and an evidence tag tied to the card's outer sleeve with thread.",
+  label:"tag",note:"Lavender Town · case file",audio:"Lavender Town",nfc:"Lavender Town playlist"}
+];
+
+const CATS = {michi:"Michi Method",binder:"Binder & sleeves",pet:"PET & clear stickers",japan:"Japanese ephemera",holo:"Holo, film & paper",labels:"Label tools",nfc:"NFC",audio:"Audio parts"};
+const S = q => "https://www.amazon.com/s?k="+encodeURIComponent(q);
+const E = q => "https://www.etsy.com/search?q="+encodeURIComponent(q);
+const B = q => "https://www.ebay.com/sch/i.html?_nkw="+encodeURIComponent(q);
+const SHOP = [
+ // Michi
+ {c:"michi",n:"@peeplop on Instagram",src:"Instagram",u:"https://www.instagram.com/peeplop/",note:"Where the Michi Method was popularised. Study how much space is left empty around each card.",t:["inspiration"],p:"Free"},
+ {c:"michi",n:"Creating a binder preview (Michi)",src:"Elite Fourum",u:"https://www.elitefourum.com/t/creating-a-binder-preview-with-michi-method/60453",note:"Collectors mocking up Michi spreads digitally before printing. Good for workflow.",t:["workflow"],p:"Free"},
+ {c:"michi",n:"Most recently completed binder page",src:"Elite Fourum",u:"https://www.elitefourum.com/t/most-recently-completed-binder-page/46871",note:"A long-running showcase thread with hundreds of finished pages to borrow layouts from.",t:["inspiration"],p:"Free"},
+ {c:"michi",n:"How to implement the Michi Method",src:"PokeBeach",u:"https://pokebeach.com/forums/posts/3098923/",note:"Practical advice thread: printing, sizing, and what goes wrong.",t:["how-to"],p:"Free"},
+ {c:"michi",n:"Michi insert templates",src:"Etsy · SEARCH",u:E("michi method binder insert template"),note:"Buy the layouts, not the art. Skip the pastel bundles and look for minimal or dark sets.",t:["templates"],p:"$"},
+ {c:"michi",n:"Michi binder boards",src:"Pinterest · SEARCH",u:"https://www.pinterest.com/search/pins/?q="+encodeURIComponent("pokemon binder michi method"),note:"Save spreads that match the archive look into one board before designing.",t:["inspiration"],p:"Free"},
+ {c:"michi",n:"r/PokemonTCG Michi posts",src:"Reddit · SEARCH",u:"https://www.reddit.com/r/PokemonTCG/search/?q="+encodeURIComponent("michi method"),note:"Real binders with comments about sleeves, fit and printing.",t:["inspiration"],p:"Free"},
+ // Binder
+ {c:"binder",n:"Vault X 9-Pocket Exo-Tec Zip Binder",src:"Vault X",u:"https://vaultx.com/products/9-pocket-exo-tec-zip-binder",note:"Side-loading, padded, black, acid-free. Side loading matters once cards are double-sleeved. The Strap version suits the reed-switch audio build.",t:["archival"],p:"$$",kit:1},
+ {c:"binder",n:"Vault X Exo-Tec Strap Binder",src:"Vault X",u:"https://us.vaultx.com/products/9-pocket-exo-tec-strap-binder",note:"Same pages with an elastic strap. A magnet hidden in the strap can switch the audio cover on and off.",t:["audio-ready"],p:"$$"},
+ {c:"binder",n:"Dragon Shield Perfect Fit (inner)",src:"Amazon · SEARCH",u:S("dragon shield perfect fit sleeves clear"),note:"Tight inner sleeve. The card never touches anything else.",t:["card-safe"],p:"$",kit:1},
+ {c:"binder",n:"Clear outer sleeves, standard size",src:"Amazon · SEARCH",u:S("clear outer sleeves double sleeving standard size"),note:"Fully clear on both sides. This is the layer that takes stickers and rub-ons.",t:["card-safe"],p:"$"},
+ {c:"binder",n:"Black cardstock backers",src:"Amazon · SEARCH",u:S("black cardstock 110 lb 8.5x11"),note:"Cut to 63×88 mm and slide behind cards so the next pocket's art doesn't show through.",t:["finish"],p:"$"},
+ // PET
+ {c:"pet",n:"Cabinet of Curiosities sticker book",src:"Getty Museum Store",u:"https://shop.getty.edu/products/cabinet-of-curiosities-sticker-book",note:"Ten transparent sheets of specimen jars, tags and cabinets, from an actual museum shop. Closest match to the archive look.",t:["archive","specimen"],p:"$",kit:1},
+ {c:"pet",n:"Timeless Ephemera PET strips",src:"PaperWrld",u:"https://paperwrld.com/products/timeless-ephemera-pet-sticker",note:"Long PET strips of tickets, labels and handwriting. Use the label and ticket pieces; leave the florals.",t:["archive","tickets"],p:"$"},
+ {c:"pet",n:"Vintage Botanical Label set",src:"PaperWrld",u:"https://paperwrld.com/products/vintage-botanical-label-sticker-set",note:"Botanical labels for Gardevoir's herbarium spread.",t:["botanical"],p:"$"},
+ {c:"pet",n:"Celestial Drift PET tape, laser gold",src:"The Washi Tape Shop · Pinkoi",u:"https://en.pinkoi.com/product/2VKVqFr8",note:"6.5 cm wide clear PET with gold foil stars. Cut pieces out like stickers. Made for Umbreon and Rayquaza.",t:["celestial","gold"],p:"$$",kit:1},
+ {c:"pet",n:"Gilded wide PET tapes",src:"The Washi Tape Shop",u:"https://littlecraftplace.com/products/imperial-glimmer-wide-pet-tape-gilded-1",note:"The same brand's gold-foiled wide tapes. Browse for ornamental borders and frames.",t:["gold","borders"],p:"$$"},
+ {c:"pet",n:"MU Print-On (rub-on) stickers",src:"Yoseka Stationery",u:"https://yosekastationery.com/collections/mu",note:"Rub-on transfers leave no sticker edge, so they look printed on the sleeve. Lunar #26 and the foil series suit the archive look.",t:["rub-on","premium"],p:"$",kit:1},
+ {c:"pet",n:"Mind Wave matte clear PET",src:"Paper Whisper",u:"https://paperwhisper.com/products/mind-wave-secret-friends-sticker-secret-astronomical-observation",note:"Japanese matte PET blends into paper with no shine. This sheet has telescopes and star charts; skip the character pieces.",t:["celestial","matte"],p:"$"},
+ {c:"pet",n:"Showa Retro mini square stickers",src:"bungu.store",u:"https://bungu.store/products/showa-retro-mini-square-stickers-kinokosya",note:"Tiny 1.5 cm photo stickers of Showa-era objects. Good accents beside Japanese cards.",t:["japanese","retro"],p:"$"},
+ {c:"pet",n:"Technical & warning label stickers",src:"Etsy · SEARCH",u:E("transparent technical label sticker sheet barcode warning"),note:"Serial numbers, hazard stripes, barcodes. Look for clear vinyl in black or silver ink.",t:["technical"],p:"$"},
+ {c:"pet",n:"Holographic equipment labels",src:"Etsy · SEARCH",u:E("holographic warning label sticker sci fi equipment"),note:"Holographic inspection-style labels. Use one per spread at most.",t:["technical","holo"],p:"$"},
+ {c:"pet",n:"“Labelled” PNG label pack",src:"Gumroad",u:"https://novumomnis.gumroad.com/l/Labelled",note:"Digital barcodes, price tags and security seals with transparent backgrounds. Print on clear sticker paper in any colour.",t:["technical","printable"],p:"$"},
+ {c:"pet",n:"Gold foil constellation clear stickers",src:"Etsy · SEARCH",u:E("clear gold foil constellation stickers"),note:"For Umbreon and Mew. Look for thin-line constellations without cartoon moons.",t:["celestial","gold"],p:"$"},
+ // Japan
+ {c:"japan",n:"100 Papers: Japanese Retro Collection",src:"PIE International",u:"https://forbiddenplanet.com/336484-100-papers-of-japanese-retro-collection/",note:"100 sheets of Meiji-to-early-Showa patterns, frames and illustration. Cut into backgrounds and borders.",t:["papers","retro"],p:"$$",kit:1},
+ {c:"japan",n:"50 Watts paper pack: Japanese illustration",src:"50 Watts",u:"https://50wattsbooks.com/products/50-watts-paper-pack-vintage-japanese-illustration",note:"28 sheets of 1920s Japanese book illustration. Strong graphic shapes for collage.",t:["papers","1920s"],p:"$$"},
+ {c:"japan",n:"Used Japanese postage stamps",src:"eBay · SEARCH",u:B("japan used stamps off paper lot"),note:"Hundreds for a few dollars. Pick stamps whose colours match a spread.",t:["stamps"],p:"$"},
+ {c:"japan",n:"Vintage Japanese matchbox labels",src:"Etsy · SEARCH",u:E("vintage japanese matchbox label"),note:"Bold Showa graphics, ideal for Charizard's spread.",t:["retro","graphic"],p:"$"},
+ {c:"japan",n:"Japanese train tickets (kippu)",src:"eBay · SEARCH",u:B("vintage japanese train ticket"),note:"Small card-stock tickets with dates and station names, the right scale for a pocket corner.",t:["tickets"],p:"$"},
+ {c:"japan",n:"Pokémon Center Japan bags & receipts",src:"eBay · SEARCH",u:B("pokemon center japan shopping bag"),note:"Paper bags, stickers and receipts. Cut panels for the Pokémon Center page.",t:["pokemon","ephemera"],p:"$"},
+ {c:"japan",n:"Japanese basic Energy cards",src:"eBay · SEARCH",u:B("japanese basic energy cards lot"),note:"Pennies each. Use whole as type markers, or trim the symbol for a label.",t:["pokemon"],p:"$"},
+ {c:"japan",n:"Japanese booster wrappers",src:"eBay · SEARCH",u:B("japanese pokemon booster pack wrapper empty"),note:"Keep yours, or buy empties. Thin strips make excellent pocket borders.",t:["pokemon","ephemera"],p:"$"},
+ // Holo & paper
+ {c:"holo",n:"Dichroic film",src:"Amazon · SEARCH",u:S("dichroic window film iridescent"),note:"Transparent film that shifts emerald to blue to gold as it tilts. The most premium-looking way to catch light. Cut into shards.",t:["holo","premium"],p:"$",kit:1},
+ {c:"holo",n:"Holographic Rainbow Film",src:"Hero Arts",u:"https://heroarts.com/products/hero-arts-holographic-rainbow-film-5-pack",note:"Clear peel-and-stick rainbow film, 5.5×8.5 in. Back white art with it for Mew.",t:["holo"],p:"$"},
+ {c:"holo",n:"Holographic acetate (non-adhesive)",src:"Amazon · SEARCH",u:S("holographic acetate sheets transparent non adhesive"),note:"Loose shards behind an overlay can be rearranged any time.",t:["holo","removable"],p:"$"},
+ {c:"holo",n:"Printable vellum",src:"Amazon · SEARCH",u:S("printable vellum paper 8.5x11 translucent"),note:"Frosted overlays for notes, maps and clouds. Prints on inkjet or laser.",t:["paper"],p:"$"},
+ {c:"holo",n:"Inkjet transparency film",src:"Amazon · SEARCH",u:S("inkjet transparency film 8.5x11"),note:"Print your own linework, grids and constellations onto clear overlays.",t:["printable"],p:"$"},
+ {c:"holo",n:"Printable clear sticker paper",src:"Amazon · SEARCH",u:S("printable clear sticker paper inkjet waterproof"),note:"Make custom PET-style stickers in your exact palette.",t:["printable"],p:"$"},
+ {c:"holo",n:"Toner-reactive foil (gold & silver)",src:"Amazon · SEARCH",u:S("toner reactive foil gold laminator"),note:"Laser-print a label, run it through a laminator with foil, and the black turns real gold. Makes premium placards.",t:["gold","labels"],p:"$"},
+ {c:"holo",n:"Glow-in-the-dark vinyl",src:"Amazon · SEARCH",u:S("glow in the dark adhesive vinyl sheet"),note:"For Umbreon's rings. Charge it under a lamp and turn the lights off.",t:["effect"],p:"$"},
+ // Labels
+ {c:"labels",n:"Embossing label maker + black tape",src:"Amazon · SEARCH",u:S("embossing label maker black tape"),note:"Raised white letters on black tape. Serial numbers and “SPECIMEN 475” strips with an industrial feel.",t:["technical"],p:"$"},
+ {c:"labels",n:"Gold-on-clear label tape",src:"Amazon · SEARCH",u:S("gold on clear label tape 12mm"),note:"Gold lettering on clear tape for outer sleeves, so the name looks printed on the sleeve.",t:["gold","sleeves"],p:"$"},
+ {c:"labels",n:"Automatic numbering stamp",src:"Amazon · SEARCH",u:S("automatic numbering machine stamp 6 digit"),note:"Steps the number up on every press. Real accession numbers on every label.",t:["archive"],p:"$$"},
+ {c:"labels",n:"Mini kraft specimen tags",src:"Amazon · SEARCH",u:S("mini kraft tags 1 inch string"),note:"Tie to an outer sleeve with thread. Pairs with the tag style in the Label maker.",t:["specimen"],p:"$"},
+ {c:"labels",n:"Custom hanko seal (your name in katakana)",src:"Etsy · SEARCH",u:E("custom hanko stamp katakana name"),note:"A red seal on every label, like a curator's mark. One small stamp ties the whole book together.",t:["japanese","signature"],p:"$$"},
+ {c:"labels",n:"3 mm corner rounder punch",src:"Amazon · SEARCH",u:S("corner rounder punch 3mm"),note:"Round every insert to match real card corners so they slide in cleanly.",t:["finish"],p:"$"},
+ // NFC
+ {c:"nfc",n:"NTAG215 sticker, 25 mm circle",src:"GoToTags",u:"https://store.gototags.com/nfc-sticker-ntag215-25-mm-circle/",note:"Thin, reliable, widely compatible. One per spread.",t:["nfc"],p:"$",kit:1},
+ {c:"nfc",n:"NTAG215 25 mm bulk packs",src:"Amazon · SEARCH",u:S("NTAG215 NFC stickers 25mm"),note:"Cheaper in packs of 20–50.",t:["nfc"],p:"$"},
+ {c:"nfc",n:"Anti-metal NTAG215",src:"Amazon · SEARCH",u:S("anti metal NTAG215 NFC sticker"),note:"For spreads with a lot of foil or metallised holo film behind the tag.",t:["nfc"],p:"$"},
+ {c:"nfc",n:"NFC Tools app",src:"wakdev",u:"https://www.wakdev.com/en/",note:"Free app for writing URLs to tags on iOS and Android.",t:["app"],p:"Free"},
+ // Audio
+ {c:"audio",n:"DFPlayer Mini (DFR0299)",src:"DFRobot",u:"https://www.dfrobot.com/product-1121.html",note:"Plays MP3s from microSD and drives a small speaker directly.",t:["audio"],p:"$"},
+ {c:"audio",n:"DFPlayer Mini wiki & pinout",src:"DFRobot",u:"https://wiki.dfrobot.com/DFPlayer_Mini_SKU_DFR0299",note:"Pinout, the ADKEY resistor table and serial commands.",t:["docs"],p:"Free"},
+ {c:"audio",n:"Seeed XIAO RP2040",src:"Seeed Studio",u:"https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html",note:"Thumbnail-sized controller for auto-play and per-key tracks.",t:["audio"],p:"$"},
+ {c:"audio",n:"Mini oval speaker 8 Ω 1 W (#3923)",src:"Adafruit",u:"https://www.adafruit.com/product/3923",note:"30 × 20 × 5 mm. A short-lead version is #4227.",t:["audio"],p:"$"},
+ {c:"audio",n:"LiPo 3.7 V 500 mAh (#1578)",src:"Adafruit",u:"https://www.adafruit.com/product/1578",note:"Flat pouch with protection circuit and JST connector.",t:["power"],p:"$"},
+ {c:"audio",n:"Micro-Lipo USB-C charger (#4410)",src:"Adafruit",u:"https://www.adafruit.com/product/4410",note:"Small single-cell charger. Mount the jack at the cover edge.",t:["power"],p:"$"},
+ {c:"audio",n:"Membrane 1×4 keypad (#1332)",src:"Adafruit",u:"https://www.adafruit.com/product/1332",note:"Flat adhesive buttons, each on its own wire. Hide under a printed label.",t:["buttons"],p:"$"},
+ {c:"audio",n:"Audio FX sound boards",src:"Adafruit · SEARCH",u:"https://www.adafruit.com/search?q=audio+fx",note:"Alternative with built-in flash, no microSD, triggered straight from buttons. Some versions need a separate amp.",t:["alternative"],p:"$$"}
+];
+
+const IDEAS = [
+ {t:"Accession cards",d:"Open each spread with a catalogue card in the first pocket: accession number, date acquired, where (pulled, traded, which con), set and condition. That provenance turns a card into an exhibit.",f:"Every spread"},
+ {t:"A real table of contents",d:"Make the first spread an index: nine placards listing each section with its page number, in the same label style used throughout.",f:"Front of binder"},
+ {t:"Regions as real maps",d:"The regions are modelled on real Japan: Kanto on the Kantō region, Johto on Kansai, Hoenn on Kyushu, Sinnoh on Hokkaido. Use vintage maps of those real areas as section dividers.",f:"Section dividers"},
+ {t:"Holo shards on the light side",d:"Put dichroic and holo pieces on right-hand pages, which face the light as you turn. Tilt-reactive accents on left pages are mostly hidden.",f:"Layout"},
+ {t:"One black pocket per spread",d:"Leave one pocket as a plain black insert on purpose. It frames the card next to it better than any sticker.",f:"Every spread"},
+ {t:"Convention provenance",d:"Put the event badge or ticket stub next to the card you bought there, with a placard noting the date and city. Collect-A-Con stubs work well.",f:"Event pages"},
+ {t:"JP / EN pairs",d:"Show the same card in Japanese and English side by side, with a single label reading “JP · EN · same illustration”. Simple, and a little scholarly.",f:"Favourite illustrations"},
+ {t:"Conservator's notes on vellum",d:"Lay a typewritten vellum note over an art pocket: illustrator, release, why you love it. The art reads through the frost.",f:"Illustration rares"},
+ {t:"Unown cipher captions",d:"Set short captions in an Unown font. Only someone who knows the alphabet can read “ARCHIVE” across the bottom row.",f:"Hidden detail"},
+ {t:"Constellation speaker grille",d:"Drill the speaker holes in the cover in a constellation pattern (Umbreon's rings, Lugia's wing line) and label it like a star chart.",f:"Audio cover"},
+ {t:"Type-chart overlay",d:"Print a type-matchup grid on transparency film and lay it over a battle-themed spread, highlighting the Pokémon's weaknesses in red.",f:"Metagross, Gallade"},
+ {t:"Embossed serials on the outer sleeve",d:"A strip of embossed black tape along the top of the outer sleeve, like “SPEC. 475 · PSY/FIG”. Industrial, removable, cheap.",f:"Technical spreads"},
+ {t:"Wrapper borders",d:"Cut Japanese booster wrappers into 2–3 mm strips and use them as thin coloured frames inside art pockets. The foil wrappers shine.",f:"Charizard, vintage"},
+ {t:"Illustrator credit placards",d:"Treat card artists like museum artists: “Illustration: [artist] · Set · Year” on a small placard beside each illustration rare.",f:"Art-focused spreads"},
+ {t:"Glow test",d:"Put glow vinyl on one or two spreads only (Umbreon's rings, Gengar's eyes). Turning the lights off becomes a reveal.",f:"Umbreon, Gengar"},
+ {t:"Cinnabar journal",d:"Reproduce the in-game Cinnabar Mansion diary entries as typewritten pages around Mew and Mewtwo. Lore that's already in the games.",f:"Mew"}
+];
+
+const LABEL_STYLES = [["placard","Museum placard"],["tag","Specimen tag"],["plate","Steel plate"],["jp","Japanese tag"]];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pad3 = n => /^\d+$/.test(n) ? n.padStart(3,"0") : n;
+
+function labelHTML(style, d){
+  const no = esc(pad3(d.no)), nm = esc(d.name), jp = esc(d.jp), ty = esc(d.type), rg = esc(d.region), ey = esc(d.eyebrow), nt = esc(d.note);
+  if(style==="tag") return `<div class="L L-tag"><div class="e">${ey} · No. ${no}</div><div class="nm">${nm}</div><div class="jp">${jp}</div><div class="ty">${ty} · ${rg}<br>${nt}</div></div>`;
+  if(style==="plate") return `<div class="L L-plate"><div class="no">${no}</div><div class="nm">${nm}</div><div class="ty">${ty}</div><div class="e"><span>${ey}</span><span>${rg}</span></div></div>`;
+  if(style==="jp") return `<div class="L L-jp"><div class="no">No.${no}</div><div class="jp">${jp}</div><div class="nm">${nm}</div><div class="seal">標本</div></div>`;
+  return `<div class="L L-placard"><div class="e"><span>${ey} — No. ${no}</span><span>${rg}</span></div><div class="nm">${nm}</div><div class="jp">${jp}</div><div class="ty"><span>${ty}</span><span>${nt}</span></div></div>`;
+}
+
+/* ---------- tabs ---------- */
+const chapters = [...document.querySelectorAll("section.ch")];
+const tabs = document.getElementById("tabs");
+chapters.forEach((s,i)=>{
+  const b = document.createElement("button");
+  b.className="tab"; b.setAttribute("role","tab"); b.id="tab-"+s.id; b.setAttribute("aria-controls",s.id);
+  b.innerHTML=`<span class="n">${["I","II","III","IV","V","VI","VII"][i]}</span>${s.dataset.title}`;
+  b.onclick=()=>show(s.id,true);
+  tabs.appendChild(b);
+});
+function show(id, scroll){
+  const idx = Math.max(0, chapters.findIndex(s=>s.id===id));
+  chapters.forEach((s,i)=>{ s.hidden = i!==idx; document.getElementById("tab-"+s.id).setAttribute("aria-selected", i===idx); });
+  document.getElementById("tab-"+chapters[idx].id).scrollIntoView({block:"nearest",inline:"center"});
+  const pg = document.getElementById("pager"), prev = chapters[idx-1], next = chapters[idx+1];
+  pg.innerHTML = (prev?`<button data-go="${prev.id}"><span>← Previous</span>${prev.dataset.title}</button>`:"")+(next?`<button class="nx" data-go="${next.id}"><span>Next →</span>${next.dataset.title}</button>`:"");
+  pg.querySelectorAll("button").forEach(b=>b.onclick=()=>show(b.dataset.go,true));
+  try{ history.replaceState(null,"","#"+chapters[idx].id); }catch(e){}
+  if(scroll) document.getElementById("tabs").scrollIntoView({block:"start"});
+}
+
+/* ---------- starter kit ---------- */
+function itemHTML(it){
+  return `<article class="item"><div class="src"><span>${esc(it.src)}</span><span>${esc(it.p)}</span></div><h4>${esc(it.n)}</h4><p>${esc(it.note)}</p>
+  <div class="foot"><div class="tags">${it.kit?'<span class="tag kit">STARTER</span>':""}${it.t.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div><a class="go" href="${it.u}" target="_blank" rel="noopener">Open ↗</a></div></article>`;
+}
+document.getElementById("kitList").innerHTML = SHOP.filter(i=>i.kit).slice(0,6).map(itemHTML).join("");
+
+/* ---------- shop ---------- */
+let shopCat="all", kitOnly=false;
+const filters=document.getElementById("filters");
+function renderFilters(){
+  filters.innerHTML = [["all","All"],...Object.entries(CATS)].map(([k,v])=>`<button class="chip" data-c="${k}" aria-pressed="${shopCat===k}">${v}</button>`).join("")
+   + `<span class="sep"></span><button class="chip" id="kitT" aria-pressed="${kitOnly}">Starter kit only</button>`;
+  filters.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{shopCat=b.dataset.c;renderShop();});
+  document.getElementById("kitT").onclick=()=>{kitOnly=!kitOnly;renderShop();};
+}
+function renderShop(){
+  renderFilters();
+  const list = SHOP.filter(i=>(shopCat==="all"||i.c===shopCat)&&(!kitOnly||i.kit));
+  document.getElementById("shopCount").textContent = `${list.length} source${list.length===1?"":"s"}`;
+  document.getElementById("shopList").innerHTML = list.map(itemHTML).join("");
+}
+renderShop();
+
+/* ---------- themes ---------- */
+let current = SPECIMENS[0].id;
+const roster=document.getElementById("roster");
+function renderRoster(){
+  roster.innerHTML = SPECIMENS.map(s=>`<button class="chip" data-id="${s.id}" aria-pressed="${s.id===current}"><span class="dot" style="background:${s.pal[1][0]}"></span>${s.name}</button>`).join("");
+  roster.querySelectorAll("button").forEach(b=>b.onclick=()=>{current=b.dataset.id;renderRoster();renderDossier();});
+}
+function lum(hex){const n=parseInt(hex.slice(1),16);return (0.299*(n>>16)+0.587*(n>>8&255)+0.114*(n&255))/255;}
+function renderDossier(){
+  const s = SPECIMENS.find(x=>x.id===current);
+  const cells = s.layout.replace(/\|/g,"").split("");
+  const lab = {C:"Card",A:"Art",H:"Holo",L:"Label",x:"Empty"};
+  document.getElementById("dossier").innerHTML = `
+  <div class="panel">
+    <div class="dos-head"><div><div class="eyebrow">${esc(s.type)} · ${esc(s.region)}</div><h3>${esc(s.name)}</h3><div class="dos-jp">${esc(s.jp)}</div></div><div class="dos-no">${s.no}</div></div>
+    <div class="pal">${s.pal.map(([h,n])=>`<div style="background:${h};color:${lum(h)>.55?"#1A1A18":"#ECE8DE"}" title="${h}">${n}</div>`).join("")}</div>
+    <dl class="kv"><dt>Motifs</dt><dd>${esc(s.motifs)}</dd><dt>Materials</dt><dd>${esc(s.materials)}</dd><dt>Audio</dt><dd>${esc(s.audio)}</dd><dt>NFC tap</dt><dd>${esc(s.nfc)}</dd></dl>
+    <div class="sig"><span class="eyebrow">Signature move</span>${esc(s.sig)}</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+    <div class="panel"><h4>Suggested 3×3 layout</h4>
+      <div class="mini-grid" style="margin-top:10px">${cells.map(c=>`<div class="c-${c}">${c==="x"?"":lab[c]}</div>`).join("")}</div>
+      <div class="legend"><span><i class="c-C"></i>Card</span><span><i class="c-A"></i>Art insert</span><span><i class="c-H"></i>Holo / film</span><span><i class="c-L"></i>Label / ephemera</span><span><i class="c-x"></i>Black pocket</span></div></div>
+    <div class="panel"><div class="row" style="justify-content:space-between;margin-bottom:12px"><h4 style="margin:0">Label</h4><button class="btn" id="toLabel">Edit in label maker →</button></div>
+      <div class="stage" style="min-height:160px">${labelHTML(s.label,{eyebrow:"Pokédex Archive",no:s.no,name:s.name,jp:s.jp,type:s.type,region:s.region,note:s.note})}</div></div>
+  </div>`;
+  document.getElementById("toLabel").onclick=()=>{loadPreset(s.id);show("labels",true);};
+}
+renderRoster(); renderDossier();
+
+/* ---------- label maker ---------- */
+let style="placard"; const sheet=[];
+const F = k=>document.getElementById("f-"+k);
+const fields=["eyebrow","no","jp","name","type","region","note"];
+const presetSel=document.getElementById("preset");
+presetSel.innerHTML = `<option value="">Custom</option>`+SPECIMENS.map(s=>`<option value="${s.id}">${s.name}</option>`).join("");
+presetSel.onchange=()=>presetSel.value&&loadPreset(presetSel.value);
+function loadPreset(id){
+  const s=SPECIMENS.find(x=>x.id===id); presetSel.value=id;
+  F("eyebrow").value="Pokédex Archive"; F("no").value=s.no; F("jp").value=s.jp; F("name").value=s.name; F("type").value=s.type; F("region").value=s.region; F("note").value=s.note;
+  style=s.label; renderLabel();
+}
+const data=()=>Object.fromEntries(fields.map(k=>[k,F(k).value]));
+function renderLabel(){
+  document.getElementById("styleBtns").innerHTML = LABEL_STYLES.map(([k,v])=>`<button class="chip" data-s="${k}" aria-pressed="${style===k}">${v}</button>`).join("");
+  document.getElementById("styleBtns").querySelectorAll("button").forEach(b=>b.onclick=()=>{style=b.dataset.s;renderLabel();});
+  document.getElementById("stage").innerHTML = labelHTML(style,data());
+}
+fields.forEach(k=>F(k).addEventListener("input",()=>{presetSel.value="";renderLabel();}));
+function renderSheet(){
+  const h = sheet.map(x=>labelHTML(x.style,x.d)).join("");
+  document.getElementById("printSheet").innerHTML=h;
+  document.getElementById("sheetPreview").innerHTML = h || `<p class="muted small">Empty. Add labels to build a sheet; they print at true size.</p>`;
+  document.getElementById("sheetCount").textContent = `${sheet.length} label${sheet.length===1?"":"s"}`;
+  try{localStorage.setItem("binderSheet",JSON.stringify(sheet));}catch(e){}
+}
+document.getElementById("addSheet").onclick=()=>{sheet.push({style,d:data()});renderSheet();};
+document.getElementById("clearSheet").onclick=()=>{sheet.length=0;renderSheet();};
+document.getElementById("printBtn").onclick=()=>{ if(!sheet.length) sheet.push({style,d:data()}), renderSheet(); window.print(); };
+try{const saved=JSON.parse(localStorage.getItem("binderSheet")||"[]"); if(Array.isArray(saved)) sheet.push(...saved);}catch(e){}
+renderLabel(); renderSheet();
+
+/* ---------- audio ---------- */
+const BARS=[["DFPlayer + microSD",7],["Speaker",5],["LiPo 500 mAh",5],["USB-C charger",5],["XIAO RP2040",3.5],["Reed switch",2],["Membrane keypad",0.8]];
+document.getElementById("bars").innerHTML = BARS.map(([n,v])=>`<div class="bar"><span>${n}</span><div class="track"><div class="fill" style="width:${v/8*100}%"></div></div><span class="v">${v} mm</span></div>`).join("");
+document.getElementById("code").innerHTML =
+`<span class="c">// Binder cover audio — XIAO RP2040 + DFPlayer Mini
+// The reed switch cuts power while the binder is shut,
+// so setup() runs every time the cover opens.</span>
+<span class="k">#include</span> <span class="s">&lt;DFRobotDFPlayerMini.h&gt;</span>
+
+DFRobotDFPlayerMini player;
+
+<span class="k">const int</span> KEY_MUSIC = D0, KEY_CRY = D1, KEY_EFFECT = D2, KEY_STOP = D3;
+
+<span class="k">void</span> setup() {
+  pinMode(KEY_MUSIC, INPUT_PULLUP);
+  pinMode(KEY_CRY, INPUT_PULLUP);
+  pinMode(KEY_EFFECT, INPUT_PULLUP);
+  pinMode(KEY_STOP, INPUT_PULLUP);
+
+  Serial1.begin(9600);          <span class="c">// D6 TX -> 1k -> DFPlayer RX</span>
+  delay(1000);                  <span class="c">// DFPlayer boots for ~1 s</span>
+  <span class="k">if</span> (!player.begin(Serial1)) <span class="k">return</span>;
+  player.volume(18);            <span class="c">// 0–30</span>
+  player.playMp3Folder(1);      <span class="c">// opening theme</span>
+}
+
+<span class="k">void</span> loop() {
+  <span class="k">if</span> (pressed(KEY_MUSIC))  player.playMp3Folder(2);
+  <span class="k">if</span> (pressed(KEY_CRY))    player.playMp3Folder(3);
+  <span class="k">if</span> (pressed(KEY_EFFECT)) player.playMp3Folder(4);
+  <span class="k">if</span> (pressed(KEY_STOP))   player.pause();
+}
+
+<span class="k">bool</span> pressed(<span class="k">int</span> pin) {
+  <span class="k">if</span> (digitalRead(pin) == HIGH) <span class="k">return false</span>;
+  delay(25);                                 <span class="c">// debounce</span>
+  <span class="k">while</span> (digitalRead(pin) == LOW) {}        <span class="c">// wait for release</span>
+  <span class="k">return true</span>;
+}`;
+
+/* ---------- nfc + ideas ---------- */
+document.getElementById("nfcRows").innerHTML = SPECIMENS.map(s=>`<tr><td class="num">${s.no}</td><td>${esc(s.name)} <span class="muted">${esc(s.jp)}</span></td><td>${esc(s.nfc)}</td><td class="muted">${esc(s.audio)}</td></tr>`).join("");
+document.getElementById("ideaList").innerHTML = IDEAS.map(i=>`<article class="idea"><div class="t">${esc(i.t)}</div><p>${esc(i.d)}</p><div class="for">For · ${esc(i.f)}</div></article>`).join("");
+
+show((location.hash||"#start").slice(1), false);
+</script>
+</body>
+</html>
